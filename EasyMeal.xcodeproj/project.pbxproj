@@ -7,16 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DE2F525299722E1002AA1BA /* MyCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F524299722E1002AA1BA /* MyCart.swift */; };
+		4DE2F527299722E8002AA1BA /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F526299722E8002AA1BA /* Profile.swift */; };
+		4DE2F529299722F1002AA1BA /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F528299722F1002AA1BA /* Recipes.swift */; };
+		4DE2F52B299722F7002AA1BA /* Pantry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F52A299722F7002AA1BA /* Pantry.swift */; };
+		4DE2F52D299722FE002AA1BA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F52C299722FE002AA1BA /* MainView.swift */; };
+		4DE2F52F29972309002AA1BA /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F52E29972309002AA1BA /* SignIn.swift */; };
+		4DE2F53129972312002AA1BA /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F53029972312002AA1BA /* SignUp.swift */; };
+		4DE2F53329972317002AA1BA /* InfoTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F53229972317002AA1BA /* InfoTwo.swift */; };
+		4DE2F5352997231E002AA1BA /* InfoOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F5342997231E002AA1BA /* InfoOne.swift */; };
+		4DE2F53729972326002AA1BA /* InfoThree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F53629972326002AA1BA /* InfoThree.swift */; };
 		9B09BE9B298B267E00939FFD /* EasyMealApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B09BE9A298B267E00939FFD /* EasyMealApp.swift */; };
-		9B09BE9D298B267E00939FFD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B09BE9C298B267E00939FFD /* ContentView.swift */; };
+		9B09BE9D298B267E00939FFD /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B09BE9C298B267E00939FFD /* MainPage.swift */; };
 		9B09BE9F298B267F00939FFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B09BE9E298B267F00939FFD /* Assets.xcassets */; };
 		9B09BEA2298B267F00939FFD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B09BEA1298B267F00939FFD /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4DE2F524299722E1002AA1BA /* MyCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCart.swift; sourceTree = "<group>"; };
+		4DE2F526299722E8002AA1BA /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		4DE2F528299722F1002AA1BA /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
+		4DE2F52A299722F7002AA1BA /* Pantry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pantry.swift; sourceTree = "<group>"; };
+		4DE2F52C299722FE002AA1BA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		4DE2F52E29972309002AA1BA /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		4DE2F53029972312002AA1BA /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		4DE2F53229972317002AA1BA /* InfoTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTwo.swift; sourceTree = "<group>"; };
+		4DE2F5342997231E002AA1BA /* InfoOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoOne.swift; sourceTree = "<group>"; };
+		4DE2F53629972326002AA1BA /* InfoThree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoThree.swift; sourceTree = "<group>"; };
 		9B09BE97298B267E00939FFD /* EasyMeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyMeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B09BE9A298B267E00939FFD /* EasyMealApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EasyMealApp.swift; sourceTree = "<group>"; };
-		9B09BE9C298B267E00939FFD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9B09BE9C298B267E00939FFD /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		9B09BE9E298B267F00939FFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B09BEA1298B267F00939FFD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,7 +72,17 @@
 			isa = PBXGroup;
 			children = (
 				9B09BE9A298B267E00939FFD /* EasyMealApp.swift */,
-				9B09BE9C298B267E00939FFD /* ContentView.swift */,
+				9B09BE9C298B267E00939FFD /* MainPage.swift */,
+				4DE2F524299722E1002AA1BA /* MyCart.swift */,
+				4DE2F526299722E8002AA1BA /* Profile.swift */,
+				4DE2F528299722F1002AA1BA /* Recipes.swift */,
+				4DE2F52A299722F7002AA1BA /* Pantry.swift */,
+				4DE2F52C299722FE002AA1BA /* MainView.swift */,
+				4DE2F52E29972309002AA1BA /* SignIn.swift */,
+				4DE2F53029972312002AA1BA /* SignUp.swift */,
+				4DE2F53229972317002AA1BA /* InfoTwo.swift */,
+				4DE2F5342997231E002AA1BA /* InfoOne.swift */,
+				4DE2F53629972326002AA1BA /* InfoThree.swift */,
 				9B09BE9E298B267F00939FFD /* Assets.xcassets */,
 				9B09BEA0298B267F00939FFD /* Preview Content */,
 			);
@@ -137,8 +167,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B09BE9D298B267E00939FFD /* ContentView.swift in Sources */,
+				4DE2F529299722F1002AA1BA /* Recipes.swift in Sources */,
+				4DE2F52D299722FE002AA1BA /* MainView.swift in Sources */,
+				9B09BE9D298B267E00939FFD /* MainPage.swift in Sources */,
+				4DE2F527299722E8002AA1BA /* Profile.swift in Sources */,
+				4DE2F52B299722F7002AA1BA /* Pantry.swift in Sources */,
 				9B09BE9B298B267E00939FFD /* EasyMealApp.swift in Sources */,
+				4DE2F53729972326002AA1BA /* InfoThree.swift in Sources */,
+				4DE2F525299722E1002AA1BA /* MyCart.swift in Sources */,
+				4DE2F53129972312002AA1BA /* SignUp.swift in Sources */,
+				4DE2F5352997231E002AA1BA /* InfoOne.swift in Sources */,
+				4DE2F53329972317002AA1BA /* InfoTwo.swift in Sources */,
+				4DE2F52F29972309002AA1BA /* SignIn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +314,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,6 +343,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
