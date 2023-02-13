@@ -43,7 +43,7 @@ struct MainPage: View {
                         .padding(.vertical, 16)
                         .background(LinearGradient(gradient: Gradient(colors: [custGreen, custGreen]), startPoint: .leading, endPoint: .trailing))
                         .cornerRadius(10)
-                        .shadow(color: custShadow, radius: 3, x: 0, y: 5)
+                        .shadow(color: custShadow, radius: 1, x: 1, y: 1)
                 }
                 .offset(y:50)
                 NavigationLink(destination: InfoOne(), isActive: $showView) {

@@ -12,7 +12,7 @@ struct InfoThree: View {
 
     var body: some View {
         VStack {
-            Text("Find\nnutritious meals")
+            Text("Become Healthier")
                 .font(.largeTitle)
                 .bold()
                 .multilineTextAlignment(.center)
@@ -40,7 +40,7 @@ struct InfoThree: View {
                     .padding(.vertical, 16)
                     .background(LinearGradient(gradient: Gradient(colors: [custGreen, custGreen]), startPoint: .leading, endPoint: .trailing))
                     .cornerRadius(10)
-                    .shadow(color: custShadow, radius: 3, x: 0, y: 3)
+                    .shadow(color: custShadow, radius: 1, x: 1, y: 1)
             }
             .offset(y: 50)
             NavigationLink(destination: SignUp(), isActive: $showView) {
