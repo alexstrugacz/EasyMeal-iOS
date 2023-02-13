@@ -23,7 +23,8 @@ struct SignUp: View {
                 Text("Sign Up")
                     .multilineTextAlignment(.center)
                     .foregroundColor(custGreen)
-                    .font(.system(size: 60))
+                    .font(.system(size: 60)).bold()
+                
             }
             .offset(x: 40, y: 75)
         }
@@ -69,7 +70,7 @@ struct SignUp: View {
                             .padding(.leading, 15)
                             .background(Color.clear)
                     }
-                    .frame(width: 280, height: 50)
+                    .frame(width: 300, height: 50)
                     .background(RoundedRectangle(cornerRadius: 5).fill(Color.white))
                 }
                 
@@ -101,7 +102,7 @@ struct SignUp: View {
                     .padding(.vertical, 16)
                     .background(LinearGradient(gradient: Gradient(colors: [custGreen, custGreen]), startPoint: .leading, endPoint: .trailing))
                     .cornerRadius(10)
-                    .shadow(color: custShadow, radius: 3, x: 0, y: 3)
+                    .shadow(color: custShadow, radius: 1, x: 1, y: 1)
             }
             .offset(y: -175)
             NavigationLink(destination: MainView(), isActive: $showView) {
