@@ -20,6 +20,7 @@ struct MyCart: View {
                     .bold()
                     .foregroundColor(.black)
             }
+            .foregroundColor(Color.white.opacity(0.6))
             
             ScrollView {
                 ForEach(groupedItems.keys.sorted(), id: \.self) { category in
