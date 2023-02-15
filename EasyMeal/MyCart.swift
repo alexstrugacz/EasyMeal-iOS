@@ -20,8 +20,9 @@ struct MyCart: View {
                     .bold()
                     .foregroundColor(.black)
             }
-            .foregroundColor(Color.white.opacity(0.6))
-            
+            .foregroundColor(Color.white.opacity(1))
+
+            .foregroundColor(Color.white.opacity(1))
             ScrollView {
                 ForEach(groupedItems.keys.sorted(), id: \.self) { category in
                     VStack(alignment: .leading) {
@@ -32,12 +33,7 @@ struct MyCart: View {
                             ZStack {
                                 RoundedRectangle(cornerRadius: 10)
                                     .frame(height: 60)
-                                    .foregroundColor(custGray)
-                                    .onTapGesture {
-                                        if let index = self.items.firstIndex(where: { $0.id == item.id }) {
-                                            self.items[index].isChecked.toggle()
-                                        }
-                                    }
+                                    .foregroundColor(.white)
                                 
                                 HStack {
                                     if item.isChecked {
@@ -61,6 +57,24 @@ struct MyCart: View {
                                         .padding(.trailing, 10)
                                 }
                                 .padding(.vertical, 10)
+                                
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    if let index = self.items.firstIndex(where: { $0.id == item.id }) {
+                                        self.items[index].isChecked.toggle()
+                                    }
+                                }
+                                .gesture(
+                                    DragGesture()
+                                        .onChanged({ _ in
+                                            // Do nothing
+                                        })
+                                        .onEnded({ value in
+                                            if value.translation.width < -100 {
+                                                self.items.removeAll(where: { $0.id == item.id })
+                                            }
+                                        })
+                                )
                             }
                             .cornerRadius(10)
                         }
