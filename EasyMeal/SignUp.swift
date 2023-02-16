@@ -70,7 +70,7 @@ struct SignUp: View {
                             .padding(.leading, 15)
                             .background(Color.clear)
                     }
-                    .frame(width: 300, height: 50)
+                    .frame(width: 280, height: 50)
                     .background(RoundedRectangle(cornerRadius: 5).fill(Color.white))
                 }
                 

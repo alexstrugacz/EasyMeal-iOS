@@ -6,16 +6,22 @@ struct Recipes: View {
     var body: some View {
         ScrollView {
             
-            Text("Recipes")
-                .font(.largeTitle)
-                .bold()
-                .multilineTextAlignment(.center)
+            HStack {
+                Text("Recipes")
+                    .font(.title)
+                    .bold()
+                    .foregroundColor(.black)
+                
+                
+            }
+            .foregroundColor(Color.white.opacity(1))
+            .offset(y:20)
             
-            VStack(spacing: 20) {
+            VStack(spacing: 35) {
                 Text("Recently Added")
                     .bold()
                     .multilineTextAlignment(.leading)
-                    .offset(x: -110, y: 10)
+                    .offset(x: -105, y: 25)
                     .font(.system(size: 23))
                 
                 ScrollView(.horizontal) {
@@ -44,17 +50,20 @@ struct Recipes: View {
                                             .font(.subheadline)
                                     }
                                 }
+                                .offset(x: 5)
+
                             }
                         }
                     }
                 }
+                .offset(x: 5)
             }
             
-            VStack(spacing: 20) {
+            VStack(spacing: 35) {
                 Text("Recently Added")
                     .bold()
                     .multilineTextAlignment(.leading)
-                    .offset(x: -110, y: 10)
+                    .offset(x: -105, y: 25)
                     .font(.system(size: 23))
                 
                 ScrollView(.horizontal) {
@@ -83,17 +92,26 @@ struct Recipes: View {
                                             .font(.subheadline)
                                     }
                                 }
+                                .offset(x: 5)
+
                             }
+                            
+
                         }
+                        
                     }
+                    
                 }
+                .offset(x: 5)
+
+
             }
             
-            VStack(spacing: 20) {
+            VStack(spacing: 35) {
                 Text("Recently Added")
                     .bold()
                     .multilineTextAlignment(.leading)
-                    .offset(x: -110, y: 10)
+                    .offset(x: -105, y: 25)
                     .font(.system(size: 23))
                 
                 ScrollView(.horizontal) {
@@ -121,12 +139,19 @@ struct Recipes: View {
                                         Text("Subtitle B \(index)")
                                             .font(.subheadline)
                                     }
+                                    
                                 }
+                                .offset(x: 5)
+
                             }
                         }
                     }
                 }
+                
+                .offset(x: 5)
+
             }
+            
             
         }
     }
