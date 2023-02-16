@@ -26,6 +26,8 @@ struct MyCart: View {
                 
             }
             .foregroundColor(Color.white.opacity(1))
+            .offset(y:20)
+            
             
             if isCartEmpty {
                     VStack {
@@ -42,18 +44,22 @@ struct MyCart: View {
                             Recipes()
                         }))
                         {
+                            
                             Text("Browse Recipes")
                                 .foregroundColor(.white)
+                            
                         }
                         .padding(.vertical, 10)
                         .padding(.horizontal, 30)
-                        .background(Color.green)
+                        .background(custGreen)
                         .cornerRadius(10)
                         Spacer()
                         
                         
                     }
-                }
+                    .offset(y: 180)
+
+                  }
             
 
             ScrollView {
@@ -132,6 +138,7 @@ struct MyCart: View {
             
             .padding(.horizontal, 20)
             Spacer()
+
         }
         .shadow(radius: 3)
 
