@@ -11,6 +11,10 @@ struct MyCart: View {
     var groupedItems: [String: [ShoppingItem]] {
         Dictionary(grouping: items, by: { $0.category })
     }
+    
+    var isCartEmpty: Bool {
+            items.isEmpty
+        }
 
     var body: some View {
         VStack {
@@ -19,8 +23,38 @@ struct MyCart: View {
                     .font(.title)
                     .bold()
                     .foregroundColor(.black)
+                
             }
             .foregroundColor(Color.white.opacity(1))
+            
+            if isCartEmpty {
+                    VStack {
+                        Spacer()
+                        Text("Your cart is empty!\nLet's go fill it up.")
+                            .font(.headline)
+                            .foregroundColor(.black)
+                            .multilineTextAlignment(.center)
+                            .padding()
+                            .foregroundColor(Color.white.opacity(1))
+                        
+                        
+                        NavigationLink(destination: MainView(initialTab: .cooktop, content: {
+                            Recipes()
+                        }))
+                        {
+                            Text("Browse Recipes")
+                                .foregroundColor(.white)
+                        }
+                        .padding(.vertical, 10)
+                        .padding(.horizontal, 30)
+                        .background(Color.green)
+                        .cornerRadius(10)
+                        Spacer()
+                        
+                        
+                    }
+                }
+            
 
             ScrollView {
                 ForEach(groupedItems.keys.sorted(), id: \.self) { category in
