@@ -22,7 +22,6 @@ struct MyCart: View {
             }
             .foregroundColor(Color.white.opacity(1))
 
-            .foregroundColor(Color.white.opacity(1))
             ScrollView {
                 ForEach(groupedItems.keys.sorted(), id: \.self) { category in
                     VStack(alignment: .leading) {
@@ -66,15 +65,27 @@ struct MyCart: View {
                                 }
                                 .gesture(
                                     DragGesture()
-                                        .onChanged({ _ in
-                                            // Do nothing
+                                        .onChanged({ value in
+                                            guard let index = self.items.firstIndex(where: { $0.id == item.id }) else {
+                                                return
+                                            }
+                                            self.items[index].offset = value.translation.width
                                         })
                                         .onEnded({ value in
+                                            guard let index = self.items.firstIndex(where: { $0.id == item.id }) else {
+                                                return
+                                            }
                                             if value.translation.width < -100 {
-                                                self.items.removeAll(where: { $0.id == item.id })
+                                                withAnimation {
+                                                    self.items.remove(at: index)
+                                                }
+                                            } else {
+                                                self.items[index].offset = 0
                                             }
                                         })
                                 )
+                                .offset(x: item.offset)
+                                .animation(.spring())
                             }
                             .cornerRadius(10)
                         }
@@ -98,6 +109,7 @@ struct MyCart: View {
         var isChecked: Bool
         var size: String
         var category: String
+        var offset: CGFloat = 0
     }
 
     struct MyCart_Previews: PreviewProvider {
@@ -106,4 +118,3 @@ struct MyCart: View {
         }
     }
 }
-
