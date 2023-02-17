@@ -3,19 +3,23 @@ import SwiftUI
 struct Pantry: View {
     @State private var items = [
         Ingredient(name: "Chicken", isChecked: false, category: "Meat"),
-        Ingredient(name: "Carrots", isChecked: false, category: "Vegetables"),
-        Ingredient(name: "Bread Crumbs", isChecked: false, category: "Pantry"),
-        Ingredient(name: "Peppers", isChecked: false,category: "Vegetables"),
+        Ingredient(name: "Carrot", isChecked: false, category: "Vegetables"),
+        Ingredient(name: "Bread Crumb", isChecked: false, category: "Pantry"),
+        Ingredient(name: "Pepper", isChecked: false,category: "Vegetables"),
         Ingredient(name: "Fish", isChecked: false,category: "Meat"),
         Ingredient(name: "Tomato", isChecked: false,category: "Vegetables"),
         Ingredient(name: "Salt", isChecked: false,category: "Pantry"),
-        Ingredient(name: "Cucumber", isChecked: false,category: "Vegetables")
+        Ingredient(name: "Cucumber", isChecked: false,category: "Vegetables"),
+        Ingredient(name: "Asparagus", isChecked: false,category: "Vegetables")
+
     ]
     
     var groupedItems: [String: [Ingredient]] {
         Dictionary(grouping: items, by: { $0.category })
     }
     
+    let gridItems = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+
     var body: some View {
         VStack{
             VStack{
@@ -35,7 +39,7 @@ struct Pantry: View {
                             .padding(.leading, 20)
                             .bold()
                         
-                        VStack {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 90))], spacing: 10) {
                             ForEach(groupedItems[category]!, id: \.id) { item in
                                 Button(action: {
                                     if let index = items.firstIndex(where: { $0.id == item.id }) {
@@ -45,26 +49,26 @@ struct Pantry: View {
                                     Text(item.name)
                                         .font(.subheadline)
                                         .foregroundColor(.black)
-                                        .padding(.horizontal, 15)
+                                        .padding(.horizontal, 5)
                                         .frame(height: 35)
-                                        .background(item.isChecked ? custGreen : Color.gray.opacity(0.6))
-                                        .cornerRadius(30)
+                                        .background(item.isChecked ? Color.green : Color.gray.opacity(0.6))
+                                        .cornerRadius(60)
+                                        .fixedSize(horizontal: true, vertical: false) // Add this line
                                 }
                                 .buttonStyle(PlainButtonStyle())
                             }
                         }
-                        .frame(minWidth: 0, maxWidth: .infinity)
-                        .padding(.horizontal, 10)
-                        .padding(.vertical, 5)
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(.white)
-                                .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 2)
-                        )
-                        .padding(10)
+                        .padding(.horizontal, 5)
                     }
+                    .padding(20)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                            .foregroundColor(.white)
+                            .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 2)
+                    )
                 }
             }
+            .offset(y: 10)
             .padding(.horizontal, 20)
             .shadow(radius: 3)
             Spacer()
