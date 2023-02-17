@@ -4,7 +4,7 @@ struct Recipes: View {
     @State var showView = false
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             
             HStack {
                 Text("Recipes")
@@ -24,7 +24,7 @@ struct Recipes: View {
                     .offset(x: -105, y: 25)
                     .font(.system(size: 23))
                 
-                ScrollView(.horizontal) {
+                ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 20) {
                         ForEach(0..<10) { index in
                             VStack(spacing: 8) {
@@ -66,7 +66,7 @@ struct Recipes: View {
                     .offset(x: -105, y: 25)
                     .font(.system(size: 23))
                 
-                ScrollView(.horizontal) {
+                ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 20) {
                         ForEach(0..<10) { index in
                             VStack(spacing: 8) {
@@ -114,7 +114,7 @@ struct Recipes: View {
                     .offset(x: -105, y: 25)
                     .font(.system(size: 23))
                 
-                ScrollView(.horizontal) {
+                ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 20) {
                         ForEach(0..<10) { index in
                             VStack(spacing: 8) {
