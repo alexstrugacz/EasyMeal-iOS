@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D5A6E3129A3ACCC00614A28 /* RecipeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5A6E3029A3ACCC00614A28 /* RecipeInfo.swift */; };
 		4DE2F525299722E1002AA1BA /* MyCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F524299722E1002AA1BA /* MyCart.swift */; };
 		4DE2F527299722E8002AA1BA /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F526299722E8002AA1BA /* Profile.swift */; };
 		4DE2F529299722F1002AA1BA /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F528299722F1002AA1BA /* Recipes.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D5A6E3029A3ACCC00614A28 /* RecipeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInfo.swift; sourceTree = "<group>"; };
 		4DE2F524299722E1002AA1BA /* MyCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCart.swift; sourceTree = "<group>"; };
 		4DE2F526299722E8002AA1BA /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		4DE2F528299722F1002AA1BA /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				4DE2F526299722E8002AA1BA /* Profile.swift */,
 				4DE2F528299722F1002AA1BA /* Recipes.swift */,
 				4DE2F52A299722F7002AA1BA /* Pantry.swift */,
+				4D5A6E3029A3ACCC00614A28 /* RecipeInfo.swift */,
 				4DE2F52C299722FE002AA1BA /* MainView.swift */,
 				4DE2F52E29972309002AA1BA /* SignIn.swift */,
 				4DE2F53029972312002AA1BA /* SignUp.swift */,
@@ -177,6 +180,7 @@
 				4DE2F52B299722F7002AA1BA /* Pantry.swift in Sources */,
 				9B09BE9B298B267E00939FFD /* EasyMealApp.swift in Sources */,
 				4DE2F53729972326002AA1BA /* InfoThree.swift in Sources */,
+				4D5A6E3129A3ACCC00614A28 /* RecipeInfo.swift in Sources */,
 				4DE2F525299722E1002AA1BA /* MyCart.swift in Sources */,
 				4DE2F53129972312002AA1BA /* SignUp.swift in Sources */,
 				4DE2F5392997F679002AA1BA /* TabBar.swift in Sources */,

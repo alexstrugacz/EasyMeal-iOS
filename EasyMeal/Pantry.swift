@@ -51,7 +51,7 @@ struct Pantry: View {
                                         .foregroundColor(.black)
                                         .padding(.horizontal, 15) // Updated padding value
                                         .frame(height: 35)
-                                        .background(item.isChecked ? Color.green : Color.gray.opacity(0.6))
+                                        .background(item.isChecked ? custGreen : Color.gray.opacity(0.6))
                                         .cornerRadius(60)
                                         .fixedSize(horizontal: true, vertical: false)
                                 }
