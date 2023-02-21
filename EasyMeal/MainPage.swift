@@ -10,6 +10,7 @@ import SwiftUI
 let custGreen = Color(hex: "#0ACF83")
 let custShadow = Color(hex: "9B9CA2")
 let custGray = Color(hex: "FAF9F9")
+let custLightRed = Color(hex: "FF8F8F")
 
 
 struct MainPage: View {
