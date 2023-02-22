@@ -24,21 +24,21 @@ struct RecipeInfo: View {
     ]
     
     @State private var ingredients = [
-        Ingredient(name: "Chicken",category: "Meat"),
-        Ingredient(name: "Carrot",category: "Vegetables"),
-        Ingredient(name: "Bread Crumb",category: "Pantry"),
-        Ingredient(name: "Pepper",category: "Vegetables"),
-        Ingredient(name: "Fish",category: "Meat"),
-        Ingredient(name: "Tomato",category: "Vegetables"),
-        Ingredient(name: "Salt",category: "Pantry"),
-        Ingredient(name: "Cucumber",category: "Vegetables"),
-        Ingredient(name: "Asparagus",category: "Vegetables")
-
+        Ingredient(name: "Chicken", available: true),
+        Ingredient(name: "Carrot", available: true),
+        Ingredient(name: "Bread Crumb", available: true),
+        Ingredient(name: "Pepper", available: true),
+        Ingredient(name: "Fish", available: false),
+        Ingredient(name: "Tomato", available: false),
+        Ingredient(name: "Salt", available: false),
+        Ingredient(name: "Cucumber", available: false),
+        Ingredient(name: "Asparagus", available: false)
+        
     ]
     
     var body: some View {
         VStack {
-
+            
             ScrollView{
                 
                 Image("sampleRecipe")
@@ -107,15 +107,41 @@ struct RecipeInfo: View {
                     .padding(.horizontal, 16)
                     
                 }
+                VStack(alignment: .leading) {
+                    ForEach(ingredients) { ingredient in
+                        HStack {
+                            Text(ingredient.name)
+                                .offset(x: -20)
+                                .background(Color.gray.opacity(0.1))
+
+                            if ingredient.available {
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.green)
+                                
+                                
+                            } else {
+                                Image(systemName: "xmark")
+                                    .foregroundColor(.red)
+                            }
+                            
+                            Spacer()
+                            
+                        }
+
+                        .padding(.vertical, 4)
+                    }
+                    
+                }
+                .padding(.horizontal, 60)
+
             }
             .padding(.all, 16)
             
             
+            
         }
-        
     }
 }
-
 struct NutrientRow: Identifiable {
     let id = UUID()
     let nutrientName: String
@@ -186,7 +212,7 @@ struct ProgressBar: View {
 struct Ingredient: Identifiable, Hashable {
     let id = UUID()
     var name: String
-    var category: String
+    var available: Bool
 }
 
 struct RecipeInfo_Previews: PreviewProvider {
