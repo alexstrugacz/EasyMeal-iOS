@@ -97,7 +97,9 @@ struct SignIn: View {
                     .shadow(color: custShadow, radius: 3, x: 0, y: 3)
             }
             .offset(y: -175)
-            NavigationLink(destination: MainView(), isActive: $showView) {
+            NavigationLink(destination: MainView(initialTab: .refrigerator, content: {
+                Pantry()
+            }), isActive: $showView) {
                                 EmptyView()
                             }
         }

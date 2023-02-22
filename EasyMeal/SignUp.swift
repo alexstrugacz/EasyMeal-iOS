@@ -70,7 +70,7 @@ struct SignUp: View {
                             .padding(.leading, 15)
                             .background(Color.clear)
                     }
-                    .frame(width: 300, height: 50)
+                    .frame(width: 280, height: 50)
                     .background(RoundedRectangle(cornerRadius: 5).fill(Color.white))
                 }
                 
@@ -105,7 +105,9 @@ struct SignUp: View {
                     .shadow(color: custShadow, radius: 1, x: 1, y: 1)
             }
             .offset(y: -175)
-            NavigationLink(destination: MainView(), isActive: $showView) {
+            NavigationLink(destination: MainView(initialTab: .refrigerator, content: {
+                Pantry()
+            }), isActive: $showView) {
                                 EmptyView()
                             }
         }
