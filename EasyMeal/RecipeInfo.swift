@@ -9,7 +9,9 @@ import SwiftUI
 
 struct RecipeInfo: View {
     let recipeURL = URL(string: "https://www.easymeal.me")!
-    @State var progressBarValue = 90
+    
+    @State var progressBarValue = Float(1)
+    
     
     var body: some View {
         VStack {
@@ -41,36 +43,61 @@ struct RecipeInfo: View {
             VStack{
                 Text("Nutrition Insights")
                     .bold()
-                ProgressBar(percentage: progressBarValue)
-                                    .frame(height: 10)
+                ProgressBar(value: $progressBarValue)
+                    .frame(height: 20)
             }
+            Spacer()
+            .padding()
             .offset(y: 10)
         }
     }
 }
 
 struct ProgressBar: View {
-    let percentage: Int
+    @Binding var value: Float
+    @State var score = 10
     
     var body: some View {
-        HStack(spacing: 0) {
-            Rectangle()
-                .fill(custGreen)
-                .frame(width: CGFloat(percentage) * 3, height: 40)
-                .overlay(
-                    Text("EasyMeal Health Score™")
-                        .foregroundColor(.white)
+        GeometryReader { geometry in
+            HStack(spacing: 0) {
+                Spacer()
+                    .frame(width: geometry.size.width * 0.12)
+                ZStack(alignment: .leading) {
+                    Rectangle().frame(width: geometry.size.width * 0.7, height: geometry.size.height * 1.6)
+                        .opacity(0.3)
+                        .foregroundColor(custLightRed)
                     
+                    Rectangle().frame(width: min(CGFloat(self.value)*geometry.size.width * 0.7, geometry.size.width), height: geometry.size.height * 1.6)
+                        .foregroundColor(custGreen)
+                    
+                    HStack{
+                        Text("EasyMeal Health Score™")
+                            .font(.callout)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .alignmentGuide(HorizontalAlignment.center) { d in d[HorizontalAlignment.center] }
+                            .alignmentGuide(VerticalAlignment.bottom) { d in d[VerticalAlignment.top] - geometry.size.height }
+                            .offset(x:10)
                         
-                )
-            
-            Rectangle()
-                .fill(custLightRed)
-                .frame(width: CGFloat(100 - percentage) * 3, height: 40)
+                        Text("\(score)/10")
+                            .font(.callout)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+                            .alignmentGuide(HorizontalAlignment.center) { d in d[HorizontalAlignment.center] }
+                            .alignmentGuide(VerticalAlignment.bottom) { d in d[VerticalAlignment.top] - geometry.size.height }
+                            .offset(x:10)
+                        
+                    }
+                }.cornerRadius(8.0)
+                Spacer()
+                    .frame(width: geometry.size.width * 0.05)
+            }
         }
-        .padding(.horizontal, 20)
     }
 }
+
+    
+
 
 struct RecipeInfo_Previews: PreviewProvider {
     static var previews: some View {
