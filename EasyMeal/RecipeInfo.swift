@@ -123,7 +123,7 @@ struct RecipeInfo: View {
                                 Image(systemName: "xmark")
                                     .foregroundColor(.red)
                             }
-                            
+                                
                             Spacer()
                             
                         }
