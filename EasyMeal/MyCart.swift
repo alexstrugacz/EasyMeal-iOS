@@ -64,28 +64,40 @@ struct MyCart: View {
                                 // Mark All Complete button action
                                 var i = 0
                                 while(i < items.count) {
-                                    self.items[i].isChecked.toggle()
-                                    i+=1
+                                    if(items[i].isChecked == false){
+                                        self.items[i].isChecked.toggle()
+                                        i+=1
+                                    }
                                 }
                             }) {
                                 HStack {
                                     Image(systemName: "checkmark")
-                                    Text("Check/Uncheck All")
+                                    Text("Check Mark All")
                                     
                                 }
                             }
                             
-                            
+                            Button(action: {
+                                // Mark All Complete button action
+                                self.items.removeAll(where: { $0.isChecked })
+                            }) {
+                                HStack {
+                                    Image(systemName: "trash")
+                                    Text("Delete Checked")
+                                    
+                                }
+                            }
                             
                             Button(action: {
                                 // Share button action
-                                let message = "Share your Cart"
-                                let items: [Any] = [message]
-                                let excludedActivities: [UIActivity.ActivityType] = [.postToFacebook, .postToTwitter] // Add any additional excluded activity types here
-                                let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
-                                activityViewController.excludedActivityTypes = excludedActivities
-                                
-                                UIApplication.shared.windows.first?.rootViewController?.present(activityViewController, animated: true, completion: nil)
+                                let itemsText = items.map({ "\($0.name) (\($0.size))" }).joined(separator: "\n")
+                                    let message = "My shopping list:\n\(itemsText)"
+                                    let items: [Any] = [message]
+                                    let excludedActivities: [UIActivity.ActivityType] = [.postToFacebook, .postToTwitter] // Add any additional excluded activity types here
+                                    let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+                                    activityViewController.excludedActivityTypes = excludedActivities
+                                    
+                                    UIApplication.shared.windows.first?.rootViewController?.present(activityViewController, animated: true, completion: nil)
                             }) {
                                 HStack {
                                     Image(systemName: "square.and.arrow.up")
@@ -93,6 +105,8 @@ struct MyCart: View {
                                 }
                             }
                         }
+                        .foregroundColor(.black)
+
                         
                     }
                     .frame(height: 150)
