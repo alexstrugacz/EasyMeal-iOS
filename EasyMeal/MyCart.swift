@@ -23,34 +23,40 @@ struct MyCart: View {
             
             VStack{
                 HStack{
+                    
                     Spacer()
                     Text("My Cart")
                         .font(.title)
                         .bold()
                         .foregroundColor(.black)
-                        .foregroundColor(Color.white.opacity(1))
-                    
+                        .padding(.leading, 42)
+
                     Spacer()
                     Button(action: {
                         self.isShowingSettings.toggle()
+                        
                     }) {
-                        Image(systemName: "circle.grid.2x1")
+                        Image("3dots")
+                            .resizable()
+                            .frame(width: 30, height: 30)
                             .font(.system(size: 20))
                             .foregroundColor(.black)
+                            
                     }
+                    .padding(.trailing, 10)
                     
-                    
-                    Spacer()
                 }
+                .offset(y:20)
                 
                 if isShowingSettings {
                     ZStack {
-                        Color.white.opacity(0.3)
+                        Color.gray.opacity(0.02)
                             .ignoresSafeArea()
                             .frame(height: 150)
                             .frame(width: UIScreen.main.bounds.width)
-                        
+                    
                         VStack(spacing: 20) {
+
                             Button(action: {
                                 // Shop Online button action
                             }) {
@@ -66,7 +72,9 @@ struct MyCart: View {
                                 while(i < items.count) {
                                     if(items[i].isChecked == false){
                                         self.items[i].isChecked.toggle()
+                                        print(i)
                                         i+=1
+                                        
                                     }
                                 }
                             }) {
@@ -86,6 +94,7 @@ struct MyCart: View {
                                     Text("Delete Checked")
                                     
                                 }
+                                
                             }
                             
                             Button(action: {
@@ -111,6 +120,7 @@ struct MyCart: View {
                     }
                     .frame(height: 150)
                     .frame(width: UIScreen.main.bounds.width)
+                    .offset(y: 10)
                 }
 
                 
