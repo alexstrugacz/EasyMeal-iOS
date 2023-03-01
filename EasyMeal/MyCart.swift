@@ -6,6 +6,7 @@ struct MyCart: View {
         ShoppingItem(name: "Carrots", isChecked: false, size: "0.5 lb.", category: "Vegetables"),
         ShoppingItem(name: "Bread Crumbs", isChecked: false, size: "Pinch", category: "Pantry"),
         ShoppingItem(name: "Peppers", isChecked: false, size: "2", category: "Vegetables")
+        
     ]
     
     var groupedItems: [String: [ShoppingItem]] {
@@ -50,7 +51,7 @@ struct MyCart: View {
                 
                 if isShowingSettings {
                     ZStack {
-                        Color.gray.opacity(0.02)
+                        Color.gray.opacity(0.0)
                             .ignoresSafeArea()
                             .frame(height: 150)
                             .frame(width: UIScreen.main.bounds.width)
@@ -65,7 +66,10 @@ struct MyCart: View {
                                     Text("Shop Online")
                                 }
                             }
-                            
+                            .background(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .fill(Color.gray.opacity(0.2))
+                            )
                             Button(action: {
                                 // Mark All Complete button action
                                 var i = 0
@@ -84,6 +88,10 @@ struct MyCart: View {
                                     
                                 }
                             }
+                            .background(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .fill(Color.gray.opacity(0.2))
+                            )
                             
                             Button(action: {
                                 // Mark All Complete button action
@@ -96,6 +104,10 @@ struct MyCart: View {
                                 }
                                 
                             }
+                            .background(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .fill(Color.gray.opacity(0.2))
+                            )
                             
                             Button(action: {
                                 // Share button action
@@ -112,6 +124,10 @@ struct MyCart: View {
                                     Image(systemName: "square.and.arrow.up")
                                     Text("Share")
                                 }
+                                .background(
+                                    RoundedRectangle(cornerRadius: 5)
+                                        .fill(Color.gray.opacity(0.2))
+                                )
                             }
                         }
                         .foregroundColor(.black)
