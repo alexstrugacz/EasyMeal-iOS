@@ -61,10 +61,10 @@ struct Recipes: View {
                 }
                 
                 VStack(spacing: 35) {
-                    Text("Recently Added")
+                    Text("Most Popular")
                         .bold()
                         .multilineTextAlignment(.leading)
-                        .offset(x: -105, y: 25)
+                        .offset(x: -110, y: 25)
                         .font(.system(size: 23))
                     
                     ScrollView(.horizontal, showsIndicators: false) {
@@ -101,7 +101,7 @@ struct Recipes: View {
                 }
                 
                 VStack(spacing: 35) {
-                    Text("Recently Added")
+                    Text("Recommended")
                         .bold()
                         .multilineTextAlignment(.leading)
                         .offset(x: -105, y: 25)
@@ -139,9 +139,12 @@ struct Recipes: View {
                     }
                     .offset(x: 5)
                 }
+                Spacer(minLength: 100)
+                
             }
             
         }
+        
         
     }
 

@@ -23,7 +23,8 @@ struct Pantry: View {
     var body: some View {
         VStack{
             VStack{
-                Text("My Cart")
+                
+                Text("Pantry")
                     .font(.title)
                     .bold()
                     .foregroundColor(.black)
