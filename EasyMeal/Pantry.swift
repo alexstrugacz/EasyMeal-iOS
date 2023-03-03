@@ -66,6 +66,7 @@ struct Pantry: View {
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(.white)
                             .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 2)
+    
                     )
                 }
             }

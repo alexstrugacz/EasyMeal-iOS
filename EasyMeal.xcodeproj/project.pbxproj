@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D2E4F4729AFE48F00F68629 /* General.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E4F4629AFE48F00F68629 /* General.swift */; };
+		4D2E4F4929AFE4AB00F68629 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E4F4829AFE4AB00F68629 /* Account.swift */; };
+		4D2E4F4B29AFE4C100F68629 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E4F4A29AFE4C100F68629 /* Notifications.swift */; };
+		4D2E4F4D29AFE4CF00F68629 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E4F4C29AFE4CF00F68629 /* Appearance.swift */; };
+		4D2E4F4F29AFE4D700F68629 /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E4F4E29AFE4D700F68629 /* Privacy.swift */; };
+		4D2E4F5129AFE4E500F68629 /* Help & Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E4F5029AFE4E500F68629 /* Help & Support.swift */; };
+		4D2E4F5329AFE4EC00F68629 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E4F5229AFE4EC00F68629 /* About.swift */; };
 		4D5A6E3129A3ACCC00614A28 /* RecipeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5A6E3029A3ACCC00614A28 /* RecipeInfo.swift */; };
 		4DE2F525299722E1002AA1BA /* MyCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F524299722E1002AA1BA /* MyCart.swift */; };
 		4DE2F527299722E8002AA1BA /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F526299722E8002AA1BA /* Profile.swift */; };
@@ -26,6 +33,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D2E4F4629AFE48F00F68629 /* General.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = General.swift; sourceTree = "<group>"; };
+		4D2E4F4829AFE4AB00F68629 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		4D2E4F4A29AFE4C100F68629 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		4D2E4F4C29AFE4CF00F68629 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		4D2E4F4E29AFE4D700F68629 /* Privacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Privacy.swift; sourceTree = "<group>"; };
+		4D2E4F5029AFE4E500F68629 /* Help & Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Help & Support.swift"; sourceTree = "<group>"; };
+		4D2E4F5229AFE4EC00F68629 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		4D5A6E3029A3ACCC00614A28 /* RecipeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInfo.swift; sourceTree = "<group>"; };
 		4DE2F524299722E1002AA1BA /* MyCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCart.swift; sourceTree = "<group>"; };
 		4DE2F526299722E8002AA1BA /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -56,6 +70,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D2E4F4529AFE47700F68629 /* Profile Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4D2E4F4629AFE48F00F68629 /* General.swift */,
+				4D2E4F4829AFE4AB00F68629 /* Account.swift */,
+				4D2E4F4A29AFE4C100F68629 /* Notifications.swift */,
+				4D2E4F4C29AFE4CF00F68629 /* Appearance.swift */,
+				4D2E4F4E29AFE4D700F68629 /* Privacy.swift */,
+				4D2E4F5029AFE4E500F68629 /* Help & Support.swift */,
+				4D2E4F5229AFE4EC00F68629 /* About.swift */,
+			);
+			path = "Profile Settings";
+			sourceTree = "<group>";
+		};
 		9B09BE8E298B267E00939FFD = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +103,7 @@
 		9B09BE99298B267E00939FFD /* EasyMeal */ = {
 			isa = PBXGroup;
 			children = (
+				4D2E4F4529AFE47700F68629 /* Profile Settings */,
 				4DE2F5382997F679002AA1BA /* TabBar.swift */,
 				9B09BE9A298B267E00939FFD /* EasyMealApp.swift */,
 				9B09BE9C298B267E00939FFD /* MainPage.swift */,
@@ -174,19 +203,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DE2F529299722F1002AA1BA /* Recipes.swift in Sources */,
+				4D2E4F4D29AFE4CF00F68629 /* Appearance.swift in Sources */,
 				4DE2F52D299722FE002AA1BA /* MainView.swift in Sources */,
 				9B09BE9D298B267E00939FFD /* MainPage.swift in Sources */,
 				4DE2F527299722E8002AA1BA /* Profile.swift in Sources */,
 				4DE2F52B299722F7002AA1BA /* Pantry.swift in Sources */,
+				4D2E4F4929AFE4AB00F68629 /* Account.swift in Sources */,
 				9B09BE9B298B267E00939FFD /* EasyMealApp.swift in Sources */,
+				4D2E4F4F29AFE4D700F68629 /* Privacy.swift in Sources */,
 				4DE2F53729972326002AA1BA /* InfoThree.swift in Sources */,
 				4D5A6E3129A3ACCC00614A28 /* RecipeInfo.swift in Sources */,
 				4DE2F525299722E1002AA1BA /* MyCart.swift in Sources */,
+				4D2E4F4729AFE48F00F68629 /* General.swift in Sources */,
 				4DE2F53129972312002AA1BA /* SignUp.swift in Sources */,
 				4DE2F5392997F679002AA1BA /* TabBar.swift in Sources */,
+				4D2E4F4B29AFE4C100F68629 /* Notifications.swift in Sources */,
+				4D2E4F5329AFE4EC00F68629 /* About.swift in Sources */,
 				4DE2F5352997231E002AA1BA /* InfoOne.swift in Sources */,
 				4DE2F53329972317002AA1BA /* InfoTwo.swift in Sources */,
 				4DE2F52F29972309002AA1BA /* SignIn.swift in Sources */,
+				4D2E4F5129AFE4E500F68629 /* Help & Support.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
