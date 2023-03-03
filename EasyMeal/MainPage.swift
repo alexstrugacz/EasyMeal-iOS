@@ -77,8 +77,9 @@ struct MainPage: View {
                 
             }
             .background(
-                Image("waves2")
+                Image("waves3")
                     .offset(y: 230)
+                    
             )
             
         }

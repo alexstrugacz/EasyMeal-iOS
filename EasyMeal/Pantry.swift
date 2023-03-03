@@ -40,7 +40,7 @@ struct Pantry: View {
                             .padding(.leading, 20)
                             .bold()
                         
-                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 90))], spacing: 10) {
+                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 90))], spacing: 5) {
                             ForEach(groupedItems[category]!, id: \.id) { item in
                                 Button(action: {
                                     if let index = items.firstIndex(where: { $0.id == item.id }) {
