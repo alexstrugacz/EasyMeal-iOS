@@ -48,14 +48,16 @@ struct Pantry: View {
                                     }
                                 }) {
                                     Text(item.name)
-                                        .font(.subheadline)
                                         .foregroundColor(.black)
-                                        .padding(.horizontal, 15) // Updated padding value
-                                        .frame(height: 35)
+                                        .padding(.horizontal, 15)
+                                        .frame(width:100, height: 35)
                                         .background(item.isChecked ? custGreen : Color.gray.opacity(0.6))
                                         .cornerRadius(60)
+                                        .minimumScaleFactor(0.5) // Set a minimum scale factor to allow the text to scale down
                                         .fixedSize(horizontal: true, vertical: false)
+                                        .font(.system(size: 15)) // Set the initial font size
                                 }
+
                                 .buttonStyle(PlainButtonStyle())
                             }
                         }
