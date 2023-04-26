@@ -7,13 +7,6 @@
 
 import SwiftUI
 
-let custGreen = Color(hex: "#28BE7F")
-let custShadow = Color(hex: "9B9CA2")
-let custGray = Color(hex: "FAF9F9")
-let custLightRed = Color(hex: "FF8F8F")
-let custMicGreen = Color(hex: "26CE8D")
-
-
 struct MainPage: View {
     @State var showView = false
     @State var showView2 = false

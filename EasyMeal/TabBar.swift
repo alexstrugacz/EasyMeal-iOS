@@ -51,7 +51,7 @@ struct CustomTabBar: View {
                 
             }
             .frame(width: nil, height: 65)
-            .background(custGreen)
+            .background(custTabBarGreen)
             .cornerRadius(50)
             .padding()
             
