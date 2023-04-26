@@ -63,10 +63,11 @@ struct CustomTabBar: View {
                 Circle()
                     .strokeBorder(custMicGreen, lineWidth: 2)
                     .frame(width: 74, height: 74)
+                
                     .overlay(
                         Circle()
                             .fill(custMicGreen)
-                            .frame(width: 70, height: 70)
+                            .frame(width: 74, height: 74)
                             .overlay(
                                 Button(action: {
                                     isPressed.toggle()
@@ -77,7 +78,9 @@ struct CustomTabBar: View {
                             .shadow(color: .black.opacity(0.2), radius: 6, x: 0, y: 0)
                     )
                 Spacer()
+                
             }
+            
         }
     }
 }
@@ -87,4 +90,5 @@ struct CustomTabBar_Previews: PreviewProvider {
         CustomTabBar(selectedTab: .constant(.refrigerator))
     }
 }
+
 
