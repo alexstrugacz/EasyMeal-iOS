@@ -1,10 +1,9 @@
-
-
 import SwiftUI
 
 enum Tab: String, CaseIterable {
     case refrigerator
     case cooktop
+    case mic
     case cart
     case person
 }
@@ -24,14 +23,21 @@ struct CustomTabBar: View {
             return .white
         case .person:
             return .white
+        case .mic:
+            return .white
         }
     }
     
+    @State private var isPressed = false
     
     var body: some View {
-        VStack {
+        ZStack {
             HStack {
-                ForEach(Tab.allCases, id: \.rawValue) { tab in
+                //make make mic just the green color to hide it instead
+                ForEach(Tab.allCases.filter { tab in
+                    // only show mic icon when selected tab is .refrigerator
+                    return tab == .mic && selectedTab != .refrigerator ? false : true
+                }, id: \.rawValue) { tab in
                     Spacer()
                     Image(systemName: selectedTab == tab ? fillImage : tab.rawValue)
                         .scaleEffect(tab == selectedTab ? 1.25 : 1.0)
@@ -44,11 +50,39 @@ struct CustomTabBar: View {
                         }
                     Spacer()
                 }
+                
             }
             .frame(width: nil, height: 65)
-            .background(custGreen)
+            .background(custTabBarGreen)
             .cornerRadius(50)
             .padding()
+            
+            if selectedTab == .refrigerator {
+                let micImage = Image(systemName: "mic")
+                    .font(.system(size: 30))
+                    .foregroundColor(.white)
+                
+                Circle()
+                    .strokeBorder(custMicGreen, lineWidth: 2)
+                    .frame(width: 74, height: 74)
+                
+                    .overlay(
+                        Circle()
+                            .fill(custMicGreen)
+                            .frame(width: 74, height: 74)
+                            .overlay(
+                                Button(action: {
+                                    isPressed.toggle()
+                                }) {
+                                    micImage
+                                }
+                            )
+                            .shadow(color: .black.opacity(0.2), radius: 6, x: 0, y: 0)
+                    )
+                Spacer()
+                
+            }
+            
         }
     }
 }
@@ -58,3 +92,5 @@ struct CustomTabBar_Previews: PreviewProvider {
         CustomTabBar(selectedTab: .constant(.refrigerator))
     }
 }
+
+

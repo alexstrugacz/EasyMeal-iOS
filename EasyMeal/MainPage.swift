@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-let custGreen = Color(hex: "#0ACF83")
-let custShadow = Color(hex: "9B9CA2")
-let custGray = Color(hex: "FAF9F9")
-let custLightRed = Color(hex: "FF8F8F")
-
-
 struct MainPage: View {
     @State var showView = false
     @State var showView2 = false
@@ -34,9 +28,9 @@ struct MainPage: View {
                 
                 Button(action: {
                     print("toInfoOne")
-                                        DispatchQueue.main.asyncAfter(deadline: .now()) {
-                                            self.showView = true
-                                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now()) {
+                            self.showView = true
+                                }
                     
                 }) {
                     Text("Get Started")
@@ -77,8 +71,9 @@ struct MainPage: View {
                 
             }
             .background(
-                Image("waves2")
+                Image("waves3")
                     .offset(y: 230)
+                    
             )
             
         }

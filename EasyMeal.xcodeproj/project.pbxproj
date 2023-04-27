@@ -15,6 +15,7 @@
 		4D2E4F5129AFE4E500F68629 /* Help & Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E4F5029AFE4E500F68629 /* Help & Support.swift */; };
 		4D2E4F5329AFE4EC00F68629 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E4F5229AFE4EC00F68629 /* About.swift */; };
 		4D5A6E3129A3ACCC00614A28 /* RecipeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5A6E3029A3ACCC00614A28 /* RecipeInfo.swift */; };
+		4DDF433829F9EDE7008077FC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDF433729F9EDE7008077FC /* Colors.swift */; };
 		4DE2F525299722E1002AA1BA /* MyCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F524299722E1002AA1BA /* MyCart.swift */; };
 		4DE2F527299722E8002AA1BA /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F526299722E8002AA1BA /* Profile.swift */; };
 		4DE2F529299722F1002AA1BA /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F528299722F1002AA1BA /* Recipes.swift */; };
@@ -41,6 +42,7 @@
 		4D2E4F5029AFE4E500F68629 /* Help & Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Help & Support.swift"; sourceTree = "<group>"; };
 		4D2E4F5229AFE4EC00F68629 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		4D5A6E3029A3ACCC00614A28 /* RecipeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInfo.swift; sourceTree = "<group>"; };
+		4DDF433729F9EDE7008077FC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		4DE2F524299722E1002AA1BA /* MyCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCart.swift; sourceTree = "<group>"; };
 		4DE2F526299722E8002AA1BA /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		4DE2F528299722F1002AA1BA /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
@@ -84,6 +86,33 @@
 			path = "Profile Settings";
 			sourceTree = "<group>";
 		};
+		4DDF433929FA1B60008077FC /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				4DDF433729F9EDE7008077FC /* Colors.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		4DDF433A29FAC40E008077FC /* InfoPages */ = {
+			isa = PBXGroup;
+			children = (
+				4DE2F53229972317002AA1BA /* InfoTwo.swift */,
+				4DE2F5342997231E002AA1BA /* InfoOne.swift */,
+				4DE2F53629972326002AA1BA /* InfoThree.swift */,
+			);
+			path = InfoPages;
+			sourceTree = "<group>";
+		};
+		4DDF433B29FAC421008077FC /* Logins */ = {
+			isa = PBXGroup;
+			children = (
+				4DE2F52E29972309002AA1BA /* SignIn.swift */,
+				4DE2F53029972312002AA1BA /* SignUp.swift */,
+			);
+			path = Logins;
+			sourceTree = "<group>";
+		};
 		9B09BE8E298B267E00939FFD = {
 			isa = PBXGroup;
 			children = (
@@ -103,21 +132,19 @@
 		9B09BE99298B267E00939FFD /* EasyMeal */ = {
 			isa = PBXGroup;
 			children = (
-				4D2E4F4529AFE47700F68629 /* Profile Settings */,
-				4DE2F5382997F679002AA1BA /* TabBar.swift */,
-				9B09BE9A298B267E00939FFD /* EasyMealApp.swift */,
 				9B09BE9C298B267E00939FFD /* MainPage.swift */,
+				4DE2F52A299722F7002AA1BA /* Pantry.swift */,
+				4DE2F528299722F1002AA1BA /* Recipes.swift */,
+				4D5A6E3029A3ACCC00614A28 /* RecipeInfo.swift */,
 				4DE2F524299722E1002AA1BA /* MyCart.swift */,
 				4DE2F526299722E8002AA1BA /* Profile.swift */,
-				4DE2F528299722F1002AA1BA /* Recipes.swift */,
-				4DE2F52A299722F7002AA1BA /* Pantry.swift */,
-				4D5A6E3029A3ACCC00614A28 /* RecipeInfo.swift */,
 				4DE2F52C299722FE002AA1BA /* MainView.swift */,
-				4DE2F52E29972309002AA1BA /* SignIn.swift */,
-				4DE2F53029972312002AA1BA /* SignUp.swift */,
-				4DE2F53229972317002AA1BA /* InfoTwo.swift */,
-				4DE2F5342997231E002AA1BA /* InfoOne.swift */,
-				4DE2F53629972326002AA1BA /* InfoThree.swift */,
+				9B09BE9A298B267E00939FFD /* EasyMealApp.swift */,
+				4DE2F5382997F679002AA1BA /* TabBar.swift */,
+				4D2E4F4529AFE47700F68629 /* Profile Settings */,
+				4DDF433B29FAC421008077FC /* Logins */,
+				4DDF433A29FAC40E008077FC /* InfoPages */,
+				4DDF433929FA1B60008077FC /* Misc */,
 				9B09BE9E298B267F00939FFD /* Assets.xcassets */,
 				9B09BEA0298B267F00939FFD /* Preview Content */,
 			);
@@ -203,6 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DE2F529299722F1002AA1BA /* Recipes.swift in Sources */,
+				4DDF433829F9EDE7008077FC /* Colors.swift in Sources */,
 				4D2E4F4D29AFE4CF00F68629 /* Appearance.swift in Sources */,
 				4DE2F52D299722FE002AA1BA /* MainView.swift in Sources */,
 				9B09BE9D298B267E00939FFD /* MainPage.swift in Sources */,
