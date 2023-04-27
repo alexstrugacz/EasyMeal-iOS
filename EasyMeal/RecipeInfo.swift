@@ -180,7 +180,7 @@ struct ProgressBar: View {
                         .foregroundColor(Color.red.opacity(0.3))
                     
                     Rectangle().frame(width: min(CGFloat(self.value)*geometry.size.width * 0.72, geometry.size.width), height: geometry.size.height * 1.6)
-                        .foregroundColor(.green)
+                        .foregroundColor(custGreen)
                     
                     HStack{
                         Text("EasyMeal Health Score™")
