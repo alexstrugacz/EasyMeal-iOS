@@ -34,7 +34,10 @@ struct CustomTabBar: View {
         ZStack {
             HStack {
                 //make make mic just the green color to hide it instead
-                ForEach(Tab.allCases.filter { $0 != .mic }, id: \.rawValue) { tab in
+                ForEach(Tab.allCases.filter { tab in
+                    // only show mic icon when selected tab is .refrigerator
+                    return tab == .mic && selectedTab != .refrigerator ? false : true
+                }, id: \.rawValue) { tab in
                     Spacer()
                     Image(systemName: selectedTab == tab ? fillImage : tab.rawValue)
                         .scaleEffect(tab == selectedTab ? 1.25 : 1.0)
@@ -44,7 +47,6 @@ struct CustomTabBar: View {
                             withAnimation(.easeInOut(duration: 0.1)) {
                                 selectedTab = tab
                             }
-                            
                         }
                     Spacer()
                 }
