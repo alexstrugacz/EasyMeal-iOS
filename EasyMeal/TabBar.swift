@@ -60,14 +60,17 @@ struct CustomTabBar: View {
             if selectedTab == .refrigerator {
                 let micImage = Image(systemName: "mic")
                     .font(.system(size: 30))
+                    //.foregroundColor(custMicGreen)
                     .foregroundColor(.white)
+
                 
                 Circle()
-                    .strokeBorder(custMicGreen, lineWidth: 2)
-                    .frame(width: 74, height: 74)
+                    .fill(custMicGreen)
+                    .frame(width: 77, height: 77)
                 
                     .overlay(
                         Circle()
+                            //.fill(Color.white)
                             .fill(custMicGreen)
                             .frame(width: 74, height: 74)
                             .overlay(
@@ -77,7 +80,7 @@ struct CustomTabBar: View {
                                     micImage
                                 }
                             )
-                            .shadow(color: .black.opacity(0.2), radius: 6, x: 0, y: 0)
+                            .shadow(color: .black.opacity(0.4), radius: 6, x: 0, y: 0)
                     )
                 Spacer()
                 

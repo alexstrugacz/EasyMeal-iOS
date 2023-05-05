@@ -39,12 +39,12 @@ struct MyCart: View {
                     }) {
                         Image("3dots")
                             .resizable()
-                            .frame(width: 30, height: 30)
+                            .frame(width: 20, height: 20)
                             .font(.system(size: 20))
                             .foregroundColor(.black)
                             
                     }
-                    .padding(.trailing, 10)
+                    .padding(.trailing, 20)
                     
                 }
                 .offset(y:20)
@@ -58,18 +58,19 @@ struct MyCart: View {
                     
                         VStack(spacing: 20) {
 
-                            Button(action: {
-                                // Shop Online button action
-                            }) {
-                                HStack {
-                                    Image(systemName: "cart")
-                                    Text("Shop Online")
-                                }
-                            }
-                            .background(
-                                RoundedRectangle(cornerRadius: 5)
-                                    .fill(Color.gray.opacity(0.2))
-                            )
+//                            Button(action: {
+//                                // Shop Online button action
+//                            }) {
+//                                HStack {
+//                                    Image(systemName: "cart")
+//                                    Text("Shop Online")
+//                                }
+//                            }
+//                            .background(
+//                                RoundedRectangle(cornerRadius: 5)
+//                                    .fill(Color.gray.opacity(0.2))
+//                            )
+                            
                             Button(action: {
                                 // Mark All Complete button action
                                 var i = 0
@@ -138,7 +139,6 @@ struct MyCart: View {
                     .frame(width: UIScreen.main.bounds.width)
                     .offset(y: 10)
                 }
-
                 
                 if isCartEmpty {
                     VStack {
