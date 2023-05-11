@@ -65,7 +65,7 @@ struct RecipeInfo: View {
                         .bold()
                     ProgressBar(value: $progressBarValue)
                         .frame(height: 20)
-                    
+                        .padding(.bottom, 20)
                     HStack {
                         ForEach(0..<2) { column in
                             VStack(alignment: .leading) {
@@ -80,8 +80,11 @@ struct RecipeInfo: View {
                             .frame(maxWidth: .infinity, alignment: .leading)
                         }
                     }
+                    
                     .padding(.horizontal, 16)
                 }
+                
+                
                 Spacer()
                     .padding()
                     .offset(y: 10)
@@ -111,7 +114,7 @@ struct RecipeInfo: View {
                     ForEach(ingredients) { ingredient in
                         HStack {
                             Text(ingredient.name)
-                                .offset(x: -20)
+                                //.offset(x: -20)
                                 .background(Color.gray.opacity(0.1))
 
                             if ingredient.available {
@@ -132,7 +135,7 @@ struct RecipeInfo: View {
                     }
                     
                 }
-                .padding(.horizontal, 60)
+                .padding(.horizontal, 20)
 
             }
             .padding(.all, 16)
@@ -161,7 +164,9 @@ struct NutrientRowView: View {
         .padding(.vertical, 4)
         .background(Color.gray.opacity(0.1))
         .cornerRadius(6)
+        
     }
+    
 }
 
 
@@ -203,6 +208,7 @@ struct ProgressBar: View {
                 }.cornerRadius(8.0)
                 Spacer()
                     .frame(width: geometry.size.width * 0.05)
+                    
             }
         }
     }
@@ -220,3 +226,4 @@ struct RecipeInfo_Previews: PreviewProvider {
         RecipeInfo()
     }
 }
+

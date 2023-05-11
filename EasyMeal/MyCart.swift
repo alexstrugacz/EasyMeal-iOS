@@ -52,11 +52,12 @@ struct MyCart: View {
                 if isShowingSettings {
                     ZStack {
                         Color.gray.opacity(0.0)
-                            .ignoresSafeArea()
+                            //.ignoresSafeArea()
                             .frame(height: 150)
-                            .frame(width: UIScreen.main.bounds.width)
+                            //.frame(width: UIScreen.main.bounds.width)
                     
-                        VStack(spacing: 20) {
+                        VStack(alignment: .leading, spacing: 20) {
+                            
 
 //                            Button(action: {
 //                                // Shop Online button action
@@ -83,15 +84,17 @@ struct MyCart: View {
                                     }
                                 }
                             }) {
-                                HStack {
+                                HStack() {
                                     Image(systemName: "checkmark")
                                     Text("Check Mark All")
                                     
                                 }
+                                .foregroundColor(.white)
+
                             }
                             .background(
-                                RoundedRectangle(cornerRadius: 5)
-                                    .fill(Color.gray.opacity(0.2))
+                                RoundedRectangle(cornerRadius: 3)
+                                    .fill(custTabBarGreen)
                             )
                             
                             Button(action: {
@@ -103,7 +106,8 @@ struct MyCart: View {
                                     Text("Delete Checked")
                                     
                                 }
-                                
+                                .foregroundColor(.white)
+
                             }
                             .background(
                                 RoundedRectangle(cornerRadius: 5)
@@ -129,15 +133,22 @@ struct MyCart: View {
                                     RoundedRectangle(cornerRadius: 5)
                                         .fill(Color.gray.opacity(0.2))
                                 )
+                                .foregroundColor(.white)
+
                             }
                         }
                         .foregroundColor(.black)
-
+                        .offset(x: -100)
+                        
                         
                     }
+                    
+                    .background(custGreen)
+
                     .frame(height: 150)
                     .frame(width: UIScreen.main.bounds.width)
                     .offset(y: 10)
+                    
                 }
                 
                 if isCartEmpty {
@@ -169,11 +180,11 @@ struct MyCart: View {
                         
                     }
                     .offset(y: 180)
-                    
+
                 }
                 
             }
-            
+
             VStack {
                 
                 ScrollView {
