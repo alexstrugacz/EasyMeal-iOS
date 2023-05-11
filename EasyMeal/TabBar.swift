@@ -24,7 +24,7 @@ struct CustomTabBar: View {
         case .person:
             return .white
         case .mic:
-            return .white
+            return custTabBarGreen
         }
     }
     
@@ -44,7 +44,7 @@ struct CustomTabBar: View {
                         .foregroundColor(tab == selectedTab ? tabColor : .white)
                         .font(.system(size: 20))
                         .onTapGesture {
-                            withAnimation(.easeInOut(duration: 0.1)) {
+                            withAnimation(.easeInOut(duration: 0.075)) {
                                 selectedTab = tab
                             }
                         }

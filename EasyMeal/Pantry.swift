@@ -5,12 +5,12 @@ struct Pantry: View {
         Ingredient(name: "Chicken", isChecked: false, category: "Meat"),
         Ingredient(name: "Carrot", isChecked: false, category: "Vegetables"),
         Ingredient(name: "Bread Crumb", isChecked: false, category: "Pantry"),
-        Ingredient(name: "Pepper", isChecked: false,category: "Vegetables"),
-        Ingredient(name: "Fish", isChecked: false,category: "Meat"),
-        Ingredient(name: "Tomato", isChecked: false,category: "Vegetables"),
-        Ingredient(name: "Salt", isChecked: false,category: "Pantry"),
-        Ingredient(name: "Cucumber", isChecked: false,category: "Vegetables"),
-        Ingredient(name: "Asparagus", isChecked: false,category: "Vegetables")
+        Ingredient(name: "Pepper", isChecked: false, category: "Vegetables"),
+        Ingredient(name: "Fish", isChecked: false, category: "Meat"),
+        Ingredient(name: "Tomato", isChecked: false, category: "Vegetables"),
+        Ingredient(name: "Salt", isChecked: false, category: "Pantry"),
+        Ingredient(name: "Cucumber", isChecked: false, category: "Vegetables"),
+        Ingredient(name: "Asparagus", isChecked: false, category: "Vegetables")
 
     ]
     
@@ -19,10 +19,12 @@ struct Pantry: View {
     }
     
     let gridItems = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    
+    @State private var searchText = ""
 
     var body: some View {
         VStack{
-            VStack{
+            VStack(spacing: 20){
                 
                 Text("Pantry")
                     .font(.title)
@@ -30,6 +32,25 @@ struct Pantry: View {
                     .foregroundColor(.black)
                     .foregroundColor(Color.white.opacity(1))
                     .offset(y:20)
+                    .padding(.bottom, 20)
+                
+            }
+            
+            VStack() {
+                
+                TextField("add ingredients", text: $searchText)
+                    .padding(.horizontal, 20)
+                    .frame(width: 200, height: 40)
+                    .background(Color.white)
+                    .cornerRadius(10)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 10)
+                            .stroke(Color.black, lineWidth: 1)
+                    )
+                    .padding(.horizontal, 20)
+                    .textFieldStyle(PlainTextFieldStyle())
+                    .multilineTextAlignment(.center)
+                
             }
             
             ScrollView {
