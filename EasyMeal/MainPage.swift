@@ -72,7 +72,8 @@ struct MainPage: View {
             }
             .background(
                 Image("waves3")
-                    .offset(y: 230)
+                    .offset(y: 280)
+                    .ignoresSafeArea()
                     
             )
             

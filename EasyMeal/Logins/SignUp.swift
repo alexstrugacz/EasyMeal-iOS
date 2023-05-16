@@ -20,7 +20,7 @@ struct SignUp: View {
             Color.clear
             VStack(alignment: .leading) {
 
-                Text("Sign Up")
+                Text("EasyMeal")
                     .multilineTextAlignment(.center)
                     .foregroundColor(custGreen)
                     .font(.system(size: 60)).bold()
@@ -111,6 +111,11 @@ struct SignUp: View {
                                 EmptyView()
                             }
         }
+    }
+}
+struct SignUp_Previews: PreviewProvider {
+    static var previews: some View {
+        SignUp()
     }
 }
 

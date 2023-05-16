@@ -14,125 +14,52 @@ struct SignIn: View {
     @State private var password: String = ""
     
     var body: some View {
-        VStack {
-            ZStack(alignment: .topLeading) {
-            
-
-            Color.clear
-            VStack(alignment: .leading) {
-
-                Text("Sign In")
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(custGreen)
-                    .font(.system(size: 60))
-            }
-            .offset(x: 40, y: 75)
-        }
-            
-            ZStack(alignment: .bottom) {
-                HStack {
-                    HStack {
-                        Image("email")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                            .padding(.leading, 10)
-                        TextField("Email", text: $email)
-                            .lineLimit(1)
-                            .padding(.leading, 15)
-                            .background(Color.clear)
-                    }
-                    .frame(width: 280, height: 50)
-                    .background(RoundedRectangle(cornerRadius: 5).fill(Color.white))
-                }
-                
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(lineWidth: 0.5)
-                    .foregroundColor(.black)
-                    .frame(width: 300, height: 1)
-                    .padding(.bottom, 10)
-            }
-            .padding(.top, 20)
-            .offset(y: -250)
-
+        ZStack {
+            Color.white
+            VStack() {
+                HStack() {
+                    Image("logo")
+                        .resizable()
+                        .frame(width: 50, height: 83)
+                        .aspectRatio(contentMode: .fill)
                         
-            ZStack(alignment: .bottom) {
-                HStack {
-                    HStack {
-                        Image("password")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                            .padding(.leading, 10)
-                        SecureField("Password", text: $password)
-                            .lineLimit(1)
-                            .padding(.leading, 15)
-                            .background(Color.clear)
-                    }
-                    .frame(width: 280, height: 50)
-                    .background(RoundedRectangle(cornerRadius: 5).fill(Color.white))
-                }
+                        .shadow(radius: 3)
+                    Text("EasyMeal")
+                        .bold()
+                        .foregroundColor(custGreen)
+                        .font(.system(size: 45))
+                }.frame(maxWidth: .infinity, alignment: .leading).offset(x: 35)
                 
-                RoundedRectangle(cornerRadius: 5)
-                    .stroke(lineWidth: 0.5)
-                    .foregroundColor(.black)
-                    .frame(width: 300, height: 1)
-                    .padding(.bottom, 10)
-            }
-            .padding(.top, 20)
-            .offset(y: -250)
-
-            
-            Button(action: {
-                //code
-                print("toPantry")
-                                    DispatchQueue.main.asyncAfter(deadline: .now()) {
-                                        self.showView = true
-                                    }
-            }) {
-                Text("Sign In")
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 130)
-                    .padding(.vertical, 16)
-                    .background(LinearGradient(gradient: Gradient(colors: [custGreen, custGreen]), startPoint: .leading, endPoint: .trailing))
+                Rectangle()
+                    .foregroundColor(Color(hex: "efefef"))
+                    .frame(width: 350, height: 50)
                     .cornerRadius(10)
-                    .shadow(color: custShadow, radius: 3, x: 0, y: 3)
-            }
-            .offset(y: -175)
-            NavigationLink(destination: MainView(initialTab: .refrigerator, content: {
-                Pantry()
-            }), isActive: $showView) {
-                                EmptyView()
-                            }
-        }
-        HStack {
-            Rectangle().frame(width: 140, height: 1).foregroundColor(.black)
-            Text("or").font(.subheadline)
-            Rectangle().frame(width: 140, height: 1).foregroundColor(.black)
-        }
-        .offset(y:-150)
-        
-        Button(action: {
-            //code to signup
-            print("toSignUp")
-                                DispatchQueue.main.asyncAfter(deadline: .now()) {
-                                    self.showView2 = true
-                                }
-        }) {
-            Text("Sign Up")
-                .foregroundColor(.white)
-                .padding(.horizontal, 130)
-                .padding(.vertical, 16)
-                .background(LinearGradient(gradient: Gradient(colors: [custGreen, custGreen]), startPoint: .leading, endPoint: .trailing))
-                .cornerRadius(10)
-                .shadow(color: custShadow, radius: 3, x: 0, y: 3)
-        }
-        .offset(y: -130)
-        NavigationLink(destination: SignUp(), isActive: $showView2) {
-                            EmptyView()
-                        }
+                
+                HStack {
+                    Image(systemName: "envelope")
+                        .foregroundColor(Color(hex: "747474"))
+                    TextField("Email", text: $email)
+                        
+                }.offset(x: 50, y: -38)
+                    
+                Rectangle()
+                    .foregroundColor(Color(hex: "efefef"))
+                    .frame(width: 350, height: 50)
+                    .cornerRadius(10)
+                
+                HStack {
+                    Image(systemName: "lock")
+                        .foregroundColor(Color(hex: "747474"))
+                    SecureField("Password", text: $password)
+                        
+                }.offset(x: 50, y: -38)
+            }.frame(width: .infinity, height: 500, alignment: .top)
+        }.ignoresSafeArea()
     }
-    
-    
-    
 }
-
-
+    
+    struct SignIn_Previews: PreviewProvider {
+        static var previews: some View {
+            SignIn()
+        }
+    }
