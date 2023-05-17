@@ -46,14 +46,81 @@ struct SignIn: View {
                     .foregroundColor(Color(hex: "efefef"))
                     .frame(width: 350, height: 50)
                     .cornerRadius(10)
-                
+                    .offset(y: -8)
                 HStack {
                     Image(systemName: "lock")
                         .foregroundColor(Color(hex: "747474"))
-                    SecureField("Password", text: $password)
+                    
+                    HStack {
+                        SecureField("Password", text: $password)
+                        Image(systemName: "eye")
+                            .foregroundColor(Color(hex: "747474"))
+                    }
+                }.offset(x: 50, y: -46)
+                
+                
+                HStack {
+                    Button(action: {
                         
-                }.offset(x: 50, y: -38)
-            }.frame(width: .infinity, height: 500, alignment: .top)
+                    }) {
+                        Text("Forgot password?")
+                            .bold()
+                            .foregroundColor(Color(hex: "7B7A7A"))
+                            .font(.footnote)
+                            .offset(y: -30)
+                            .underline()
+                    }
+                    
+                        
+                }.frame(width: 350, alignment: .leading)
+                    
+                    
+                HStack {
+                    Button(action: {
+                        // Add your button action here
+                    }) {
+                        Text("Log In")
+                            .frame(width: 234, height: 50)
+                            .cornerRadius(20)
+                            .foregroundColor(Color.white)
+                            .bold()
+                    }
+                    .frame(width: 230, height: 50)
+                    .background(custGreen)
+                    .cornerRadius(10)
+                    
+                    Button(action: {
+                        // Add your button action here
+                    }) {
+                        Text("I'm New")
+                            .frame(height: 50)
+                            .cornerRadius(20)
+                            .foregroundColor(Color(hex: "747474"))
+                            .bold()
+                    }
+                    .frame(width: 110, height: 50)
+                    .background(Color(hex: "efefef"))
+                    .cornerRadius(10)
+                    
+                    
+                }.frame(width: 350, height: 50)
+                
+                Button(action: {
+                    // Add your button action here
+                }) {
+                    Image(systemName: "apple.logo")
+                        .foregroundColor(Color.white)
+                    Text("Sign In with Apple")
+                        .frame(height: 50)
+                        .cornerRadius(20)
+                        .foregroundColor(Color.white)
+                        .bold()
+                }
+                .frame(width: 350, height: 50)
+                .background(Color.black)
+                .cornerRadius(10)
+                
+            }.frame(height: 500, alignment: .top)
         }.ignoresSafeArea()
     }
 }
