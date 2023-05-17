@@ -1,7 +1,11 @@
 import SwiftUI
+import FirebaseAuth
 
 struct Profile: View {
     var body: some View {
+        
+        @ObservedObject var firebaseManager = FirebaseManager()
+        
         NavigationView {
             List {
                     NavigationLink(destination: General()) {
@@ -29,11 +33,17 @@ struct Profile: View {
                 
                 Section {
                     Button(action: {
-                        // Handle logout action
+                        firebaseManager.signOut()
                     }) {
-                        Label("Logout", systemImage: "arrow.left.square")
+                        Label("Log Out", systemImage: "arrow.left.square")
                             .foregroundColor(.red)
                     }
+                    .onAppear {
+                                // Check if user is already logged in
+                                if Auth.auth().currentUser != nil {
+                                    firebaseManager.isLoggedIn = true
+                                }
+                            }
                 }
             }
             .listStyle(InsetGroupedListStyle())

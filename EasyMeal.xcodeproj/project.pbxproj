@@ -39,6 +39,7 @@
 		9BEA99942A145F9E00066F87 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 9BEA99932A145F9E00066F87 /* FirebaseAuthCombine-Community */; };
 		9BEA99962A145F9E00066F87 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 9BEA99952A145F9E00066F87 /* FirebaseDatabase */; };
 		9BEA99982A145F9E00066F87 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9BEA99972A145F9E00066F87 /* FirebaseDatabaseSwift */; };
+		9BEA999A2A155D0F00066F87 /* FirebaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEA99992A155D0F00066F87 /* FirebaseHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		9B09BE9E298B267F00939FFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B09BEA1298B267F00939FFD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9BEA998A2A145F0300066F87 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9BEA99992A155D0F00066F87 /* FirebaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +167,7 @@
 				9B09BE9E298B267F00939FFD /* Assets.xcassets */,
 				9B09BEA0298B267F00939FFD /* Preview Content */,
 				4DB3E4832A12B5C10065B6C2 /* Model.xcdatamodeld */,
+				9BEA99992A155D0F00066F87 /* FirebaseHandler.swift */,
 			);
 			path = EasyMeal;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				4DE2F52D299722FE002AA1BA /* MainView.swift in Sources */,
 				9B09BE9D298B267E00939FFD /* MainPage.swift in Sources */,
 				4DE2F527299722E8002AA1BA /* Profile.swift in Sources */,
+				9BEA999A2A155D0F00066F87 /* FirebaseHandler.swift in Sources */,
 				4DE2F52B299722F7002AA1BA /* Pantry.swift in Sources */,
 				4D2E4F4929AFE4AB00F68629 /* Account.swift in Sources */,
 				9B09BE9B298B267E00939FFD /* EasyMealApp.swift in Sources */,
