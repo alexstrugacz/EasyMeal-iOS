@@ -16,6 +16,8 @@
 
 import SwiftUI
 import Firebase
+@ObservedObject var firebaseManager = FirebaseManager()
+
 
 struct SignIn: View {
     @State var showView = false
@@ -100,7 +102,8 @@ struct SignIn: View {
                     
                 HStack {
                     Button(action: {
-                        login()
+                        firebaseManager.signOut()
+                        
                     }) {
                         Text("Log In")
                             .frame(width: 234, height: 50)
@@ -156,14 +159,14 @@ struct SignIn: View {
         }.ignoresSafeArea()
     }
     
-    func login() {
-        Auth.auth().signIn(withEmail: email, password: password) { result, error in
-            if error != nil {
-                print(error?.localizedDescription as Any)
-            }
-            
-        }
-    }
+//    func login() {
+//        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+//            if error != nil {
+//                print(error?.localizedDescription as Any)
+//            }
+//
+//        }
+//    }
 }
 
     

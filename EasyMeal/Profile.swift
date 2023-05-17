@@ -33,7 +33,7 @@ struct Profile: View {
                 
                 Section {
                     Button(action: {
-                        firebaseManager.signOut()
+                        FirebaseManager().signOut()
                     }) {
                         Label("Log Out", systemImage: "arrow.left.square")
                             .foregroundColor(.red)

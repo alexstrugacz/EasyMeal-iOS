@@ -12,6 +12,7 @@ struct SignUp: View {
     @State var showView = false
     @State private var email: String = ""
     @State private var password: String = ""
+    @ObservedObject var firebaseManager = FirebaseManager()
     
     var body: some View {
         ZStack {

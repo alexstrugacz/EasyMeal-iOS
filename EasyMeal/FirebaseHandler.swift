@@ -1,9 +1,22 @@
+
 import FirebaseAuth
 import AuthenticationServices
 
 class FirebaseManager: NSObject, ObservableObject {
     @Published var isLoggedIn = false
     private var currentNonce: String?
+    private var appleID: String?
+    
+    func signOutFromApple() {
+        // Remove the stored user identifier or tokens used for Apple authentication
+        // You can use your own logic or storage mechanism here
+        appleID = nil // Clear the stored Apple ID identifier
+
+        // Update the isLoggedIn state accordingly
+        isLoggedIn = false
+
+        // Perform any additional sign-out steps specific to your app
+    }
 
     func forgotPasswordReset(email: String) {
         Auth.auth().sendPasswordReset(withEmail: email) { [weak self] (error) in
@@ -36,6 +49,15 @@ class FirebaseManager: NSObject, ObservableObject {
             }
         }
     }
+    
+    func signOut() {
+            do {
+                try Auth.auth().signOut()
+                isLoggedIn = false
+            } catch {
+                print("Sign-out error: \(error.localizedDescription)")
+            }
+        }
 
     func signUpWithApple() {
         let nonce = randomNonceString()
@@ -81,7 +103,7 @@ extension FirebaseManager: ASAuthorizationControllerDelegate, ASAuthorizationCon
         // For example:
         return UIApplication.shared.windows.first!
     }
-
+    
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             guard let nonce = currentNonce else {
@@ -104,11 +126,13 @@ extension FirebaseManager: ASAuthorizationControllerDelegate, ASAuthorizationCon
             let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
             
             Auth.auth().signIn(with: credential) { [weak self] (authResult, error) in
-                            if let error = error {
-                                print("Sign-in with Apple error: \(error.localizedDescription)")
-                            } else {
-                                self?.isLoggedIn = true
-                                // Handle successful sign-in with Apple
-                            }
-                        }
-                    }
+                if let error = error {
+                    print("Sign-in with Apple error: \(error.localizedDescription)")
+                } else {
+                    self?.isLoggedIn = true
+                    // Handle successful sign-in with Apple
+                }
+            }
+        }
+    }
+}
