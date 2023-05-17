@@ -5,6 +5,15 @@
 //  Created by Alexander Masztak on 2/10/23.
 //
 
+
+//NavigationLink(
+//    destination: MainView(initialTab: .cooktop) { EmptyView() },
+//    isActive: $showSignUpView
+//) {
+//    EmptyView()
+//}
+//.hidden()
+
 import SwiftUI
 import Firebase
 
@@ -14,10 +23,14 @@ struct SignIn: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var userIsLoggedIn = false
+    @State private var showSignUpView = false
     
     var body: some View {
         if userIsLoggedIn {
-                MyCart()
+            MainView(initialTab: .cart, content: {})
+
+        } else if showSignUpView {
+            SignUp()
         } else {
             content
         }
@@ -100,7 +113,7 @@ struct SignIn: View {
                     .cornerRadius(10)
                     
                     Button(action: {
-                        // sign up func
+                        showSignUpView = true
                     }) {
                         Text("I'm New")
                             .frame(height: 50)
@@ -112,6 +125,7 @@ struct SignIn: View {
                     .background(Color(hex: "efefef"))
                     .cornerRadius(10)
                     
+                   
                     
                 }.frame(width: 350, height: 50)
                 
