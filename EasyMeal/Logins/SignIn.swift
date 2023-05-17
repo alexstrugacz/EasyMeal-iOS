@@ -6,14 +6,24 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct SignIn: View {
     @State var showView = false
     @State var showView2 = false
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var userIsLoggedIn = false
     
     var body: some View {
+        if userIsLoggedIn {
+                MyCart()
+        } else {
+            content
+        }
+    }
+    
+    var content: some View {
         ZStack {
             Color.white
             VStack() {
@@ -61,7 +71,7 @@ struct SignIn: View {
                 
                 HStack {
                     Button(action: {
-                        
+                        //Forgot password func
                     }) {
                         Text("Forgot password?")
                             .bold()
@@ -77,7 +87,7 @@ struct SignIn: View {
                     
                 HStack {
                     Button(action: {
-                        // Add your button action here
+                        login()
                     }) {
                         Text("Log In")
                             .frame(width: 234, height: 50)
@@ -90,7 +100,7 @@ struct SignIn: View {
                     .cornerRadius(10)
                     
                     Button(action: {
-                        // Add your button action here
+                        // sign up func
                     }) {
                         Text("I'm New")
                             .frame(height: 50)
@@ -106,7 +116,7 @@ struct SignIn: View {
                 }.frame(width: 350, height: 50)
                 
                 Button(action: {
-                    // Add your button action here
+                    // Sign in with apple functionality
                 }) {
                     Image(systemName: "apple.logo")
                         .foregroundColor(Color.white)
@@ -120,10 +130,28 @@ struct SignIn: View {
                 .background(Color.black)
                 .cornerRadius(10)
                 
-            }.frame(height: 500, alignment: .top)
+            }
+            .frame(height: 500, alignment: .top)
+            .onAppear {
+                Auth.auth().addStateDidChangeListener() { auth, user in
+                    if user != nil { //not working
+                        userIsLoggedIn.toggle()
+                    }
+                }
+            }
         }.ignoresSafeArea()
     }
+    
+    func login() {
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            if error != nil {
+                print(error?.localizedDescription as Any)
+            }
+            
+        }
+    }
 }
+
     
     struct SignIn_Previews: PreviewProvider {
         static var previews: some View {

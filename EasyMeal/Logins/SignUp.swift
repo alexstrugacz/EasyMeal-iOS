@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct SignUp: View {
     @State var showView = false
@@ -76,7 +77,7 @@ struct SignUp: View {
                 
                 HStack {
                     Button(action: {
-                        // Add your button action here
+                        register()
                     }) {
                         Text("Sign Up")
                             .frame(width: 234, height: 50)
@@ -90,7 +91,7 @@ struct SignUp: View {
                 }.frame(width: 350, height: 50).offset(y: -15)
                 
                 Button(action: {
-                    // Add your button action here
+                    // Sign up with apple functionality
                 }) {
                     Image(systemName: "apple.logo")
                         .foregroundColor(Color.white)
@@ -114,6 +115,13 @@ struct SignUp: View {
                 
             }.frame(height: 500, alignment: .top)
         }.ignoresSafeArea()
+    }
+    func register() {
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if error != nil {
+                print(error?.localizedDescription as Any)
+            }
+        }
     }
 }
 struct SignUp_Previews: PreviewProvider {
