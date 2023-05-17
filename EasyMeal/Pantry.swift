@@ -24,17 +24,7 @@ struct Pantry: View {
 
     var body: some View {
         VStack{
-            VStack(spacing: 20){
-                
-                Text("Pantry")
-                    .font(.title)
-                    .bold()
-                    .foregroundColor(.black)
-                    .foregroundColor(Color.white.opacity(1))
-                    .offset(y:20)
-                    .padding(.bottom, 20)
-                
-            }
+
             
             VStack() {
                 
@@ -53,6 +43,7 @@ struct Pantry: View {
                 
             }
             
+
             ScrollView {
                 ForEach(groupedItems.keys.sorted(), id: \.self) { category in
                     VStack(alignment: .leading) {
