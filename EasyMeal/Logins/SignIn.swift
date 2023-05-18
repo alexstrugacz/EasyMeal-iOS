@@ -26,6 +26,7 @@ struct SignIn: View {
     @State private var password: String = ""
     @State private var userIsLoggedIn = false
     @State private var showSignUpView = false
+    @State private var logoOpacity = 0.0
     @ObservedObject var firebaseManager = FirebaseManager()
     
     var body: some View {
@@ -48,13 +49,25 @@ struct SignIn: View {
                         .resizable()
                         .frame(width: 50, height: 83)
                         .aspectRatio(contentMode: .fill)
+                        .padding(.trailing, 8)
+                        .opacity(logoOpacity)
+                        .onAppear {
+                            withAnimation(.easeIn(duration: 2.0)) {
+                                logoOpacity = 1
+                                }
+                            }
+                    
                         
                         .shadow(radius: 3)
                     Text("EasyMeal")
                         .bold()
                         .foregroundColor(custGreen)
                         .font(.system(size: 45))
-                }.frame(maxWidth: .infinity, alignment: .leading).offset(x: 35)
+                }.frame(maxWidth: .infinity, alignment: .leading).offset(x: 25)
+                    .onAppear {
+                        withAnimation(.easeIn(duration: 2.0)) {
+                            }
+                        }
                 
                 Rectangle()
                     .foregroundColor(Color(hex: "efefef"))
@@ -124,6 +137,7 @@ struct SignIn: View {
                             .cornerRadius(20)
                             .foregroundColor(Color(hex: "747474"))
                             .bold()
+                            
                     }
                     .frame(width: 110, height: 50)
                     .background(Color(hex: "efefef"))
@@ -157,7 +171,12 @@ struct SignIn: View {
                     }
                 }
             }
-        }.ignoresSafeArea()
+        }.ignoresSafeArea().opacity(logoOpacity)
+            .onAppear {
+                withAnimation(.easeIn(duration: 0.6)) {
+                    logoOpacity = 1
+                    }
+                }
     }
     
 //    func login() {
