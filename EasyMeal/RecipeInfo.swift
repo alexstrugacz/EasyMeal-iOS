@@ -59,7 +59,7 @@ struct RecipeInfo: View {
                         UIApplication.shared.open(self.recipeURL)
                     }) {
                         RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(.blue)
+                            .foregroundColor(Color(hex:"#139c67"))
                             .frame(width: 120, height: 30)
                             .overlay(
                                 Text("See Recipe")
@@ -132,7 +132,7 @@ struct RecipeInfo: View {
                             // Send ingredients to cart
                         }) {
                             RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(.blue)
+                                .foregroundColor(Color(hex:"#139c67"))
                                 .frame(width: 120, height: 30)
                                 .overlay(
                                     Text("Add to Cart")
