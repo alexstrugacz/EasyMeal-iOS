@@ -50,13 +50,54 @@ struct MyCart: View {
                 .offset(y:20)
                 
                 if isShowingSettings {
-                    ZStack {
-                        Color.gray.opacity(0.0)
-                            //.ignoresSafeArea()
-                            .frame(height: 150)
-                            //.frame(width: UIScreen.main.bounds.width)
-                    
-                        VStack(alignment: .leading, spacing: 20) {
+                    HStack {
+                        Button(action: {
+                            // Mark All Complete button action
+                            var i = 0
+                            while(i < items.count) {
+                                if(items[i].isChecked == false){
+                                    self.items[i].isChecked.toggle()
+                                    print(i)
+                                    i+=1
+                                }
+                            }
+                        }) {
+                            HStack() {
+                                Image(systemName: "checkmark")
+                                Text("Check Mark All")
+
+                            }
+                            .foregroundColor(custGreen)
+
+                        }
+                        .padding(.top,10)
+                        .padding(.leading,20)
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            // Mark All Complete button action
+                            self.items.removeAll(where: { $0.isChecked })
+                        }) {
+                            HStack {
+                                Image(systemName: "trash")
+                                Text("Delete Checked")
+
+                            }
+                            .foregroundColor(Color(hex: "#ff0800"))
+
+                        }
+                        .padding(.top,10)
+                        .padding(.trailing,20)
+                    }
+                    .padding(.top, 10)
+//                    ZStack {
+//                        Color.gray.opacity(0.0)
+//                            //.ignoresSafeArea()
+//                            .frame(height: 150)
+//                            //.frame(width: UIScreen.main.bounds.width)
+//
+//                        VStack(alignment: .leading, spacing: 20) {
                             
 
 //                            Button(action: {
@@ -72,82 +113,75 @@ struct MyCart: View {
 //                                    .fill(Color.gray.opacity(0.2))
 //                            )
                             
-                            Button(action: {
-                                // Mark All Complete button action
-                                var i = 0
-                                while(i < items.count) {
-                                    if(items[i].isChecked == false){
-                                        self.items[i].isChecked.toggle()
-                                        print(i)
-                                        i+=1
-                                        
-                                    }
-                                }
-                            }) {
-                                HStack() {
-                                    Image(systemName: "checkmark")
-                                    Text("Check Mark All")
-                                    
-                                }
-                                .foregroundColor(.white)
-
-                            }
-                            .background(
-                                RoundedRectangle(cornerRadius: 3)
-                                    .fill(custTabBarGreen)
-                            )
+//                            Button(action: {
+//                                // Mark All Complete button action
+//                                var i = 0
+//                                while(i < items.count) {
+//                                    if(items[i].isChecked == false){
+//                                        self.items[i].isChecked.toggle()
+//                                        print(i)
+//                                        i+=1
+//
+//                                    }
+//                                }
+//                            }) {
+//                                HStack() {
+//                                    Image(systemName: "checkmark")
+//                                    Text("Check Mark All")
+//
+//                                }
+//                                .foregroundColor(.white)
+//
+//                            }
+//
+//                            Button(action: {
+//                                // Mark All Complete button action
+//                                self.items.removeAll(where: { $0.isChecked })
+//                            }) {
+//                                HStack {
+//                                    Image(systemName: "trash")
+//                                    Text("Delete Checked")
+//
+//                                }
+//                                .foregroundColor(.white)
+//
+//                            }
+//
                             
-                            Button(action: {
-                                // Mark All Complete button action
-                                self.items.removeAll(where: { $0.isChecked })
-                            }) {
-                                HStack {
-                                    Image(systemName: "trash")
-                                    Text("Delete Checked")
-                                    
-                                }
-                                .foregroundColor(.white)
-
-                            }
-                            .background(
-                                RoundedRectangle(cornerRadius: 5)
-                                    .fill(Color.gray.opacity(0.2))
-                            )
-                            
-                            Button(action: {
-                                // Share button action
-                                let itemsText = items.map({ "\($0.name) (\($0.size))" }).joined(separator: "\n")
-                                    let message = "My shopping list:\n\(itemsText)"
-                                    let items: [Any] = [message]
-                                    let excludedActivities: [UIActivity.ActivityType] = [.postToFacebook, .postToTwitter] // Add any additional excluded activity types here
-                                    let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
-                                    activityViewController.excludedActivityTypes = excludedActivities
-                                    
-                                    UIApplication.shared.windows.first?.rootViewController?.present(activityViewController, animated: true, completion: nil)
-                            }) {
-                                HStack {
-                                    Image(systemName: "square.and.arrow.up")
-                                    Text("Share")
-                                }
-                                .background(
-                                    RoundedRectangle(cornerRadius: 5)
-                                        .fill(Color.gray.opacity(0.2))
-                                )
-                                .foregroundColor(.white)
-
-                            }
-                        }
-                        .foregroundColor(.black)
-                        .offset(x: -100)
+//                            Button(action: {
+//                                // Share button action
+//                                let itemsText = items.map({ "\($0.name) (\($0.size))" }).joined(separator: "\n")
+//                                    let message = "My shopping list:\n\(itemsText)"
+//                                    let items: [Any] = [message]
+//                                    let excludedActivities: [UIActivity.ActivityType] = [.postToFacebook, .postToTwitter] // Add any additional excluded activity types here
+//                                    let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+//                                    activityViewController.excludedActivityTypes = excludedActivities
+//
+//                                    UIApplication.shared.windows.first?.rootViewController?.present(activityViewController, animated: true, completion: nil)
+//                            }) {
+//                                HStack {
+//                                    Image(systemName: "square.and.arrow.up")
+//                                    Text("Share")
+//                                }
+//                                .background(
+//                                    RoundedRectangle(cornerRadius: 5)
+//                                        .fill(Color.gray.opacity(0.2))
+//                                )
+//                                .foregroundColor(.white)
+//
+//                            }
+//                        }
+//                        .foregroundColor(.black)
+//                        .offset(x: -100)
                         
                         
-                    }
+//                    }
                     
-                    .background(custGreen)
-
-                    .frame(height: 150)
-                    .frame(width: UIScreen.main.bounds.width)
-                    .offset(y: 10)
+//                    .background(custGreen)
+//
+//                    .frame(height: 150)
+//                    .frame(width: UIScreen.main.bounds.width)
+//                    .offset(y: 10)
                     
                 }
                 
@@ -192,7 +226,9 @@ struct MyCart: View {
                         VStack(alignment: .leading) {
                             Text(category)
                                 .font(.subheadline)
-                                .padding(.leading, 20)
+                                .padding(.leading, 10)
+                                .padding(.top, 15)
+                                
                             ForEach(groupedItems[category]!, id: \.id) { item in
                                 ZStack {
                                     RoundedRectangle(cornerRadius: 10)
@@ -203,11 +239,11 @@ struct MyCart: View {
                                         if item.isChecked {
                                             Image(systemName: "checkmark.square")
                                                 .foregroundColor(.green)
-                                                .padding(.leading, 30) // add leading padding
+                                                .padding(.leading, 15) // add leading padding
                                         } else {
                                             Image(systemName: "square")
                                                 .foregroundColor(.black)
-                                                .padding(.leading, 30) // add leading padding
+                                                .padding(.leading, 15) // add leading padding
                                         }
                                         
                                         Text(item.name)
@@ -254,6 +290,7 @@ struct MyCart: View {
                                 }
                                 .cornerRadius(10)
                             }
+                            
                             
                         }
                         
