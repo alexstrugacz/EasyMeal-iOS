@@ -1,18 +1,12 @@
 import SwiftUI
 
 struct Pantry: View {
-    @State private var items = [
-        Ingredient(name: "Chicken", isChecked: false, category: "Meat"),
-        Ingredient(name: "Carrot", isChecked: false, category: "Vegetables"),
-        Ingredient(name: "Bread Crumb", isChecked: false, category: "Pantry"),
-        Ingredient(name: "Pepper", isChecked: false, category: "Vegetables"),
-        Ingredient(name: "Fish", isChecked: false, category: "Meat"),
-        Ingredient(name: "Tomato", isChecked: false, category: "Vegetables"),
-        Ingredient(name: "Salt", isChecked: false, category: "Pantry"),
-        Ingredient(name: "Cucumber", isChecked: false, category: "Vegetables"),
-        Ingredient(name: "Asparagus", isChecked: false, category: "Vegetables")
-
-    ]
+    @State private var items: [Ingredient]
+    
+    init() {
+        let storedItems = UserDefaults.standard.array(forKey: "PantryItems") as? [[String: Any]] ?? []
+        self._items = State(initialValue: storedItems.map { Ingredient(from: $0) })
+    }
     
     var groupedItems: [String: [Ingredient]] {
         Dictionary(grouping: items, by: { $0.category })
@@ -21,23 +15,10 @@ struct Pantry: View {
     let gridItems = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
     @State private var searchText = ""
-
+    
     var body: some View {
         VStack{
-            VStack(spacing: 20){
-                
-                Text("Pantry")
-                    .font(.title)
-                    .bold()
-                    .foregroundColor(.black)
-                    .foregroundColor(Color.white.opacity(1))
-                    .offset(y:20)
-                    .padding(.bottom, 20)
-                
-            }
-            
             VStack() {
-                
                 TextField("add ingredients", text: $searchText)
                     .padding(.horizontal, 20)
                     .frame(width: 200, height: 40)
@@ -66,19 +47,19 @@ struct Pantry: View {
                                 Button(action: {
                                     if let index = items.firstIndex(where: { $0.id == item.id }) {
                                         items[index].isChecked.toggle()
+                                        saveItems()
                                     }
                                 }) {
                                     Text(item.name)
                                         .foregroundColor(.black)
                                         .padding(.horizontal, 15)
                                         .frame(width:100, height: 35)
-                                        .background(item.isChecked ? custGreen : Color.gray.opacity(0.6))
+                                        .background(item.isChecked ? Color.green : Color.gray.opacity(0.6))
                                         .cornerRadius(60)
                                         .minimumScaleFactor(0.5) // Set a minimum scale factor to allow the text to scale down
                                         .fixedSize(horizontal: true, vertical: false)
                                         .font(.system(size: 15)) // Set the initial font size
                                 }
-
                                 .buttonStyle(PlainButtonStyle())
                             }
                         }
@@ -89,7 +70,6 @@ struct Pantry: View {
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(.white)
                             .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 2)
-    
                     )
                 }
             }
@@ -105,6 +85,31 @@ struct Pantry: View {
         var name: String
         var isChecked: Bool
         var category: String
+        
+        init(name: String, isChecked: Bool, category: String) {
+            self.name = name
+            self.isChecked = isChecked
+            self.category = category
+        }
+        
+        init(from dictionary: [String: Any]) {
+            self.name = dictionary["name"] as? String ?? ""
+            self.isChecked = dictionary["isChecked"] as? Bool ?? false
+            self.category = dictionary["category"] as? String ?? ""
+        }
+        
+        func toDictionary() -> [String:        Any] {
+            return [
+                "name": name,
+                "isChecked": isChecked,
+                "category": category
+            ]
+        }
+    }
+    
+    private func saveItems() {
+        let encodedItems = items.map { $0.toDictionary() }
+        UserDefaults.standard.set(encodedItems, forKey: "PantryItems")
     }
     
     struct Pantry_Preview: PreviewProvider {
@@ -113,4 +118,5 @@ struct Pantry: View {
         }
     }
 }
+
 

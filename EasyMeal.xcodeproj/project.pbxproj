@@ -15,7 +15,6 @@
 		4D2E4F5129AFE4E500F68629 /* Help & Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E4F5029AFE4E500F68629 /* Help & Support.swift */; };
 		4D2E4F5329AFE4EC00F68629 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E4F5229AFE4EC00F68629 /* About.swift */; };
 		4D5A6E3129A3ACCC00614A28 /* RecipeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5A6E3029A3ACCC00614A28 /* RecipeInfo.swift */; };
-		4DB3E4852A12B5C10065B6C2 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4DB3E4832A12B5C10065B6C2 /* Model.xcdatamodeld */; };
 		4DDF433829F9EDE7008077FC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDF433729F9EDE7008077FC /* Colors.swift */; };
 		4DE2F525299722E1002AA1BA /* MyCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F524299722E1002AA1BA /* MyCart.swift */; };
 		4DE2F527299722E8002AA1BA /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F526299722E8002AA1BA /* Profile.swift */; };
@@ -51,7 +50,6 @@
 		4D2E4F5029AFE4E500F68629 /* Help & Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Help & Support.swift"; sourceTree = "<group>"; };
 		4D2E4F5229AFE4EC00F68629 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		4D5A6E3029A3ACCC00614A28 /* RecipeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInfo.swift; sourceTree = "<group>"; };
-		4DB3E4842A12B5C10065B6C2 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		4DDF433729F9EDE7008077FC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		4DE2F524299722E1002AA1BA /* MyCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCart.swift; sourceTree = "<group>"; };
 		4DE2F526299722E8002AA1BA /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
@@ -263,7 +261,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DE2F529299722F1002AA1BA /* Recipes.swift in Sources */,
-				4DB3E4852A12B5C10065B6C2 /* Model.xcdatamodeld in Sources */,
 				4DDF433829F9EDE7008077FC /* Colors.swift in Sources */,
 				4D2E4F4D29AFE4CF00F68629 /* Appearance.swift in Sources */,
 				4DE2F52D299722FE002AA1BA /* MainView.swift in Sources */,
@@ -536,19 +533,6 @@
 			productName = FirebaseDatabaseSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		4DB3E4832A12B5C10065B6C2 /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				4DB3E4842A12B5C10065B6C2 /* Model.xcdatamodel */,
-			);
-			currentVersion = 4DB3E4842A12B5C10065B6C2 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 9B09BE8F298B267E00939FFD /* Project object */;
 }
