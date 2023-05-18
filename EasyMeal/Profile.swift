@@ -2,12 +2,15 @@ import SwiftUI
 import FirebaseAuth
 
 struct Profile: View {
+    
+    @EnvironmentObject var firebaseManager: FirebaseManager
+    
     var body: some View {
-        
-        @ObservedObject var firebaseManager = FirebaseManager()
-        
-        NavigationView {
-            List {
+        if firebaseManager.isLoggedIn == false {
+            SignIn()
+        } else {
+            NavigationView {
+                List {
                     NavigationLink(destination: General()) {
                         Label("General", systemImage: "gear")
                     }
@@ -29,25 +32,20 @@ struct Profile: View {
                     NavigationLink(destination: About()) {
                         Label("About", systemImage: "info.circle")
                     }
-                
-                
-                Section {
-                    Button(action: {
-                        FirebaseManager().signOut()
-                    }) {
-                        Label("Log Out", systemImage: "arrow.left.square")
-                            .foregroundColor(.red)
+                    
+                    
+                    Section {
+                        Button(action: {
+                            firebaseManager.signOut()
+                        }) {
+                            Label("Log Out", systemImage: "arrow.left.square")
+                                .foregroundColor(.red)
+                        }
                     }
-                    .onAppear {
-                                // Check if user is already logged in
-                                if Auth.auth().currentUser != nil {
-                                    firebaseManager.isLoggedIn = true
-                                }
-                            }
                 }
+                .listStyle(InsetGroupedListStyle())
+                .navigationBarTitle("Profile")
             }
-            .listStyle(InsetGroupedListStyle())
-            .navigationBarTitle("Profile")
         }
     }
 }

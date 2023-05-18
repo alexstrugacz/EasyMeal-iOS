@@ -25,9 +25,12 @@ struct EasyMealApp: App {
         FirebaseApp.configure()
     }
     
+    @StateObject private var firebaseManager = FirebaseManager()
+    
     var body: some Scene {
         WindowGroup {
             MainPage()
+                .environmentObject(firebaseManager)
         }
     }
 }

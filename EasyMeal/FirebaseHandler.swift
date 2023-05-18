@@ -34,7 +34,7 @@ class FirebaseManager: NSObject, ObservableObject {
                 print("Sign-up error: \(error.localizedDescription)")
             } else {
                 self?.isLoggedIn = true
-                // Handle successful sign-up
+                print("logged in")
             }
         }
     }
