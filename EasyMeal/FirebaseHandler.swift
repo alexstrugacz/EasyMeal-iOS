@@ -18,6 +18,7 @@ class FirebaseManager: NSObject, ObservableObject {
         // Perform any additional sign-out steps specific to your app
     }
 
+    //IT WORKS!
     func forgotPasswordReset(email: String) {
         Auth.auth().sendPasswordReset(withEmail: email) { [weak self] (error) in
             if let error = error {
