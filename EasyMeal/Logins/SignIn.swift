@@ -16,7 +16,7 @@
 
 import SwiftUI
 import Firebase
-@ObservedObject var firebaseManager = FirebaseManager()
+
 
 
 struct SignIn: View {
@@ -26,6 +26,7 @@ struct SignIn: View {
     @State private var password: String = ""
     @State private var userIsLoggedIn = false
     @State private var showSignUpView = false
+    @ObservedObject var firebaseManager = FirebaseManager()
     
     var body: some View {
         if userIsLoggedIn {
