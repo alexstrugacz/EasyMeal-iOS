@@ -59,10 +59,10 @@ struct MyCart: View {
 
                             }
                             .foregroundColor(custGreen)
+                            .padding(.top,10)
+                            .padding(.leading,20)
 
                         }
-                        .padding(.top,10)
-                        .padding(.leading,20)
                         
                         Spacer()
                         
@@ -75,10 +75,10 @@ struct MyCart: View {
 
                             }
                             .foregroundColor(Color(hex: "#ff0800"))
+                            .padding(.top,10)
+                            .padding(.trailing,20)
 
                         }
-                        .padding(.top,10)
-                        .padding(.trailing,20)
                     }
                     .padding(.top, 10)
 //                    ZStack {

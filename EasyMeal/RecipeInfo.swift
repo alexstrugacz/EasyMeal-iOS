@@ -1,62 +1,86 @@
-//
-//  RecipeInfo.swift
-//  EasyMeal
-//
-//  Created by Alexander Masztak on 2/20/23.
-//
 
 import SwiftUI
 struct RecipeInfo: View {
-    let recipeURL = URL(string: "https://www.easymeal.me")!
-    
-    @State var progressBarValue = Float(1)
-    
-    let nutrientData = [
-        NutrientRow(nutrientName: "Protein", nutrientAmount: "51.8g"),
-        NutrientRow(nutrientName: "Dietary Fiber", nutrientAmount: "2.1g"),
-        NutrientRow(nutrientName: "Sugars", nutrientAmount: "0.6g"),
-        NutrientRow(nutrientName: "Cl.", nutrientAmount: "180.9mg"),
-        NutrientRow(nutrientName: "Carbs", nutrientAmount: "14.7g"),
-        NutrientRow(nutrientName: "Fat", nutrientAmount: "26.7g"),
-        NutrientRow(nutrientName: "Sat. Fat", nutrientAmount: "5g"),
-        NutrientRow(nutrientName: "Calcium", nutrientAmount: "545.9mg")
-    ]
     
     let initialNutrientCount = 3
-        
+    
     @State private var isExpanded = false
     
-    @State private var ingredients = [
-        Ingredient(name: "Chicken", available: true),
-        Ingredient(name: "Carrot", available: true),
-        Ingredient(name: "Bread Crumb", available: true),
-        Ingredient(name: "Pepper", available: true),
-        Ingredient(name: "Fish", available: false),
-        Ingredient(name: "Tomato", available: false),
-        Ingredient(name: "Salt", available: false),
-        Ingredient(name: "Cucumber", available: false),
-        Ingredient(name: "Asparagus", available: false)
-    ]
+    var exitRecipe: () -> Void
+    var addMissingIngredients: ([String]) -> Void
     
+    var recipe: Recipe
+    
+    @ObservedObject var recipeViewModel: RecipeViewModel
+    
+    init(newRecipe: Recipe, newExitRecipe: @escaping () -> Void, newAddMissingIngredients: @escaping ([String]) -> Void) {
+        recipe = newRecipe
+        recipeViewModel = RecipeViewModel(newRecipe: newRecipe)
+        exitRecipe = newExitRecipe
+        addMissingIngredients = newAddMissingIngredients
+    }
+    
+    
+    func handleAddMissingIngredients() {
+        let storedItems = UserDefaults.standard.array(forKey: "savedItems") as? [[String: Any]] ?? []
+        var items = storedItems.map { ShoppingItem(from: $0) }
+        var itemNames = items.map { $0.name }
+        var missingIngredients: [String] = []
+        
+        for ingredient in recipe.ingredients {
+            if !ingredient.available {
+                if (!itemNames.contains(ingredient.name.capitalized)) {
+                    let shoppingItem: ShoppingItem = ShoppingItem(name: ingredient.name.capitalized, isChecked: false)
+                    items.append(shoppingItem)
+                    missingIngredients.append(ingredient.name.capitalized)
+                }
+            }
+        }
+        print(items)
+        let encodedItems = items.map { $0.toDictionary() }
+        UserDefaults.standard.set(encodedItems, forKey: "savedItems")
+        
+        addMissingIngredients(missingIngredients)
+    }
+        
     var body: some View {
         VStack {
             ScrollView {
-                Image("sampleRecipe")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 300, height: 300)
                 
-                Text("Cucumber Vinegar Salad")
+                AsyncImage(url: URL(string: recipe.url)) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 300, height: 300)
+                        .cornerRadius(30)
+                } placeholder: {
+                    
+                        ZStack {
+                            Color(red: 0.8, green: 0.8, blue: 0.8)
+                                .cornerRadius(10)
+                            Text("No Image")
+                                .foregroundColor(.gray)
+                                .font(.headline)
+                        }
+                        .frame(width: 300, height: 300)
+                        .cornerRadius(30)
+                    
+                }
+
+                    
+                
+                Text(recipe.name)
                     .font(.title)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 4)
+                    .padding(.vertical, 2)
+                
                 
                 HStack {
-                    Text("33 calories")
-                        .font(.system(size: 20))
+                    Text("\(Int(recipe.calories)) calories")
                     Spacer()
                     Button(action: {
-                        UIApplication.shared.open(self.recipeURL)
+                        if let url = URL(string: recipe.mealLink) {
+                            UIApplication.shared.open(url)
+                        }
                     }) {
                         RoundedRectangle(cornerRadius: 10)
                             .foregroundColor(.blue)
@@ -71,6 +95,7 @@ struct RecipeInfo: View {
                 .frame(width: 280)
                 
                 
+                
                 HorizontalDivider(color: .gray.opacity(0.5))
                 
                 VStack {
@@ -78,20 +103,34 @@ struct RecipeInfo: View {
                         .font(.system(size: 18))
                         .bold()
                         .padding(.top, 4)
-                    
-                    ProgressBar(value: $progressBarValue)
+                    ProgressBar(value: Float(recipe.healthScore
+                                            )/10)
                         .frame(height: 20)
                         .padding(.bottom, 20)
                     
                     
                     VStack(alignment: .leading) {
-                        ForEach(nutrientData.prefix(isExpanded ? nutrientData.count : initialNutrientCount)) { nutrient in
-                            NutrientRowView(nutrientData: nutrient)
+                        if (recipeViewModel.nutrientData.count > 3) {
+                            ForEach(recipeViewModel.nutrientData[...2]) { nutrData in
+                                NutrientRowView(nutrientData: nutrData)
+                            }
+                            if (isExpanded) {
+                                ForEach(recipeViewModel.nutrientData[2...]) { nutrData in
+                                    NutrientRowView(nutrientData: nutrData)
+                                }
+                            }
+                            
+                        } else {
+                            ForEach(recipeViewModel.nutrientData) { nutrData in
+                                NutrientRowView(nutrientData: nutrData)
+                            }
+                            
                         }
+
                     }
                     .padding(.horizontal, 16)
                     
-                    if nutrientData.count > initialNutrientCount {
+                    if recipe.ingredients.count > initialNutrientCount {
                         Button(action: {
                             isExpanded.toggle()
                         }) {
@@ -125,11 +164,12 @@ struct RecipeInfo: View {
                         .padding(.top, 4)
                     
                     HStack {
-                        Text("0/9 available")
+                        Text("\(recipe.numIngredients)/\(recipe.totalIngredients) available")
                             .font(.system(size: 18))
                         Spacer()
                         Button(action: {
                             // Send ingredients to cart
+                            handleAddMissingIngredients()
                         }) {
                             RoundedRectangle(cornerRadius: 10)
                                 .foregroundColor(.blue)
@@ -146,47 +186,17 @@ struct RecipeInfo: View {
                     
                 }
                 
-                RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor(Color.gray.opacity(0.1))
-                    .frame(width: 350, height: 200)
-                    .overlay(
                 VStack(alignment: .leading) {
-                    ForEach(0..<ingredients.count/2, id: \.self) { index in
+                    ForEach(recipe.ingredients) { ingredient in
                         HStack {
-                            Text(ingredients[index*2].name)
+                            Text(removeEmTags(from: ingredient.name.capitalized))
+                                .padding(.leading, 8)
                             
-                            if ingredients[index*2].available {
+                            if ingredient.available {
                                 Image(systemName: "checkmark")
                                     .foregroundColor(.green)
-                            } else {
-                                Image(systemName: "xmark")
-                                    .foregroundColor(.red)
-                            }
-                            
-                            Spacer()
-                            
-                            Text(ingredients[index*2+1].name)
                                 
-                            
-                            if ingredients[index*2+1].available {
-                                Image(systemName: "checkmark")
-                                    .foregroundColor(.green)
-                            } else {
-                                Image(systemName: "xmark")
-                                    .foregroundColor(.red)
-                            }
-                        }
-                        .padding(.vertical, 4)
-                    }
-                    
-                    if ingredients.count % 2 != 0 {
-                        HStack {
-                            Text(ingredients[ingredients.count-1].name)
-                                .background(Color.gray.opacity(0.1))
-                            
-                            if ingredients[ingredients.count-1].available {
-                                Image(systemName: "checkmark")
-                                    .foregroundColor(.green)
+                                
                             } else {
                                 Image(systemName: "xmark")
                                     .foregroundColor(.red)
@@ -194,14 +204,13 @@ struct RecipeInfo: View {
                             
                             Spacer()
                         }
-                        .padding(.vertical, 4)
+                        .padding(.vertical, 5)
                     }
                 }
+                .padding(.vertical, 15)
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(10)
                 .padding(.horizontal, 20)
-                
-                )
-                
-
             }
             .padding(.all, 16)
         }
@@ -221,6 +230,7 @@ struct NutrientRowView: View {
         HStack {
             Text(nutrientData.nutrientName)
                 .padding(.leading, 15)
+                .padding(.vertical,4)
                 .bold()
             Spacer()
             Text(nutrientData.nutrientAmount)
@@ -232,8 +242,14 @@ struct NutrientRowView: View {
     }
 }
 
+func removeEmTags(from string: String) -> String {
+    let regex = try! NSRegularExpression(pattern: "<[/]?em[^>]*>", options: .caseInsensitive)
+    let range = NSRange(location: 0, length: string.utf16.count)
+    return regex.stringByReplacingMatches(in: string, options: [], range: range, withTemplate: "")
+}
+
 struct ProgressBar: View {
-    @Binding var value: Float
+    var value: Float
     @State var score = 10
     
     var body: some View {
@@ -250,7 +266,7 @@ struct ProgressBar: View {
                         .foregroundColor(custGreen)
                     
                     HStack {
-                        Text("EasyMeal Health Score™")
+                        Text("Health Score™")
                             .font(.callout)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
@@ -258,7 +274,7 @@ struct ProgressBar: View {
                             .alignmentGuide(VerticalAlignment.bottom) { d in d[VerticalAlignment.top] - geometry.size.height }
                             .offset(x: 10)
                         
-                        Text("\(score)/10")
+                        Text("\(String(format: "%.2f", round(value * 10 * 10)/10))/10")
                             .font(.callout)
                             .fontWeight(.bold)
                             .foregroundColor(.white)
@@ -273,17 +289,17 @@ struct ProgressBar: View {
             }
         }
     }
+    
+    
 }
-
 struct Ingredient: Identifiable, Hashable {
-    let id = UUID()
+    var id: UUID
     var name: String
     var available: Bool
-}
-
-struct RecipeInfo_Previews: PreviewProvider {
-    static var previews: some View {
-        RecipeInfo()
+    init(newName: String, newAvailable: Bool) {
+        id = UUID()
+        name = newName
+        available = newAvailable
     }
 }
 
