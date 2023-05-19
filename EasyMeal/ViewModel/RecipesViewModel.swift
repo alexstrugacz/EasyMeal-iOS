@@ -66,9 +66,11 @@ class RecipesViewModel : ObservableObject {
                             for ingredient in ingredients {
                                 if let name = ingredient["name"] as? String, let available = ingredient["available"] as? Bool {
                                     if available == true {
-                                        newIngredients.append(Ingredient(newName: name, newAvailable: true) )
+                                        newIngredients.append(Ingredient(newName: name, newAvailable: available))
                                     } else {
-                                        newIngredients.append(Ingredient(newName: name, newAvailable: false) )
+                                        
+                                        newIngredients.append(Ingredient(newName: name, newAvailable: available))
+                                        
                                     }
                                 }
                             }
