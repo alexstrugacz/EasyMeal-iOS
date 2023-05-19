@@ -2,6 +2,8 @@ import SwiftUI
 
 struct MainView<Content: View>: View {
     @State private var tabSelected: Tab = .refrigerator
+    @State var displayingSpeakIngredients = false
+    
     let destinationView: Content
 
     init(initialTab: Tab, @ViewBuilder content: () -> Content) {
@@ -10,17 +12,31 @@ struct MainView<Content: View>: View {
         UITabBar.appearance().isHidden = true
     }
     
+    func displaySpeakIngredients() {
+        displayingSpeakIngredients = true
+    }
+    
+    func openCart() {
+        tabSelected = .cart
+    }
+    
+    func openRecipes() {
+        tabSelected = .refrigerator
+    }
+
+    
+    
     var body: some View {
         
         ZStack {
             VStack {
                 TabView(selection: $tabSelected) {
                     if tabSelected == .refrigerator {
-                        Pantry()
+                        Pantry(speakIngredients: $displayingSpeakIngredients, displaySpeakIngredients: displaySpeakIngredients)
                     } else if tabSelected == .cooktop {
-                        Recipes()
+                        Recipes(openCart: openCart)
                     } else if tabSelected == .cart {
-                        MyCart()
+                        MyCart(newOpenRecipes: openRecipes)
                     } else if tabSelected == .person {
                         Profile()
                     }
@@ -29,7 +45,7 @@ struct MainView<Content: View>: View {
             }
             VStack {
                 Spacer()
-                CustomTabBar(selectedTab: $tabSelected)
+                CustomTabBar(displaySpeakIngredients: displaySpeakIngredients, selectedTab: $tabSelected)
             }
         }
         .navigationBarBackButtonHidden(true)

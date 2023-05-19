@@ -1,23 +1,20 @@
 import SwiftUI
 
+
 struct MyCart: View {
-    @State private var items = [
-        ShoppingItem(name: "Chicken", isChecked: false, size: "1 C.", category: "Meat"),
-        ShoppingItem(name: "Carrots", isChecked: false, size: "0.5 lb.", category: "Vegetables"),
-        ShoppingItem(name: "Bread Crumbs", isChecked: false, size: "Pinch", category: "Pantry"),
-        ShoppingItem(name: "Peppers", isChecked: false, size: "2", category: "Vegetables")
-        
-    ]
     
-    var groupedItems: [String: [ShoppingItem]] {
-        Dictionary(grouping: items, by: { $0.category })
-    }
-    
-    var isCartEmpty: Bool {
-        items.isEmpty
-    }
+    var openRecipes: () -> Void
     
     @State private var isShowingSettings = false
+    
+    @ObservedObject var myCartViewModel: MyCartViewModel
+    
+    init(newOpenRecipes: @escaping () -> Void) {
+        openRecipes = newOpenRecipes
+        myCartViewModel = MyCartViewModel(newOpenRecipes: newOpenRecipes)
+        
+    }
+
     
     var body: some View {
         VStack{
@@ -31,6 +28,7 @@ struct MyCart: View {
                         .bold()
                         .foregroundColor(.black)
                         .padding(.leading, 42)
+                        .padding(.bottom, 30)
 
                     Spacer()
                     Button(action: {
@@ -53,14 +51,7 @@ struct MyCart: View {
                     HStack {
                         Button(action: {
                             // Mark All Complete button action
-                            var i = 0
-                            while(i < items.count) {
-                                if(items[i].isChecked == false){
-                                    self.items[i].isChecked.toggle()
-                                    print(i)
-                                    i+=1
-                                }
-                            }
+                            myCartViewModel.checkItems()
                         }) {
                             HStack() {
                                 Image(systemName: "checkmark")
@@ -76,8 +67,7 @@ struct MyCart: View {
                         Spacer()
                         
                         Button(action: {
-                            // Mark All Complete button action
-                            self.items.removeAll(where: { $0.isChecked })
+                            myCartViewModel.deleteChecked()
                         }) {
                             HStack {
                                 Image(systemName: "trash")
@@ -185,7 +175,7 @@ struct MyCart: View {
                     
                 }
                 
-                if isCartEmpty {
+                if (myCartViewModel.items.count == 0) {
                     VStack {
                         Spacer()
                         Text("Your cart is empty!\nLet's go fill it up.")
@@ -196,19 +186,18 @@ struct MyCart: View {
                             .foregroundColor(Color.white.opacity(1))
                         
                         
-                        NavigationLink(destination: MainView(initialTab: .cooktop, content: {
-                            Recipes()
-                        }))
-                        {
+                        Button {
+                            openRecipes()
+                        } label: {
                             
                             Text("Browse Recipes")
                                 .foregroundColor(.white)
-                            
+                                .padding(.vertical, 10)
+                                .padding(.horizontal, 30)
+                                .background(custGreen)
+                                .cornerRadius(10)
                         }
-                        .padding(.vertical, 10)
-                        .padding(.horizontal, 30)
-                        .background(custGreen)
-                        .cornerRadius(10)
+
                         Spacer()
                         
                         
@@ -222,77 +211,67 @@ struct MyCart: View {
             VStack {
                 
                 ScrollView {
-                    ForEach(groupedItems.keys.sorted(), id: \.self) { category in
-                        VStack(alignment: .leading) {
-                            Text(category)
-                                .font(.subheadline)
-                                .padding(.leading, 10)
-                                .padding(.top, 15)
+                    VStack(alignment: .leading) {
+                        ForEach(myCartViewModel.items, id: \.id) { item in
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 10)
+                                    .frame(height: 60)
+                                    .foregroundColor(.white)
                                 
-                            ForEach(groupedItems[category]!, id: \.id) { item in
-                                ZStack {
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .frame(height: 60)
-                                        .foregroundColor(.white)
-                                    
-                                    HStack {
-                                        if item.isChecked {
-                                            Image(systemName: "checkmark.square")
-                                                .foregroundColor(.green)
-                                                .padding(.leading, 15) // add leading padding
-                                        } else {
-                                            Image(systemName: "square")
-                                                .foregroundColor(.black)
-                                                .padding(.leading, 15) // add leading padding
-                                        }
-                                        
-                                        Text(item.name)
-                                            .font(.subheadline)
-                                        
-                                        Spacer()
-                                        
-                                        Text(item.size)
-                                            .font(.subheadline)
-                                            .foregroundColor(.gray)
-                                            .padding(.trailing, 10)
+                                HStack {
+                                    if item.isChecked {
+                                        Image(systemName: "checkmark.square")
+                                            .foregroundColor(.green)
+                                            .padding(.leading, 15) // add leading padding
+                                    } else {
+                                        Image(systemName: "square")
+                                            .foregroundColor(.black)
+                                            .padding(.leading, 15) // add leading padding
                                     }
-                                    .padding(.vertical, 10)
                                     
-                                    .contentShape(Rectangle())
-                                    .onTapGesture {
-                                        if let index = self.items.firstIndex(where: { $0.id == item.id }) {
-                                            self.items[index].isChecked.toggle()
-                                        }
-                                    }
-                                    .gesture(
-                                        DragGesture()
-                                            .onChanged({ value in
-                                                guard let index = self.items.firstIndex(where: { $0.id == item.id }) else {
-                                                    return
-                                                }
-                                                self.items[index].offset = value.translation.width
-                                            })
-                                            .onEnded({ value in
-                                                guard let index = self.items.firstIndex(where: { $0.id == item.id }) else {
-                                                    return
-                                                }
-                                                if value.translation.width < -100 {
-                                                    withAnimation {
-                                                        self.items.remove(at: index)
-                                                    }
-                                                } else {
-                                                    self.items[index].offset = 0
-                                                }
-                                            })
-                                    )
-                                    .offset(x: item.offset)
-                                    .animation(.spring())
+                                    Text(item.name)
+                                        .font(.subheadline)
+                                    
+                                    Spacer()
                                 }
-                                .cornerRadius(10)
+                                .padding(.vertical, 10)
+                                
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    if let index = myCartViewModel.items.firstIndex(where: { $0.id == item.id }) {
+                                        myCartViewModel.items[index].isChecked.toggle()
+                                        myCartViewModel.saveItems()
+                                    }
+                                }
+                                .gesture(
+                                    DragGesture()
+                                        .onChanged({ value in
+                                            guard let index = myCartViewModel.items.firstIndex(where: { $0.id == item.id }) else {
+                                                return
+                                            }
+                                            myCartViewModel.items[index].offset = value.translation.width
+                                        })
+                                        .onEnded({ value in
+                                            guard let index = myCartViewModel.items.firstIndex(where: { $0.id == item.id }) else {
+                                                return
+                                            }
+                                            if value.translation.width < -100 {
+                                                withAnimation {
+                                                    myCartViewModel.items.remove(at: index)
+                                                }
+                                            } else {
+                                                myCartViewModel.items[index].offset = 0
+                                            }
+                                        })
+                                )
+                                .offset(x: item.offset)
+                                .animation(.spring())
                             }
-                            
-                            
+                            .cornerRadius(10)
                         }
+                        
+                        
+                    
                         
                     }
                     
@@ -317,18 +296,29 @@ struct MyCart: View {
 }
     
 
-    struct ShoppingItem: Identifiable, Hashable {
-        let id = UUID()
-        var name: String
-        var isChecked: Bool
-        var size: String
-        var category: String
-        var offset: CGFloat = 0
+struct ShoppingItem: Identifiable, Hashable {
+    let id = UUID()
+    var name: String
+    var isChecked: Bool
+    var offset: CGFloat = 0
+    
+    init(name: String, isChecked: Bool) {
+        self.name = name
+        self.isChecked = isChecked
     }
+    
+    init(from dictionary: [String: Any]) {
+        self.name = dictionary["name"] as? String ?? ""
+        self.isChecked = dictionary["isChecked"] as? Bool ?? false
+    }
+    
+    func toDictionary() -> [String: Any] {
+        return [
+            "name": name,
+            "isChecked": isChecked,
+            "offset": offset
+        ]
+    }
+}
 
-    struct MyCart_Previews: PreviewProvider {
-        static var previews: some View {
-            MyCart()
-        }
-    }
 

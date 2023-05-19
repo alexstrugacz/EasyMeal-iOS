@@ -13,6 +13,7 @@ struct MainPage: View {
     
     var body: some View {
         NavigationView{
+            // TEST TEST
             VStack {
                 Image("logo")
                     .resizable()
@@ -30,7 +31,7 @@ struct MainPage: View {
                     print("toInfoOne")
                         DispatchQueue.main.asyncAfter(deadline: .now()) {
                             self.showView = true
-                                }
+                        }
                     
                 }) {
                     Text("Get Started")
