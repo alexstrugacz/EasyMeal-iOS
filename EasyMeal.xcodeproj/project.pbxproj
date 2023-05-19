@@ -39,6 +39,28 @@
 		9BEA99962A145F9E00066F87 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 9BEA99952A145F9E00066F87 /* FirebaseDatabase */; };
 		9BEA99982A145F9E00066F87 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9BEA99972A145F9E00066F87 /* FirebaseDatabaseSwift */; };
 		9BEA999A2A155D0F00066F87 /* FirebaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEA99992A155D0F00066F87 /* FirebaseHandler.swift */; };
+		AF205BD62A1727E4005303F1 /* LocalizedAlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BD02A1727E4005303F1 /* LocalizedAlertError.swift */; };
+		AF205BD72A1727E4005303F1 /* PantryIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BD12A1727E4005303F1 /* PantryIngredient.swift */; };
+		AF205BD82A1727E4005303F1 /* Col.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BD22A1727E4005303F1 /* Col.swift */; };
+		AF205BD92A1727E4005303F1 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BD32A1727E4005303F1 /* Recipe.swift */; };
+		AF205BDA2A1727E4005303F1 /* GroupedItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BD42A1727E4005303F1 /* GroupedItems.swift */; };
+		AF205BDB2A1727E4005303F1 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BD52A1727E4005303F1 /* Ingredient.swift */; };
+		AF205BDF2A1727EA005303F1 /* Ext+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BDD2A1727EA005303F1 /* Ext+String.swift */; };
+		AF205BE02A1727EA005303F1 /* Ext+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BDE2A1727EA005303F1 /* Ext+View.swift */; };
+		AF205BE82A1727ED005303F1 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BE22A1727ED005303F1 /* SpeechRecognizer.swift */; };
+		AF205BE92A1727ED005303F1 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BE32A1727ED005303F1 /* RecipeViewModel.swift */; };
+		AF205BEA2A1727ED005303F1 /* GroupButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BE42A1727ED005303F1 /* GroupButtonViewModel.swift */; };
+		AF205BEB2A1727ED005303F1 /* RecipesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BE52A1727ED005303F1 /* RecipesViewModel.swift */; };
+		AF205BEC2A1727ED005303F1 /* SpeakIngredientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BE62A1727ED005303F1 /* SpeakIngredientsViewModel.swift */; };
+		AF205BED2A1727ED005303F1 /* PantryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BE72A1727ED005303F1 /* PantryViewModel.swift */; };
+		AF205BF62A1727F5005303F1 /* _FlexibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BEF2A1727F5005303F1 /* _FlexibleView.swift */; };
+		AF205BF72A1727F5005303F1 /* FlexibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BF02A1727F5005303F1 /* FlexibleView.swift */; };
+		AF205BF82A1727F5005303F1 /* SpeakIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BF12A1727F5005303F1 /* SpeakIngredients.swift */; };
+		AF205BF92A1727F5005303F1 /* BackgroundBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BF22A1727F5005303F1 /* BackgroundBlurView.swift */; };
+		AF205BFA2A1727F5005303F1 /* GroupedItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BF32A1727F5005303F1 /* GroupedItemButton.swift */; };
+		AF205BFB2A1727F5005303F1 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BF42A1727F5005303F1 /* RecipeView.swift */; };
+		AF205BFC2A1727F5005303F1 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BF52A1727F5005303F1 /* PlayButton.swift */; };
+		AF205BFF2A174071005303F1 /* MyCartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BFE2A174071005303F1 /* MyCartViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +91,29 @@
 		9B09BEA1298B267F00939FFD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9BEA998A2A145F0300066F87 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9BEA99992A155D0F00066F87 /* FirebaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHandler.swift; sourceTree = "<group>"; };
+		AF205BD02A1727E4005303F1 /* LocalizedAlertError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedAlertError.swift; sourceTree = "<group>"; };
+		AF205BD12A1727E4005303F1 /* PantryIngredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryIngredient.swift; sourceTree = "<group>"; };
+		AF205BD22A1727E4005303F1 /* Col.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Col.swift; sourceTree = "<group>"; };
+		AF205BD32A1727E4005303F1 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		AF205BD42A1727E4005303F1 /* GroupedItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedItems.swift; sourceTree = "<group>"; };
+		AF205BD52A1727E4005303F1 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		AF205BDD2A1727EA005303F1 /* Ext+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext+String.swift"; sourceTree = "<group>"; };
+		AF205BDE2A1727EA005303F1 /* Ext+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext+View.swift"; sourceTree = "<group>"; };
+		AF205BE22A1727ED005303F1 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
+		AF205BE32A1727ED005303F1 /* RecipeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
+		AF205BE42A1727ED005303F1 /* GroupButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupButtonViewModel.swift; sourceTree = "<group>"; };
+		AF205BE52A1727ED005303F1 /* RecipesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesViewModel.swift; sourceTree = "<group>"; };
+		AF205BE62A1727ED005303F1 /* SpeakIngredientsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakIngredientsViewModel.swift; sourceTree = "<group>"; };
+		AF205BE72A1727ED005303F1 /* PantryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryViewModel.swift; sourceTree = "<group>"; };
+		AF205BEF2A1727F5005303F1 /* _FlexibleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _FlexibleView.swift; sourceTree = "<group>"; };
+		AF205BF02A1727F5005303F1 /* FlexibleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlexibleView.swift; sourceTree = "<group>"; };
+		AF205BF12A1727F5005303F1 /* SpeakIngredients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakIngredients.swift; sourceTree = "<group>"; };
+		AF205BF22A1727F5005303F1 /* BackgroundBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundBlurView.swift; sourceTree = "<group>"; };
+		AF205BF32A1727F5005303F1 /* GroupedItemButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedItemButton.swift; sourceTree = "<group>"; };
+		AF205BF42A1727F5005303F1 /* RecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
+		AF205BF52A1727F5005303F1 /* PlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
+		AF205BFD2A172A12005303F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		AF205BFE2A174071005303F1 /* MyCartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCartViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +194,11 @@
 		9B09BE99298B267E00939FFD /* EasyMeal */ = {
 			isa = PBXGroup;
 			children = (
+				AF205BFD2A172A12005303F1 /* Info.plist */,
+				AF205BEE2A1727F5005303F1 /* Views */,
+				AF205BE12A1727ED005303F1 /* ViewModel */,
+				AF205BDC2A1727EA005303F1 /* Extensions */,
+				AF205BCF2A1727E4005303F1 /* Model */,
 				9B09BE9C298B267E00939FFD /* MainPage.swift */,
 				4DE2F52A299722F7002AA1BA /* Pantry.swift */,
 				4DE2F528299722F1002AA1BA /* Recipes.swift */,
@@ -164,7 +214,6 @@
 				4DDF433929FA1B60008077FC /* Misc */,
 				9B09BE9E298B267F00939FFD /* Assets.xcassets */,
 				9B09BEA0298B267F00939FFD /* Preview Content */,
-				4DB3E4832A12B5C10065B6C2 /* Model.xcdatamodeld */,
 				9BEA99992A155D0F00066F87 /* FirebaseHandler.swift */,
 			);
 			path = EasyMeal;
@@ -176,6 +225,60 @@
 				9B09BEA1298B267F00939FFD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AF205BCF2A1727E4005303F1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AF205BD02A1727E4005303F1 /* LocalizedAlertError.swift */,
+				AF205BD12A1727E4005303F1 /* PantryIngredient.swift */,
+				AF205BD22A1727E4005303F1 /* Col.swift */,
+				AF205BD32A1727E4005303F1 /* Recipe.swift */,
+				AF205BD42A1727E4005303F1 /* GroupedItems.swift */,
+				AF205BD52A1727E4005303F1 /* Ingredient.swift */,
+			);
+			name = Model;
+			path = "../../../easymeal-3/EasyMeal-iOS/EasyMeal/Model";
+			sourceTree = "<group>";
+		};
+		AF205BDC2A1727EA005303F1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AF205BDD2A1727EA005303F1 /* Ext+String.swift */,
+				AF205BDE2A1727EA005303F1 /* Ext+View.swift */,
+			);
+			name = Extensions;
+			path = "../../../easymeal-3/EasyMeal-iOS/EasyMeal/Extensions";
+			sourceTree = "<group>";
+		};
+		AF205BE12A1727ED005303F1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				AF205BE22A1727ED005303F1 /* SpeechRecognizer.swift */,
+				AF205BE32A1727ED005303F1 /* RecipeViewModel.swift */,
+				AF205BE42A1727ED005303F1 /* GroupButtonViewModel.swift */,
+				AF205BE52A1727ED005303F1 /* RecipesViewModel.swift */,
+				AF205BE62A1727ED005303F1 /* SpeakIngredientsViewModel.swift */,
+				AF205BE72A1727ED005303F1 /* PantryViewModel.swift */,
+				AF205BFE2A174071005303F1 /* MyCartViewModel.swift */,
+			);
+			name = ViewModel;
+			path = "../../../easymeal-3/EasyMeal-iOS/EasyMeal/ViewModel";
+			sourceTree = "<group>";
+		};
+		AF205BEE2A1727F5005303F1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AF205BEF2A1727F5005303F1 /* _FlexibleView.swift */,
+				AF205BF02A1727F5005303F1 /* FlexibleView.swift */,
+				AF205BF12A1727F5005303F1 /* SpeakIngredients.swift */,
+				AF205BF22A1727F5005303F1 /* BackgroundBlurView.swift */,
+				AF205BF32A1727F5005303F1 /* GroupedItemButton.swift */,
+				AF205BF42A1727F5005303F1 /* RecipeView.swift */,
+				AF205BF52A1727F5005303F1 /* PlayButton.swift */,
+			);
+			name = Views;
+			path = "../../../easymeal-3/EasyMeal-iOS/EasyMeal/Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,28 +364,50 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DE2F529299722F1002AA1BA /* Recipes.swift in Sources */,
+				AF205BE82A1727ED005303F1 /* SpeechRecognizer.swift in Sources */,
+				AF205BEC2A1727ED005303F1 /* SpeakIngredientsViewModel.swift in Sources */,
+				AF205BFA2A1727F5005303F1 /* GroupedItemButton.swift in Sources */,
 				4DDF433829F9EDE7008077FC /* Colors.swift in Sources */,
+				AF205BFC2A1727F5005303F1 /* PlayButton.swift in Sources */,
 				4D2E4F4D29AFE4CF00F68629 /* Appearance.swift in Sources */,
 				4DE2F52D299722FE002AA1BA /* MainView.swift in Sources */,
 				9B09BE9D298B267E00939FFD /* MainPage.swift in Sources */,
+				AF205BE02A1727EA005303F1 /* Ext+View.swift in Sources */,
+				AF205BE92A1727ED005303F1 /* RecipeViewModel.swift in Sources */,
 				4DE2F527299722E8002AA1BA /* Profile.swift in Sources */,
 				9BEA999A2A155D0F00066F87 /* FirebaseHandler.swift in Sources */,
 				4DE2F52B299722F7002AA1BA /* Pantry.swift in Sources */,
+				AF205BDF2A1727EA005303F1 /* Ext+String.swift in Sources */,
+				AF205BFB2A1727F5005303F1 /* RecipeView.swift in Sources */,
+				AF205BEB2A1727ED005303F1 /* RecipesViewModel.swift in Sources */,
 				4D2E4F4929AFE4AB00F68629 /* Account.swift in Sources */,
 				9B09BE9B298B267E00939FFD /* EasyMealApp.swift in Sources */,
+				AF205BF72A1727F5005303F1 /* FlexibleView.swift in Sources */,
+				AF205BF82A1727F5005303F1 /* SpeakIngredients.swift in Sources */,
 				4D2E4F4F29AFE4D700F68629 /* Privacy.swift in Sources */,
 				4DE2F53729972326002AA1BA /* InfoThree.swift in Sources */,
+				AF205BED2A1727ED005303F1 /* PantryViewModel.swift in Sources */,
 				4D5A6E3129A3ACCC00614A28 /* RecipeInfo.swift in Sources */,
 				4DE2F525299722E1002AA1BA /* MyCart.swift in Sources */,
+				AF205BFF2A174071005303F1 /* MyCartViewModel.swift in Sources */,
 				4D2E4F4729AFE48F00F68629 /* General.swift in Sources */,
+				AF205BF92A1727F5005303F1 /* BackgroundBlurView.swift in Sources */,
 				4DE2F53129972312002AA1BA /* SignUp.swift in Sources */,
 				4DE2F5392997F679002AA1BA /* TabBar.swift in Sources */,
 				4D2E4F4B29AFE4C100F68629 /* Notifications.swift in Sources */,
+				AF205BD82A1727E4005303F1 /* Col.swift in Sources */,
+				AF205BDB2A1727E4005303F1 /* Ingredient.swift in Sources */,
 				4D2E4F5329AFE4EC00F68629 /* About.swift in Sources */,
 				4DE2F5352997231E002AA1BA /* InfoOne.swift in Sources */,
+				AF205BDA2A1727E4005303F1 /* GroupedItems.swift in Sources */,
 				4DE2F53329972317002AA1BA /* InfoTwo.swift in Sources */,
+				AF205BEA2A1727ED005303F1 /* GroupButtonViewModel.swift in Sources */,
+				AF205BD62A1727E4005303F1 /* LocalizedAlertError.swift in Sources */,
+				AF205BF62A1727F5005303F1 /* _FlexibleView.swift in Sources */,
 				4DE2F52F29972309002AA1BA /* SignIn.swift in Sources */,
+				AF205BD92A1727E4005303F1 /* Recipe.swift in Sources */,
 				4D2E4F5129AFE4E500F68629 /* Help & Support.swift in Sources */,
+				AF205BD72A1727E4005303F1 /* PantryIngredient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +464,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Audio is recorded to transcribe what you say is in your pantry";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "For saying what's in your pantry";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -393,6 +521,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Audio is recorded to transcribe what you say is in your pantry";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "For saying what's in your pantry";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -412,9 +543,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EasyMeal/Preview Content\"";
-				DEVELOPMENT_TEAM = 5J3WK595KA;
+				DEVELOPMENT_TEAM = H6GK6933U2;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EasyMeal/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -441,12 +573,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"EasyMeal/Preview Content\"";
-				DEVELOPMENT_TEAM = 5J3WK595KA;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = EasyMeal/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -458,7 +591,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.AlexStrugacz.EasyMeal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

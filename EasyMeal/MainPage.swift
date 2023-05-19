@@ -31,7 +31,7 @@ struct MainPage: View {
                     print("toInfoOne")
                         DispatchQueue.main.asyncAfter(deadline: .now()) {
                             self.showView = true
-                                }
+                        }
                     
                 }) {
                     Text("Get Started")
