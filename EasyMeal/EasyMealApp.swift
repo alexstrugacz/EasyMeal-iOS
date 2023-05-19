@@ -28,9 +28,14 @@ struct EasyMealApp: App {
     @StateObject private var firebaseManager = FirebaseManager()
     
     var body: some Scene {
-        WindowGroup {
-            MainPage()
-                .environmentObject(firebaseManager)
-        }
-    }
-}
+           WindowGroup {
+               if firebaseManager.isLoggedIn {
+                   MainView(initialTab: .cart, content: {})
+                       .environmentObject(firebaseManager)
+               } else {
+                   SignIn()
+                       .environmentObject(firebaseManager)
+               }
+           }
+       }
+   }

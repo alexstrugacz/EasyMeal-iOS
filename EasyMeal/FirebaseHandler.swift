@@ -7,6 +7,17 @@ class FirebaseManager: NSObject, ObservableObject {
     private var currentNonce: String?
     private var appleID: String?
     
+    override init() {
+            super.init()
+            setupFirebaseAuthStateDidChange()
+        }
+    
+    func setupFirebaseAuthStateDidChange() {
+            Auth.auth().addStateDidChangeListener { [weak self] (_, user) in
+                self?.isLoggedIn = user != nil
+            }
+        }
+    
     func signOutFromApple() {
         // Remove the stored user identifier or tokens used for Apple authentication
         // You can use your own logic or storage mechanism here

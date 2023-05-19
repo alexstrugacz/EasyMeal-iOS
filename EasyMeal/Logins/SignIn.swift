@@ -33,6 +33,8 @@ struct SignIn: View {
     var body: some View {
         if firebaseManager.isLoggedIn {
             MainView(initialTab: .mic, content: {})
+        } else if showSignUpView {
+            SignUp()
         } else {
             ZStack {
                 Color.white
