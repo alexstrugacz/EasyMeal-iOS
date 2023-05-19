@@ -39,28 +39,28 @@
 		9BEA99962A145F9E00066F87 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 9BEA99952A145F9E00066F87 /* FirebaseDatabase */; };
 		9BEA99982A145F9E00066F87 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9BEA99972A145F9E00066F87 /* FirebaseDatabaseSwift */; };
 		9BEA999A2A155D0F00066F87 /* FirebaseHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEA99992A155D0F00066F87 /* FirebaseHandler.swift */; };
-		AF205BD62A1727E4005303F1 /* LocalizedAlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BD02A1727E4005303F1 /* LocalizedAlertError.swift */; };
-		AF205BD72A1727E4005303F1 /* PantryIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BD12A1727E4005303F1 /* PantryIngredient.swift */; };
-		AF205BD82A1727E4005303F1 /* Col.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BD22A1727E4005303F1 /* Col.swift */; };
-		AF205BD92A1727E4005303F1 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BD32A1727E4005303F1 /* Recipe.swift */; };
-		AF205BDA2A1727E4005303F1 /* GroupedItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BD42A1727E4005303F1 /* GroupedItems.swift */; };
-		AF205BDB2A1727E4005303F1 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BD52A1727E4005303F1 /* Ingredient.swift */; };
-		AF205BDF2A1727EA005303F1 /* Ext+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BDD2A1727EA005303F1 /* Ext+String.swift */; };
-		AF205BE02A1727EA005303F1 /* Ext+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BDE2A1727EA005303F1 /* Ext+View.swift */; };
-		AF205BE82A1727ED005303F1 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BE22A1727ED005303F1 /* SpeechRecognizer.swift */; };
-		AF205BE92A1727ED005303F1 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BE32A1727ED005303F1 /* RecipeViewModel.swift */; };
-		AF205BEA2A1727ED005303F1 /* GroupButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BE42A1727ED005303F1 /* GroupButtonViewModel.swift */; };
-		AF205BEB2A1727ED005303F1 /* RecipesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BE52A1727ED005303F1 /* RecipesViewModel.swift */; };
-		AF205BEC2A1727ED005303F1 /* SpeakIngredientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BE62A1727ED005303F1 /* SpeakIngredientsViewModel.swift */; };
-		AF205BED2A1727ED005303F1 /* PantryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BE72A1727ED005303F1 /* PantryViewModel.swift */; };
-		AF205BF62A1727F5005303F1 /* _FlexibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BEF2A1727F5005303F1 /* _FlexibleView.swift */; };
-		AF205BF72A1727F5005303F1 /* FlexibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BF02A1727F5005303F1 /* FlexibleView.swift */; };
-		AF205BF82A1727F5005303F1 /* SpeakIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BF12A1727F5005303F1 /* SpeakIngredients.swift */; };
-		AF205BF92A1727F5005303F1 /* BackgroundBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BF22A1727F5005303F1 /* BackgroundBlurView.swift */; };
-		AF205BFA2A1727F5005303F1 /* GroupedItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BF32A1727F5005303F1 /* GroupedItemButton.swift */; };
-		AF205BFB2A1727F5005303F1 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BF42A1727F5005303F1 /* RecipeView.swift */; };
-		AF205BFC2A1727F5005303F1 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BF52A1727F5005303F1 /* PlayButton.swift */; };
-		AF205BFF2A174071005303F1 /* MyCartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205BFE2A174071005303F1 /* MyCartViewModel.swift */; };
+		AF205C0B2A17BBF3005303F1 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C042A17BBF2005303F1 /* RecipeView.swift */; };
+		AF205C0C2A17BBF3005303F1 /* GroupedItemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C052A17BBF2005303F1 /* GroupedItemButton.swift */; };
+		AF205C0D2A17BBF3005303F1 /* _FlexibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C062A17BBF3005303F1 /* _FlexibleView.swift */; };
+		AF205C0E2A17BBF3005303F1 /* PlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C072A17BBF3005303F1 /* PlayButton.swift */; };
+		AF205C0F2A17BBF3005303F1 /* SpeakIngredients.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C082A17BBF3005303F1 /* SpeakIngredients.swift */; };
+		AF205C102A17BBF3005303F1 /* FlexibleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C092A17BBF3005303F1 /* FlexibleView.swift */; };
+		AF205C112A17BBF3005303F1 /* BackgroundBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C0A2A17BBF3005303F1 /* BackgroundBlurView.swift */; };
+		AF205C192A17BBFC005303F1 /* SpeakIngredientsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C122A17BBFB005303F1 /* SpeakIngredientsViewModel.swift */; };
+		AF205C1A2A17BBFC005303F1 /* MyCartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C132A17BBFB005303F1 /* MyCartViewModel.swift */; };
+		AF205C1B2A17BBFC005303F1 /* RecipesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C142A17BBFB005303F1 /* RecipesViewModel.swift */; };
+		AF205C1C2A17BBFC005303F1 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C152A17BBFB005303F1 /* SpeechRecognizer.swift */; };
+		AF205C1D2A17BBFC005303F1 /* PantryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C162A17BBFB005303F1 /* PantryViewModel.swift */; };
+		AF205C1E2A17BBFC005303F1 /* GroupButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C172A17BBFC005303F1 /* GroupButtonViewModel.swift */; };
+		AF205C1F2A17BBFC005303F1 /* RecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C182A17BBFC005303F1 /* RecipeViewModel.swift */; };
+		AF205C262A17BC1C005303F1 /* LocalizedAlertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C202A17BC1B005303F1 /* LocalizedAlertError.swift */; };
+		AF205C272A17BC1C005303F1 /* PantryIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C212A17BC1C005303F1 /* PantryIngredient.swift */; };
+		AF205C282A17BC1C005303F1 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C222A17BC1C005303F1 /* Recipe.swift */; };
+		AF205C292A17BC1C005303F1 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C232A17BC1C005303F1 /* Ingredient.swift */; };
+		AF205C2A2A17BC1C005303F1 /* Col.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C242A17BC1C005303F1 /* Col.swift */; };
+		AF205C2B2A17BC1C005303F1 /* GroupedItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C252A17BC1C005303F1 /* GroupedItems.swift */; };
+		AF205C2E2A17BC27005303F1 /* Ext+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C2C2A17BC27005303F1 /* Ext+View.swift */; };
+		AF205C2F2A17BC27005303F1 /* Ext+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C2D2A17BC27005303F1 /* Ext+String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,29 +91,29 @@
 		9B09BEA1298B267F00939FFD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9BEA998A2A145F0300066F87 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9BEA99992A155D0F00066F87 /* FirebaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHandler.swift; sourceTree = "<group>"; };
-		AF205BD02A1727E4005303F1 /* LocalizedAlertError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedAlertError.swift; sourceTree = "<group>"; };
-		AF205BD12A1727E4005303F1 /* PantryIngredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryIngredient.swift; sourceTree = "<group>"; };
-		AF205BD22A1727E4005303F1 /* Col.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Col.swift; sourceTree = "<group>"; };
-		AF205BD32A1727E4005303F1 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
-		AF205BD42A1727E4005303F1 /* GroupedItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedItems.swift; sourceTree = "<group>"; };
-		AF205BD52A1727E4005303F1 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
-		AF205BDD2A1727EA005303F1 /* Ext+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext+String.swift"; sourceTree = "<group>"; };
-		AF205BDE2A1727EA005303F1 /* Ext+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext+View.swift"; sourceTree = "<group>"; };
-		AF205BE22A1727ED005303F1 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
-		AF205BE32A1727ED005303F1 /* RecipeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
-		AF205BE42A1727ED005303F1 /* GroupButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupButtonViewModel.swift; sourceTree = "<group>"; };
-		AF205BE52A1727ED005303F1 /* RecipesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesViewModel.swift; sourceTree = "<group>"; };
-		AF205BE62A1727ED005303F1 /* SpeakIngredientsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakIngredientsViewModel.swift; sourceTree = "<group>"; };
-		AF205BE72A1727ED005303F1 /* PantryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryViewModel.swift; sourceTree = "<group>"; };
-		AF205BEF2A1727F5005303F1 /* _FlexibleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _FlexibleView.swift; sourceTree = "<group>"; };
-		AF205BF02A1727F5005303F1 /* FlexibleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlexibleView.swift; sourceTree = "<group>"; };
-		AF205BF12A1727F5005303F1 /* SpeakIngredients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakIngredients.swift; sourceTree = "<group>"; };
-		AF205BF22A1727F5005303F1 /* BackgroundBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundBlurView.swift; sourceTree = "<group>"; };
-		AF205BF32A1727F5005303F1 /* GroupedItemButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedItemButton.swift; sourceTree = "<group>"; };
-		AF205BF42A1727F5005303F1 /* RecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
-		AF205BF52A1727F5005303F1 /* PlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
 		AF205BFD2A172A12005303F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		AF205BFE2A174071005303F1 /* MyCartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCartViewModel.swift; sourceTree = "<group>"; };
+		AF205C042A17BBF2005303F1 /* RecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
+		AF205C052A17BBF2005303F1 /* GroupedItemButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedItemButton.swift; sourceTree = "<group>"; };
+		AF205C062A17BBF3005303F1 /* _FlexibleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _FlexibleView.swift; sourceTree = "<group>"; };
+		AF205C072A17BBF3005303F1 /* PlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayButton.swift; sourceTree = "<group>"; };
+		AF205C082A17BBF3005303F1 /* SpeakIngredients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakIngredients.swift; sourceTree = "<group>"; };
+		AF205C092A17BBF3005303F1 /* FlexibleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlexibleView.swift; sourceTree = "<group>"; };
+		AF205C0A2A17BBF3005303F1 /* BackgroundBlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundBlurView.swift; sourceTree = "<group>"; };
+		AF205C122A17BBFB005303F1 /* SpeakIngredientsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeakIngredientsViewModel.swift; sourceTree = "<group>"; };
+		AF205C132A17BBFB005303F1 /* MyCartViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCartViewModel.swift; sourceTree = "<group>"; };
+		AF205C142A17BBFB005303F1 /* RecipesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipesViewModel.swift; sourceTree = "<group>"; };
+		AF205C152A17BBFB005303F1 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
+		AF205C162A17BBFB005303F1 /* PantryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryViewModel.swift; sourceTree = "<group>"; };
+		AF205C172A17BBFC005303F1 /* GroupButtonViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupButtonViewModel.swift; sourceTree = "<group>"; };
+		AF205C182A17BBFC005303F1 /* RecipeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeViewModel.swift; sourceTree = "<group>"; };
+		AF205C202A17BC1B005303F1 /* LocalizedAlertError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalizedAlertError.swift; sourceTree = "<group>"; };
+		AF205C212A17BC1C005303F1 /* PantryIngredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PantryIngredient.swift; sourceTree = "<group>"; };
+		AF205C222A17BC1C005303F1 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+		AF205C232A17BC1C005303F1 /* Ingredient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		AF205C242A17BC1C005303F1 /* Col.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Col.swift; sourceTree = "<group>"; };
+		AF205C252A17BC1C005303F1 /* GroupedItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedItems.swift; sourceTree = "<group>"; };
+		AF205C2C2A17BC27005303F1 /* Ext+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext+View.swift"; sourceTree = "<group>"; };
+		AF205C2D2A17BC27005303F1 /* Ext+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext+String.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,10 +195,10 @@
 			isa = PBXGroup;
 			children = (
 				AF205BFD2A172A12005303F1 /* Info.plist */,
-				AF205BEE2A1727F5005303F1 /* Views */,
-				AF205BE12A1727ED005303F1 /* ViewModel */,
-				AF205BDC2A1727EA005303F1 /* Extensions */,
-				AF205BCF2A1727E4005303F1 /* Model */,
+				AF205C032A17B96D005303F1 /* Views */,
+				AF205C022A17B963005303F1 /* ViewModel */,
+				AF205C012A17B95C005303F1 /* Extensions */,
+				AF205C002A17B953005303F1 /* Model */,
 				9B09BE9C298B267E00939FFD /* MainPage.swift */,
 				4DE2F52A299722F7002AA1BA /* Pantry.swift */,
 				4DE2F528299722F1002AA1BA /* Recipes.swift */,
@@ -227,58 +227,54 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		AF205BCF2A1727E4005303F1 /* Model */ = {
+		AF205C002A17B953005303F1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AF205BD02A1727E4005303F1 /* LocalizedAlertError.swift */,
-				AF205BD12A1727E4005303F1 /* PantryIngredient.swift */,
-				AF205BD22A1727E4005303F1 /* Col.swift */,
-				AF205BD32A1727E4005303F1 /* Recipe.swift */,
-				AF205BD42A1727E4005303F1 /* GroupedItems.swift */,
-				AF205BD52A1727E4005303F1 /* Ingredient.swift */,
+				AF205C242A17BC1C005303F1 /* Col.swift */,
+				AF205C252A17BC1C005303F1 /* GroupedItems.swift */,
+				AF205C232A17BC1C005303F1 /* Ingredient.swift */,
+				AF205C202A17BC1B005303F1 /* LocalizedAlertError.swift */,
+				AF205C212A17BC1C005303F1 /* PantryIngredient.swift */,
+				AF205C222A17BC1C005303F1 /* Recipe.swift */,
 			);
-			name = Model;
-			path = "../../../easymeal-3/EasyMeal-iOS/EasyMeal/Model";
+			path = Model;
 			sourceTree = "<group>";
 		};
-		AF205BDC2A1727EA005303F1 /* Extensions */ = {
+		AF205C012A17B95C005303F1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				AF205BDD2A1727EA005303F1 /* Ext+String.swift */,
-				AF205BDE2A1727EA005303F1 /* Ext+View.swift */,
+				AF205C2D2A17BC27005303F1 /* Ext+String.swift */,
+				AF205C2C2A17BC27005303F1 /* Ext+View.swift */,
 			);
-			name = Extensions;
-			path = "../../../easymeal-3/EasyMeal-iOS/EasyMeal/Extensions";
+			path = Extensions;
 			sourceTree = "<group>";
 		};
-		AF205BE12A1727ED005303F1 /* ViewModel */ = {
+		AF205C022A17B963005303F1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				AF205BE22A1727ED005303F1 /* SpeechRecognizer.swift */,
-				AF205BE32A1727ED005303F1 /* RecipeViewModel.swift */,
-				AF205BE42A1727ED005303F1 /* GroupButtonViewModel.swift */,
-				AF205BE52A1727ED005303F1 /* RecipesViewModel.swift */,
-				AF205BE62A1727ED005303F1 /* SpeakIngredientsViewModel.swift */,
-				AF205BE72A1727ED005303F1 /* PantryViewModel.swift */,
-				AF205BFE2A174071005303F1 /* MyCartViewModel.swift */,
+				AF205C172A17BBFC005303F1 /* GroupButtonViewModel.swift */,
+				AF205C132A17BBFB005303F1 /* MyCartViewModel.swift */,
+				AF205C162A17BBFB005303F1 /* PantryViewModel.swift */,
+				AF205C142A17BBFB005303F1 /* RecipesViewModel.swift */,
+				AF205C182A17BBFC005303F1 /* RecipeViewModel.swift */,
+				AF205C122A17BBFB005303F1 /* SpeakIngredientsViewModel.swift */,
+				AF205C152A17BBFB005303F1 /* SpeechRecognizer.swift */,
 			);
-			name = ViewModel;
-			path = "../../../easymeal-3/EasyMeal-iOS/EasyMeal/ViewModel";
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		AF205BEE2A1727F5005303F1 /* Views */ = {
+		AF205C032A17B96D005303F1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AF205BEF2A1727F5005303F1 /* _FlexibleView.swift */,
-				AF205BF02A1727F5005303F1 /* FlexibleView.swift */,
-				AF205BF12A1727F5005303F1 /* SpeakIngredients.swift */,
-				AF205BF22A1727F5005303F1 /* BackgroundBlurView.swift */,
-				AF205BF32A1727F5005303F1 /* GroupedItemButton.swift */,
-				AF205BF42A1727F5005303F1 /* RecipeView.swift */,
-				AF205BF52A1727F5005303F1 /* PlayButton.swift */,
+				AF205C062A17BBF3005303F1 /* _FlexibleView.swift */,
+				AF205C0A2A17BBF3005303F1 /* BackgroundBlurView.swift */,
+				AF205C092A17BBF3005303F1 /* FlexibleView.swift */,
+				AF205C052A17BBF2005303F1 /* GroupedItemButton.swift */,
+				AF205C072A17BBF3005303F1 /* PlayButton.swift */,
+				AF205C042A17BBF2005303F1 /* RecipeView.swift */,
+				AF205C082A17BBF3005303F1 /* SpeakIngredients.swift */,
 			);
-			name = Views;
-			path = "../../../easymeal-3/EasyMeal-iOS/EasyMeal/Views";
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,50 +360,50 @@
 			buildActionMask = 2147483647;
 			files = (
 				4DE2F529299722F1002AA1BA /* Recipes.swift in Sources */,
-				AF205BE82A1727ED005303F1 /* SpeechRecognizer.swift in Sources */,
-				AF205BEC2A1727ED005303F1 /* SpeakIngredientsViewModel.swift in Sources */,
-				AF205BFA2A1727F5005303F1 /* GroupedItemButton.swift in Sources */,
 				4DDF433829F9EDE7008077FC /* Colors.swift in Sources */,
-				AF205BFC2A1727F5005303F1 /* PlayButton.swift in Sources */,
+				AF205C0E2A17BBF3005303F1 /* PlayButton.swift in Sources */,
+				AF205C1C2A17BBFC005303F1 /* SpeechRecognizer.swift in Sources */,
+				AF205C1B2A17BBFC005303F1 /* RecipesViewModel.swift in Sources */,
 				4D2E4F4D29AFE4CF00F68629 /* Appearance.swift in Sources */,
 				4DE2F52D299722FE002AA1BA /* MainView.swift in Sources */,
 				9B09BE9D298B267E00939FFD /* MainPage.swift in Sources */,
-				AF205BE02A1727EA005303F1 /* Ext+View.swift in Sources */,
-				AF205BE92A1727ED005303F1 /* RecipeViewModel.swift in Sources */,
 				4DE2F527299722E8002AA1BA /* Profile.swift in Sources */,
+				AF205C0B2A17BBF3005303F1 /* RecipeView.swift in Sources */,
+				AF205C0C2A17BBF3005303F1 /* GroupedItemButton.swift in Sources */,
 				9BEA999A2A155D0F00066F87 /* FirebaseHandler.swift in Sources */,
 				4DE2F52B299722F7002AA1BA /* Pantry.swift in Sources */,
-				AF205BDF2A1727EA005303F1 /* Ext+String.swift in Sources */,
-				AF205BFB2A1727F5005303F1 /* RecipeView.swift in Sources */,
-				AF205BEB2A1727ED005303F1 /* RecipesViewModel.swift in Sources */,
 				4D2E4F4929AFE4AB00F68629 /* Account.swift in Sources */,
+				AF205C1A2A17BBFC005303F1 /* MyCartViewModel.swift in Sources */,
 				9B09BE9B298B267E00939FFD /* EasyMealApp.swift in Sources */,
-				AF205BF72A1727F5005303F1 /* FlexibleView.swift in Sources */,
-				AF205BF82A1727F5005303F1 /* SpeakIngredients.swift in Sources */,
 				4D2E4F4F29AFE4D700F68629 /* Privacy.swift in Sources */,
 				4DE2F53729972326002AA1BA /* InfoThree.swift in Sources */,
-				AF205BED2A1727ED005303F1 /* PantryViewModel.swift in Sources */,
+				AF205C1E2A17BBFC005303F1 /* GroupButtonViewModel.swift in Sources */,
 				4D5A6E3129A3ACCC00614A28 /* RecipeInfo.swift in Sources */,
+				AF205C0D2A17BBF3005303F1 /* _FlexibleView.swift in Sources */,
 				4DE2F525299722E1002AA1BA /* MyCart.swift in Sources */,
-				AF205BFF2A174071005303F1 /* MyCartViewModel.swift in Sources */,
+				AF205C2A2A17BC1C005303F1 /* Col.swift in Sources */,
+				AF205C2F2A17BC27005303F1 /* Ext+String.swift in Sources */,
 				4D2E4F4729AFE48F00F68629 /* General.swift in Sources */,
-				AF205BF92A1727F5005303F1 /* BackgroundBlurView.swift in Sources */,
+				AF205C112A17BBF3005303F1 /* BackgroundBlurView.swift in Sources */,
 				4DE2F53129972312002AA1BA /* SignUp.swift in Sources */,
+				AF205C192A17BBFC005303F1 /* SpeakIngredientsViewModel.swift in Sources */,
+				AF205C1D2A17BBFC005303F1 /* PantryViewModel.swift in Sources */,
+				AF205C262A17BC1C005303F1 /* LocalizedAlertError.swift in Sources */,
 				4DE2F5392997F679002AA1BA /* TabBar.swift in Sources */,
+				AF205C1F2A17BBFC005303F1 /* RecipeViewModel.swift in Sources */,
+				AF205C272A17BC1C005303F1 /* PantryIngredient.swift in Sources */,
 				4D2E4F4B29AFE4C100F68629 /* Notifications.swift in Sources */,
-				AF205BD82A1727E4005303F1 /* Col.swift in Sources */,
-				AF205BDB2A1727E4005303F1 /* Ingredient.swift in Sources */,
 				4D2E4F5329AFE4EC00F68629 /* About.swift in Sources */,
 				4DE2F5352997231E002AA1BA /* InfoOne.swift in Sources */,
-				AF205BDA2A1727E4005303F1 /* GroupedItems.swift in Sources */,
+				AF205C292A17BC1C005303F1 /* Ingredient.swift in Sources */,
+				AF205C2E2A17BC27005303F1 /* Ext+View.swift in Sources */,
+				AF205C2B2A17BC1C005303F1 /* GroupedItems.swift in Sources */,
 				4DE2F53329972317002AA1BA /* InfoTwo.swift in Sources */,
-				AF205BEA2A1727ED005303F1 /* GroupButtonViewModel.swift in Sources */,
-				AF205BD62A1727E4005303F1 /* LocalizedAlertError.swift in Sources */,
-				AF205BF62A1727F5005303F1 /* _FlexibleView.swift in Sources */,
+				AF205C0F2A17BBF3005303F1 /* SpeakIngredients.swift in Sources */,
 				4DE2F52F29972309002AA1BA /* SignIn.swift in Sources */,
-				AF205BD92A1727E4005303F1 /* Recipe.swift in Sources */,
+				AF205C102A17BBF3005303F1 /* FlexibleView.swift in Sources */,
 				4D2E4F5129AFE4E500F68629 /* Help & Support.swift in Sources */,
-				AF205BD72A1727E4005303F1 /* PantryIngredient.swift in Sources */,
+				AF205C282A17BC1C005303F1 /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
