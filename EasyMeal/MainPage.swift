@@ -13,6 +13,7 @@ struct MainPage: View {
     
     var body: some View {
         NavigationView{
+            // TEST TEST
             VStack {
                 Image("logo")
                     .resizable()
