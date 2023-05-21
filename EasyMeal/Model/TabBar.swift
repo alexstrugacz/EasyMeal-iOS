@@ -1,13 +1,5 @@
 import SwiftUI
 
-enum Tab: String, CaseIterable {
-    case refrigerator
-    case cooktop
-    case mic
-    case cart
-    case person
-}
-
 struct CustomTabBar: View {
     
     var displaySpeakIngredients: () -> Void

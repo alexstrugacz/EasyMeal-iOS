@@ -21,10 +21,9 @@ struct MainView<Content: View>: View {
     }
     
     func openRecipes() {
-        tabSelected = .refrigerator
+        tabSelected = .cooktop
     }
 
-    
     
     var body: some View {
         
