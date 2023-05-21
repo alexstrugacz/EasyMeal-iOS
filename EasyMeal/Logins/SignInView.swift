@@ -13,6 +13,7 @@ struct SignInView: View {
     @State private var logoOpacity = 0.0
     @Binding var userIsLoggedIn:Bool
     @Binding var showSignUpView: Bool
+    @Binding var loginTab: LoginTabs
     @EnvironmentObject var firebaseManager: FirebaseManager
     var body: some View {
         ZStack {
@@ -106,7 +107,7 @@ struct SignInView: View {
                     .cornerRadius(10)
                     
                     Button(action: {
-                        showSignUpView = true
+                        loginTab = .signUp
                     }) {
                         Text("I'm New")
                             .frame(height: 50)
