@@ -38,11 +38,17 @@ struct ContentView: View {
                     }
 //                    .offset(x: CGFloat(contentViewModel.currentPage) * -UIScreen.main.bounds.width, y: 0)
                     .onChange(of: contentViewModel.currentPage) { newValue in
-                        scrollViewProxy.scrollTo(newValue, anchor: .center)
+                        print(contentViewModel.moved)
 
+//                        if (contentViewModel.moved) {
+//                            contentViewModel.moved = false
+//                        } else {
+                        scrollViewProxy.scrollTo(newValue, anchor: .center)
+                        
                         if newValue == PAGES.count - 1 {
                             print("transition")
                         }
+//                        }
                         
                     }
                     .onAppear {
@@ -51,12 +57,12 @@ struct ContentView: View {
                 }
             }
             .gesture(
-               DragGesture().onChanged { value in
-                   print(value.translation.width)
-                   if value.translation.width > 0 {
+                DragGesture(minimumDistance: 10).onChanged { value in
+                   print(value.translation)
+                   if value.translation.width > 10 {
                        print("GO BACK")
                       contentViewModel.prevPage()
-                  } else {
+                   } else if value.translation.width < -10{
                       print("NEXT")
                       contentViewModel.nextPage()
                   }
@@ -76,7 +82,6 @@ struct ContentView: View {
                             .padding(.trailing, 4)
                             .id(index)
                     }
-                        
                 }
             }
             

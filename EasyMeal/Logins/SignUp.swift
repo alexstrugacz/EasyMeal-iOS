@@ -5,6 +5,7 @@ import Firebase
 struct SignUp: View {
     @State private var email: String = ""
     @State private var password: String = ""
+    @Binding var loginTab: LoginTabs
     
     @EnvironmentObject var firebaseManager: FirebaseManager
     
@@ -42,6 +43,7 @@ struct SignUp: View {
                                 Image(systemName: "envelope")
                                     .foregroundColor(Color(hex: "747474"))
                                 TextField("Email", text: $email)
+                                    .textInputAutocapitalization(.never)
                                     .keyboardType(.emailAddress)
                             }
                             .offset(x: 50, y: -39)
@@ -102,7 +104,7 @@ struct SignUp: View {
                             }) {
                                 Image(systemName: "apple.logo")
                                     .foregroundColor(Color.white)
-                                
+
                                 Text("Sign Up with Apple")
                                     .frame(height: 50)
                                     .cornerRadius(20)
@@ -113,12 +115,23 @@ struct SignUp: View {
                             .background(Color.black)
                             .cornerRadius(10)
                             .offset(y: -15)
-                            
-                            Text("By using EasyMeal, you agree to our Terms of Service")
-                                .bold()
-                                .foregroundColor(Color(hex: "7B7A7A"))
-                                .font(.caption)
-                                .offset(y: -15)
+                            VStack {
+                                Text("By using EasyMeal, you agree to our Terms of Service")
+                                    .bold()
+                                    .foregroundColor(Color(hex: "7B7A7A"))
+                                    .font(.caption)
+                                    .offset(y: -15)
+                                
+                                Button {
+                                    loginTab = .signIn
+                                } label: {
+                                    Text("Back to Sign In")
+                                        .frame(width: 234, height: 50)
+                                        .cornerRadius(20)
+                                        .foregroundColor(.blue)
+                                        .bold()
+                                }
+                            }
                         }
                         .frame(height: 500, alignment: .top)
                     }
@@ -126,13 +139,6 @@ struct SignUp: View {
                 }
             }
         }
-    }
-}
-
-
-struct SignUp_Previews: PreviewProvider {
-    static var previews: some View {
-        SignUp()
     }
 }
 
