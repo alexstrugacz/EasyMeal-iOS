@@ -10,7 +10,7 @@ import SwiftUI
 class ContentViewModel: ObservableObject {
     var triggerNextPage: () -> Void;
     @Published var currentPage = 0
-    @Published var displayedPage = 0
+    
     
     init(triggerNextPage: @escaping () -> Void ) {
         self.triggerNextPage = triggerNextPage
@@ -20,7 +20,6 @@ class ContentViewModel: ObservableObject {
 
         let nextPage = (currentPage + 1) % (PAGES.count)
         print("next page", nextPage, currentPage)
-        displayedPage = nextPage;
         currentPage = nextPage
         if nextPage == 0 {
             triggerNextPage()
@@ -31,7 +30,6 @@ class ContentViewModel: ObservableObject {
         let nextPage = (currentPage - 1) % (PAGES.count)
         print("next page", nextPage, currentPage)
         if nextPage>=0 {
-            displayedPage = nextPage
             currentPage = nextPage
         }
     }

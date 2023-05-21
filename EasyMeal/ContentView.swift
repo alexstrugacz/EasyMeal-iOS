@@ -38,14 +38,12 @@ struct ContentView: View {
                     }
 //                    .offset(x: CGFloat(contentViewModel.currentPage) * -UIScreen.main.bounds.width, y: 0)
                     .onChange(of: contentViewModel.currentPage) { newValue in
-                        if contentViewModel.displayedPage != contentViewModel.currentPage {
-                            scrollViewProxy.scrollTo(newValue, anchor: .center)
+                        scrollViewProxy.scrollTo(newValue, anchor: .center)
 
-                            if newValue == PAGES.count - 1 {
-                                print("transition")
-                            }
-                            contentViewModel.displayedPage = contentViewModel.currentPage
+                        if newValue == PAGES.count - 1 {
+                            print("transition")
                         }
+                        
                     }
                     .onAppear {
                         UIScrollView.appearance().isPagingEnabled = true
@@ -67,7 +65,6 @@ struct ContentView: View {
             HStack {
                 ForEach(0..<PAGES.count) { index in
                     Button {
-                        contentViewModel.displayedPage = index
                         contentViewModel.currentPage = index
                     } label: {
                         
