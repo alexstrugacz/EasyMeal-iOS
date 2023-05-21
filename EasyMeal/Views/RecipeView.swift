@@ -58,9 +58,6 @@ struct RecipeView: View {
                         Text("\(String(format: "%.2f", round(recipe.healthScore*10)/10))/10 Health Score")
                             .font(.subheadline)
                             .frame(maxWidth: .infinity, alignment: .leading)
-                        Text("\(String(format: "%.2f", round(recipe.healthScore*10)/10))/10 Health Score")
-                            .font(.subheadline)
-                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     Spacer()
                 }
