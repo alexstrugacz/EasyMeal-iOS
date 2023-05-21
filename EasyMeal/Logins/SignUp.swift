@@ -42,6 +42,7 @@ struct SignUp: View {
                                 Image(systemName: "envelope")
                                     .foregroundColor(Color(hex: "747474"))
                                 TextField("Email", text: $email)
+                                    .keyboardType(.emailAddress)
                             }
                             .offset(x: 50, y: -39)
                             

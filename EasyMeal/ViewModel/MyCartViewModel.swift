@@ -2,7 +2,7 @@
 //  MyCartViewModel.swift
 //  EasyMeal
 //
-//  Created by Pink Flamingo on 5/19/23.
+//  Created by Miguel Aenlle on 5/19/23.
 //
 
 import SwiftUI

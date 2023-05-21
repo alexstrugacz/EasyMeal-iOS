@@ -66,7 +66,27 @@ class PantryViewModel: ObservableObject {
                 
                 
                 let encodedItems = self.items.map { $0.toDictionary() }
-                let groupedData: [String: [PantryIngredient]] = Dictionary(grouping: self.items, by: { $0.category })
+                
+                var groupedData: [String: [PantryIngredient]] = Dictionary(grouping: self.items, by: { $0.category })
+                
+                let PRIORITY_KEYS = [
+                    "Grains",
+                    "Vegetables",
+                    "Fruits",
+                    "Baking"
+                ]
+                
+                for key in PRIORITY_KEYS {
+                    guard let currentGroupedItems: [PantryIngredient] = groupedData[key] else {
+                        self.loading = false
+                        return
+                    }
+                    let groupItem: GroupedItems = GroupedItems(name: key, pantryIngredients: currentGroupedItems.sorted(by: { a, b in
+                        return a.name<b.name
+                    }))
+                    self.addGroupedItem(item: groupItem)
+                    groupedData.removeValue(forKey: key);
+                }
                 
                 
                 for key in groupedData.keys.sorted() {

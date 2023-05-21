@@ -20,32 +20,32 @@ struct MyCart: View {
         VStack{
             
             VStack{
-                HStack{
+                HStack(alignment:.center){
                     
                     Spacer()
+                
                     Text("My Cart")
                         .font(.title)
                         .bold()
                         .foregroundColor(.black)
-                        .padding(.leading, 42)
-                        .padding(.bottom, 30)
+                        .padding(.leading, 35)
 
                     Spacer()
                     Button(action: {
                         self.isShowingSettings.toggle()
-                        
+
                     }) {
-                        Image("3dots")
-                            .resizable()
-                            .frame(width: 20, height: 20)
-                            .font(.system(size: 20))
-                            .foregroundColor(.black)
-                            
+                        ZStack {
+                            Image("3dots")
+                                .resizable()
+                                .font(.system(size: 20))
+                                .foregroundColor(.black)
+                        }
+                        .frame(width: 35, height: 35)
                     }
-                    .padding(.trailing, 20)
-                    
                 }
-                .offset(y:20)
+                .padding(.horizontal, 20)
+                .padding(.top, 20)
                 
                 if isShowingSettings {
                     HStack {
@@ -53,14 +53,15 @@ struct MyCart: View {
                             // Mark All Complete button action
                             myCartViewModel.checkItems()
                         }) {
-                            HStack() {
-                                Image(systemName: "checkmark")
-                                Text("Check Mark All")
-
-                            }
-                            .foregroundColor(custGreen)
-                            .padding(.top,10)
-                            .padding(.leading,20)
+                            ZStack {
+                                HStack() {
+                                    Image(systemName: "checkmark")
+                                    Text("Check Mark All")
+                                }
+                                .foregroundColor(custGreen)
+                                .padding(.top,10)
+                                .padding(.leading,20)
+                            }.padding(10)
 
                         }
                         
@@ -69,18 +70,19 @@ struct MyCart: View {
                         Button(action: {
                             myCartViewModel.deleteChecked()
                         }) {
-                            HStack {
-                                Image(systemName: "trash")
-                                Text("Delete Checked")
+                            ZStack {
+                                HStack {
+                                    Image(systemName: "trash")
+                                    Text("Delete Checked")
 
-                            }
-                            .foregroundColor(Color(hex: "#ff0800"))
-                            .padding(.top,10)
-                            .padding(.trailing,20)
+                                }
+                                .foregroundColor(Color(hex: "#ff0800"))
+                                .padding(.top,10)
+                                .padding(.trailing,20)
+                            }.padding(10)
 
                         }
                     }
-                    .padding(.top, 10)
 //                    ZStack {
 //                        Color.gray.opacity(0.0)
 //                            //.ignoresSafeArea()
@@ -213,36 +215,39 @@ struct MyCart: View {
                 ScrollView {
                     VStack(alignment: .leading) {
                         ForEach(myCartViewModel.items, id: \.id) { item in
-                            ZStack {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(height: 60)
-                                    .foregroundColor(.white)
-                                
-                                HStack {
-                                    if item.isChecked {
-                                        Image(systemName: "checkmark.square")
-                                            .foregroundColor(.green)
-                                            .padding(.leading, 15) // add leading padding
-                                    } else {
-                                        Image(systemName: "square")
+                            Button {
+                                if let index = myCartViewModel.items.firstIndex(where: { $0.id == item.id }) {
+                                    myCartViewModel.items[index].isChecked.toggle()
+                                    myCartViewModel.saveItems()
+                                }
+                            } label: {
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .frame(height: 60)
+                                        .foregroundColor(.white)
+                                    
+                                    HStack {
+                                        if item.isChecked {
+                                            Image(systemName: "checkmark.square")
+                                                .foregroundColor(.green)
+                                                .padding(.leading, 15) // add leading padding
+                                        } else {
+                                            Image(systemName: "square")
+                                                .foregroundColor(.black)
+                                                .padding(.leading, 15) // add leading padding
+                                        }
+                                        
+                                        Text(item.name)
                                             .foregroundColor(.black)
-                                            .padding(.leading, 15) // add leading padding
+                                            .font(.subheadline)
+                                        
+                                        Spacer()
                                     }
+                                    .padding(.vertical, 10)
                                     
-                                    Text(item.name)
-                                        .font(.subheadline)
-                                    
-                                    Spacer()
+                                    .contentShape(Rectangle())
                                 }
-                                .padding(.vertical, 10)
-                                
-                                .contentShape(Rectangle())
-                                .onTapGesture {
-                                    if let index = myCartViewModel.items.firstIndex(where: { $0.id == item.id }) {
-                                        myCartViewModel.items[index].isChecked.toggle()
-                                        myCartViewModel.saveItems()
-                                    }
-                                }
+                                .cornerRadius(10)
                                 .gesture(
                                     DragGesture()
                                         .onChanged({ value in
@@ -250,6 +255,7 @@ struct MyCart: View {
                                                 return
                                             }
                                             myCartViewModel.items[index].offset = value.translation.width
+                                            
                                         })
                                         .onEnded({ value in
                                             guard let index = myCartViewModel.items.firstIndex(where: { $0.id == item.id }) else {
@@ -262,12 +268,12 @@ struct MyCart: View {
                                             } else {
                                                 myCartViewModel.items[index].offset = 0
                                             }
+                                            myCartViewModel.saveItems()
                                         })
                                 )
                                 .offset(x: item.offset)
                                 .animation(.spring())
                             }
-                            .cornerRadius(10)
                         }
                         
                         
