@@ -43,9 +43,7 @@ struct MainPage: View {
                         .shadow(color: custShadow, radius: 1, x: 1, y: 1)
                 }
                 .offset(y:50)
-                NavigationLink(destination: InfoOne(), isActive: $showView) {
-                                    EmptyView()
-                                }
+               
                 
                 
                 
