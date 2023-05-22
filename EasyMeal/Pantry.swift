@@ -30,7 +30,7 @@ struct Pantry: View {
                         .padding([.top], 20)
                         .multilineTextAlignment(.leading)
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        
+                    
                     
                     Button(action: {
                         displaySpeakIngredients()
@@ -50,29 +50,48 @@ struct Pantry: View {
                         .cornerRadius(10)
                     }
                 
-                
-                    Button(action: {
-                        groupedItems.loadData()
-                    }) {
-                        HStack {
-                            Image(systemName: "arrow.clockwise")
-                                .font(.system(size: 18))
-                            Text("Reload Data")
-                                .fontWeight(.regular)
-                        }
-                        .foregroundColor(.blue)
-                    }
                     
-                    
-                    if (groupedItems.loading) {
-                        VStack {
-                            HStack(alignment: .center) {
-                                ProgressView()
+                    if (!groupedItems.loading) {
+                        Button(action: {
+                            groupedItems.resetData()
+                        }) {
+                            HStack {
+                                Image(systemName: "xmark")
+                                    .font(.system(size: 18))
+                                Text("Reset Pantry")
+                                    .fontWeight(.regular)
                             }
-                            .padding(.top, 20)
+                            .foregroundColor(.red)
                         }
+                        .padding(.top, 20)
                     }
+                
+//                    Button(action: {
+//                        groupedItems.loadData()
+//                    }) {
+//                        HStack {
+//                            Image(systemName: "arrow.clockwise")
+//                                .font(.system(size: 18))
+//                            Text("Reload Data")
+//                                .fontWeight(.regular)
+//                        }
+//                        .foregroundColor(.blue)
+//                    }
                     
+                    
+//                    if (groupedItems.loading) {
+//                        VStack {
+//                            Spacer()
+//                            HStack(alignment: .center) {
+//                                Spacer()
+//                                ProgressView()
+//                                Spacer()
+//                            }
+//                            .padding(.top, 20)
+//                            Spacer()
+//                        }
+//                    }
+//                    
                     ForEach(groupedItems.groupedItems) { item in
                         VStack(alignment: .leading) {
                             Text(item.name)
@@ -95,21 +114,6 @@ struct Pantry: View {
                                 .padding(.horizontal, 1)
                         )
                     }
-                    
-                    if (!groupedItems.loading) {
-                        Button(action: {
-                            groupedItems.resetData()
-                        }) {
-                            HStack {
-                                Image(systemName: "xmark")
-                                    .font(.system(size: 18))
-                                Text("Reset Pantry")
-                                    .fontWeight(.regular)
-                            }
-                            .foregroundColor(.red)
-                        }
-                        .padding(.top, 20)
-                    }
                 }
                 .padding(.bottom, 200)
             }
@@ -118,9 +122,17 @@ struct Pantry: View {
             Spacer()
         }
         .background(Color(red: 240, green: 240, blue: 240))
+        .refreshable {
+            
+            groupedItems.loadData()
+        }
         .fullScreenCover(isPresented: $speakIngredients) {
             SpeakIngredients(newCloseSpeakIngredients: closeSpeakIngredients)
         }
+        .onAppear {
+            UIScrollView.appearance().isPagingEnabled = false
+        }
+
     }
     
 }

@@ -20,18 +20,42 @@ import Firebase
 
 
 struct SignIn: View {
+    @State var isActive: Bool = false
     @ObservedObject var signInViewModel: SignInViewModel = SignInViewModel()
     @EnvironmentObject var firebaseManager: FirebaseManager
     
     var body: some View {
-        if firebaseManager.isLoggedIn {
-            MainView(initialTab: .mic, content: {})
-        } else if signInViewModel.loginTab == .signUp {
-            SignUp(loginTab: $signInViewModel.loginTab)
-        } else if signInViewModel.loginTab == .signIn {
-            SignInView(userIsLoggedIn: $signInViewModel.userIsLoggedIn, showSignUpView: $signInViewModel.showSignUpView, loginTab: $signInViewModel.loginTab)
-        } else if signInViewModel.loginTab == .preview {
-            ContentView(triggerNextPage: signInViewModel.triggerNextPage)
+        ZStack {
+            if (isActive) {
+                if firebaseManager.isLoggedIn {
+                    MainView(initialTab: .mic, content: {})
+                } else if signInViewModel.loginTab == .signUp {
+                    SignUp(loginTab: $signInViewModel.loginTab)
+                } else if signInViewModel.loginTab == .signIn {
+                    SignInView(userIsLoggedIn: $signInViewModel.userIsLoggedIn, showSignUpView: $signInViewModel.showSignUpView, loginTab: $signInViewModel.loginTab)
+                } else if signInViewModel.loginTab == .preview {
+                    ContentView(triggerNextPage: signInViewModel.triggerNextPage)
+                }
+            } else {
+                HStack() {
+                    Spacer()
+                    Image("logo")
+                        .resizable()
+                        .frame(width: 50, height: 83)
+                        .aspectRatio(contentMode: .fill)
+                        .padding(.trailing, 8)
+                        .shadow(radius: 3)
+                    Text("EasyMeal")
+                        .bold()
+                        .foregroundColor(custGreen)
+                        .font(.system(size: 45))
+                    Spacer()
+                }
+            }
+        }.onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                isActive = true
+            }
         }
         
     }
