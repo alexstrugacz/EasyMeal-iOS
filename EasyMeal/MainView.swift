@@ -35,15 +35,57 @@ struct MainView<Content: View>: View {
                         TabView(selection: $tabSelected) {
                             if tabSelected == .refrigerator {
                                 Pantry(speakIngredients: $displayingSpeakIngredients, displaySpeakIngredients: displaySpeakIngredients)
+                                    .opacity(tabSelected == .refrigerator ? 1.0 : 0.0) // Set opacity based on tab selection
+                                    .animation(.easeInOut)
                             } else if tabSelected == .cooktop {
                                 Recipes(openCart: openCart)
+                                    .opacity(tabSelected == .cooktop ? 1.0 : 0.0) // Set opacity based on tab selection
+                                    .animation(.easeInOut)
                             } else if tabSelected == .cart {
                                 MyCart(newOpenRecipes: openRecipes)
+                                    .opacity(tabSelected == .cart ? 1.0 : 0.0) // Set opacity based on tab selection
+                                    .animation(.easeInOut)
                             } else if tabSelected == .person {
                                 Profile()
+                                    .opacity(tabSelected == .person ? 1.0 : 0.0) // Set opacity based on tab selection
+                                           .offset(x: tabSelected == .person ? 0 : -1000, y: 0) // Initial offset to the left
+                                           .animation(.easeInOut)
+                                    
                             }
                         }
                         .background(Color.clear)
+                        .gesture(
+                            DragGesture().onEnded { value in
+                                if value.translation.width < -100 {
+                                    switch tabSelected {
+                                    case .refrigerator:
+                                        tabSelected = .cooktop
+                                    case .cooktop:
+                                        tabSelected = .cart
+                                    case .cart:
+                                        tabSelected = .person
+                                    case .person:
+                                        break // The last tab, no further swipe action
+                                    case .mic:
+                                        tabSelected = .mic
+                                    }
+                                } else if value.translation.width > 100 {
+                                    switch tabSelected {
+                                    case .refrigerator:
+                                        break // The first tab, no further swipe action
+                                    case .cooktop:
+                                        tabSelected = .refrigerator
+                                    case .cart:
+                                        tabSelected = .cooktop
+                                    case .person:
+                                        tabSelected = .cart
+                                    case .mic:
+                                        tabSelected = .mic
+                                        
+                                    }
+                                }
+                            }
+                        )
                     }
                     VStack {
                         Spacer()
@@ -74,5 +116,4 @@ struct MainView<Content: View>: View {
         }
 
     }
-    
 }
