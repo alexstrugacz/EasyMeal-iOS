@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import Firebase
+import AuthenticationServices
+
 
 struct SignInView: View {
     @State private var email: String = ""
@@ -124,8 +127,19 @@ struct SignInView: View {
                     
                 }.frame(width: 350, height: 50)
                 
+
+                SignInWithAppleButton(.signIn) { request in
+                    firebaseManager.signUpWithApple(request)
+                } onCompletion: { request in
+                    firebaseManager.signInWithApple(request)
+                }
+                .frame(width: 350, height: 50)
+                .background(Color.black)
+                .cornerRadius(10)
+                
 //                Button(action: {
 //                    // Sign in with apple functionality
+//                    firebaseManager.signInWithApple()
 //                }) {
 //                    Image(systemName: "apple.logo")
 //                        .foregroundColor(Color.white)
