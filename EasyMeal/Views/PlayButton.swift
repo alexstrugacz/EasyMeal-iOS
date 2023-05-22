@@ -15,10 +15,14 @@ struct PlayButton: View {
     var body: some View {
         
             Button {
-                startRecording()
+                if playing {
+                    stopRecording()
+                } else {
+                    startRecording()
+                }
             } label: {
                 ZStack {
-                    Image(systemName: "play.fill")
+                    Image(systemName: playing ? "pause.fill" : "play.fill")
                         .font(.system(size: 50))
                         .foregroundColor(.white)
                 }

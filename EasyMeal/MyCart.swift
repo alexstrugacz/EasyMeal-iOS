@@ -279,7 +279,7 @@ struct MyCart: View {
                         
                     
                         
-                    }3
+                    }
                     .padding(.bottom, 300)
                     
                 }
