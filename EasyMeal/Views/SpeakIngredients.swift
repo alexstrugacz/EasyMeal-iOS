@@ -212,15 +212,17 @@ struct SpeakIngredients: View {
                         Spacer()
                     }
                 }
-                HStack(alignment: .center) {
-                    Spacer()
-                    PlayButton(playing: $speakIngredientsViewModel.recording, startRecording: startRecording, stopRecording: stopRecording)
-                    Spacer()
-                    
-                }
-                .padding(.bottom, 30)
-                .padding(.top, 20)
+                VStack {
+                    HStack(alignment: .center) {
+                        Spacer()
+                        PlayButton(playing: $speakIngredientsViewModel.recording, startRecording: startRecording, stopRecording: stopRecording)
+                        Spacer()
+                        
+                    }
+                    .padding(.bottom, 30)
+                    .padding(.top, 20)
                 
+                }
                 if( speakIngredientsViewModel.recorded && !speakIngredientsViewModel.recording && (speakIngredientsViewModel.text.trimmingCharacters(in: .whitespacesAndNewlines).count>0)) {
                     Spacer()
                     Button {

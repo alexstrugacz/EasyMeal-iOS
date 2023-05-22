@@ -45,7 +45,7 @@ struct MyCart: View {
                     }
                 }
                 .padding(.horizontal, 20)
-                .padding(.top, 20)
+                .padding(.top, 25)
                 
                 if isShowingSettings {
                     HStack {
@@ -212,7 +212,7 @@ struct MyCart: View {
 
             VStack {
                 
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
                         ForEach(myCartViewModel.items, id: \.id) { item in
                             Button {
@@ -280,6 +280,7 @@ struct MyCart: View {
                     
                         
                     }
+                    .padding(.bottom, 300)
                     
                 }
                 .onTapGesture {

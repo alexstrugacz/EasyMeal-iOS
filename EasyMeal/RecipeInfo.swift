@@ -30,9 +30,11 @@ struct RecipeInfo: View {
         for ingredient in recipe.ingredients {
             if !ingredient.available {
                 if (!itemNames.contains(ingredient.name.capitalized)) {
-                    let shoppingItem: ShoppingItem = ShoppingItem(name: ingredient.name.capitalized, isChecked: false)
-                    items.append(shoppingItem)
-                    missingIngredients.append(ingredient.name.capitalized)
+                    if ingredient.name.trimmingCharacters(in: .whitespacesAndNewlines).count > 0 {
+                        let shoppingItem: ShoppingItem = ShoppingItem(name: ingredient.name.capitalized, isChecked: false)
+                        items.append(shoppingItem)
+                        missingIngredients.append(ingredient.name.capitalized)
+                    }
                 }
             }
         }
@@ -45,14 +47,14 @@ struct RecipeInfo: View {
         
     var body: some View {
         VStack {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 
                 AsyncImage(url: URL(string: recipe.url)) { image in
                     image
                         .resizable()
-                        .aspectRatio(contentMode: .fit)
+                        .aspectRatio(contentMode: .fill)
                         .frame(width: 300, height: 300)
-                        .cornerRadius(30)
+                        .cornerRadius(10)
                 } placeholder: {
                     
                         ZStack {
@@ -66,6 +68,7 @@ struct RecipeInfo: View {
                         .cornerRadius(30)
                     
                 }
+                .padding(.vertical, 30)
 
                     
                 
@@ -87,6 +90,7 @@ struct RecipeInfo: View {
                             .frame(width: 120, height: 30)
                             .overlay(
                                 Text("See Recipe")
+                                    .font(.system(size: 18))
                                     .foregroundColor(.white)
                                     .padding(.vertical, 10)
                             )
@@ -115,7 +119,7 @@ struct RecipeInfo: View {
                                 NutrientRowView(nutrientData: nutrData)
                             }
                             if (isExpanded) {
-                                ForEach(recipeViewModel.nutrientData[2...]) { nutrData in
+                                ForEach(recipeViewModel.nutrientData[3...]) { nutrData in
                                     NutrientRowView(nutrientData: nutrData)
                                 }
                             }
@@ -176,6 +180,7 @@ struct RecipeInfo: View {
                                 .frame(width: 120, height: 30)
                                 .overlay(
                                     Text("Add to Cart")
+                                        .font(.system(size: 18))
                                         .foregroundColor(.white)
                                         .padding(.vertical, 10)
                                 )
