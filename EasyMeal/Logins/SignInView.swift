@@ -124,20 +124,20 @@ struct SignInView: View {
                     
                 }.frame(width: 350, height: 50)
                 
-                Button(action: {
-                    // Sign in with apple functionality
-                }) {
-                    Image(systemName: "apple.logo")
-                        .foregroundColor(Color.white)
-                    Text("Sign In with Apple")
-                        .frame(height: 50)
-                        .cornerRadius(20)
-                        .foregroundColor(Color.white)
-                        .bold()
-                }
-                .frame(width: 350, height: 50)
-                .background(Color.black)
-                .cornerRadius(10)
+//                Button(action: {
+//                    // Sign in with apple functionality
+//                }) {
+//                    Image(systemName: "apple.logo")
+//                        .foregroundColor(Color.white)
+//                    Text("Sign In with Apple")
+//                        .frame(height: 50)
+//                        .cornerRadius(20)
+//                        .foregroundColor(Color.white)
+//                        .bold()
+//                }
+//                .frame(width: 350, height: 50)
+//                .background(Color.black)
+//                .cornerRadius(10)
                 
             }
             .frame(height: 500, alignment: .top)

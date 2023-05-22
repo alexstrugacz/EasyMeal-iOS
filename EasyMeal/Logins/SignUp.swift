@@ -99,22 +99,23 @@ struct SignUp: View {
                             }
                             .frame(width: 350, height: 50)
                             
-                            Button(action: {
-                                // Sign up with apple functionality
-                            }) {
-                                Image(systemName: "apple.logo")
-                                    .foregroundColor(Color.white)
-
-                                Text("Sign Up with Apple")
-                                    .frame(height: 50)
-                                    .cornerRadius(20)
-                                    .foregroundColor(Color.white)
-                                    .bold()
-                            }
-                            .frame(width: 350, height: 50)
-                            .background(Color.black)
-                            .cornerRadius(10)
-                            .offset(y: -15)
+//                            Button(action: {
+//                                // Sign up with apple functionality
+//                            }) {
+//                                Image(systemName: "apple.logo")
+//                                    .foregroundColor(Color.white)
+//
+//                                Text("Sign Up with Apple")
+//                                    .frame(height: 50)
+//                                    .cornerRadius(20)
+//                                    .foregroundColor(Color.white)
+//                                    .bold()
+//                            }
+//                            .frame(width: 350, height: 50)
+//                            .background(Color.black)
+//                            .cornerRadius(10)
+//                            .offset(y: -15)
+                            
                             VStack {
                                 Text("By using EasyMeal, you agree to our Terms of Service")
                                     .bold()
