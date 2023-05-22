@@ -22,7 +22,7 @@ struct MainView<Content: View>: View {
     }
     
     func openRecipes() {
-        tabSelected = .cooktop
+        tabSelected = .book
     }
 
     
@@ -37,9 +37,9 @@ struct MainView<Content: View>: View {
                                 Pantry(speakIngredients: $displayingSpeakIngredients, displaySpeakIngredients: displaySpeakIngredients)
                                     .opacity(tabSelected == .refrigerator ? 1.0 : 0.0) // Set opacity based on tab selection
                                     .animation(.easeInOut)
-                            } else if tabSelected == .cooktop {
+                            } else if tabSelected == .book {
                                 Recipes(openCart: openCart)
-                                    .opacity(tabSelected == .cooktop ? 1.0 : 0.0) // Set opacity based on tab selection
+                                    .opacity(tabSelected == .book ? 1.0 : 0.0) // Set opacity based on tab selection
                                     .animation(.easeInOut)
                             } else if tabSelected == .cart {
                                 MyCart(newOpenRecipes: openRecipes)
@@ -59,8 +59,8 @@ struct MainView<Content: View>: View {
                                 if value.translation.width < -100 {
                                     switch tabSelected {
                                     case .refrigerator:
-                                        tabSelected = .cooktop
-                                    case .cooktop:
+                                        tabSelected = .book
+                                    case .book:
                                         tabSelected = .cart
                                     case .cart:
                                         tabSelected = .person
@@ -73,10 +73,10 @@ struct MainView<Content: View>: View {
                                     switch tabSelected {
                                     case .refrigerator:
                                         break // The first tab, no further swipe action
-                                    case .cooktop:
+                                    case .book:
                                         tabSelected = .refrigerator
                                     case .cart:
-                                        tabSelected = .cooktop
+                                        tabSelected = .book
                                     case .person:
                                         tabSelected = .cart
                                     case .mic:

@@ -9,7 +9,7 @@ import SwiftUI
 
 enum Tab: String, CaseIterable {
     case refrigerator
-    case cooktop
+    case book
     case mic
     case cart
     case person

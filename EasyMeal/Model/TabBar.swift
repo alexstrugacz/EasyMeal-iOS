@@ -12,7 +12,7 @@ struct CustomTabBar: View {
         switch selectedTab {
         case .refrigerator:
             return .white
-        case .cooktop:
+        case .book:
             return .white
         case .cart:
             return .white
