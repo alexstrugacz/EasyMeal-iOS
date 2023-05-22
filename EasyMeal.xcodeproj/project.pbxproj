@@ -14,6 +14,8 @@
 		4D2E4F4F29AFE4D700F68629 /* Privacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E4F4E29AFE4D700F68629 /* Privacy.swift */; };
 		4D2E4F5129AFE4E500F68629 /* Help & Support.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E4F5029AFE4E500F68629 /* Help & Support.swift */; };
 		4D2E4F5329AFE4EC00F68629 /* About.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D2E4F5229AFE4EC00F68629 /* About.swift */; };
+		4D4534E02A1BB17E009C2688 /* ForgotPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4534DF2A1BB17E009C2688 /* ForgotPassword.swift */; };
+		4D4534E22A1BB256009C2688 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4534E12A1BB256009C2688 /* ForgotPasswordViewModel.swift */; };
 		4D5A6E3129A3ACCC00614A28 /* RecipeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5A6E3029A3ACCC00614A28 /* RecipeInfo.swift */; };
 		4DDF433829F9EDE7008077FC /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDF433729F9EDE7008077FC /* Colors.swift */; };
 		4DE2F525299722E1002AA1BA /* MyCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE2F524299722E1002AA1BA /* MyCart.swift */; };
@@ -79,6 +81,8 @@
 		4D2E4F5029AFE4E500F68629 /* Help & Support.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Help & Support.swift"; sourceTree = "<group>"; };
 		4D2E4F5229AFE4EC00F68629 /* About.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = About.swift; sourceTree = "<group>"; };
 		4D4534DE2A1BA9C6009C2688 /* EasyMeal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EasyMeal.entitlements; sourceTree = "<group>"; };
+		4D4534DF2A1BB17E009C2688 /* ForgotPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPassword.swift; sourceTree = "<group>"; };
+		4D4534E12A1BB256009C2688 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		4D5A6E3029A3ACCC00614A28 /* RecipeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeInfo.swift; sourceTree = "<group>"; };
 		4DDF433729F9EDE7008077FC /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		4DE2F524299722E1002AA1BA /* MyCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCart.swift; sourceTree = "<group>"; };
@@ -272,6 +276,7 @@
 				AFB1292E2A1A6A6800060FCE /* ContentViewModel.swift */,
 				AFB129352A1A702200060FCE /* SignInViewModel.swift */,
 				AF72A16A2A1AED6700E33F13 /* MicrophoneMonitor.swift */,
+				4D4534E12A1BB256009C2688 /* ForgotPasswordViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 				AF205C042A17BBF2005303F1 /* RecipeView.swift */,
 				AF205C082A17BBF3005303F1 /* SpeakIngredients.swift */,
 				AF72A16C2A1AEDA400E33F13 /* SpeakerView.swift */,
+				4D4534DF2A1BB17E009C2688 /* ForgotPassword.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -431,6 +437,8 @@
 				AF205C1F2A17BBFC005303F1 /* RecipeViewModel.swift in Sources */,
 				AF205C272A17BC1C005303F1 /* PantryIngredient.swift in Sources */,
 				4D2E4F4B29AFE4C100F68629 /* Notifications.swift in Sources */,
+				4D4534E02A1BB17E009C2688 /* ForgotPassword.swift in Sources */,
+				4D4534E22A1BB256009C2688 /* ForgotPasswordViewModel.swift in Sources */,
 				4D2E4F5329AFE4EC00F68629 /* About.swift in Sources */,
 				AF205C292A17BC1C005303F1 /* Ingredient.swift in Sources */,
 				AF205C2E2A17BC27005303F1 /* Ext+View.swift in Sources */,

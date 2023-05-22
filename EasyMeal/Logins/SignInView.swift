@@ -14,10 +14,17 @@ struct SignInView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var logoOpacity = 0.0
+    @State var forgotPassword = false
     @Binding var userIsLoggedIn:Bool
     @Binding var showSignUpView: Bool
     @Binding var loginTab: LoginTabs
     @EnvironmentObject var firebaseManager: FirebaseManager
+    
+    func closeForgotPassword() {
+        forgotPassword = false
+    }
+    
+    
     var body: some View {
         ZStack {
             Color.white
@@ -78,20 +85,27 @@ struct SignInView: View {
                 }.offset(x: 50, y: -46)
                 
                 
-//                HStack {
-//                    Button(action: {
-//                        //Forgot password func
-//                    }) {
-//                        Text("Forgot password?")
-//                            .bold()
-//                            .foregroundColor(Color(hex: "7B7A7A"))
-//                            .font(.footnote)
-//                            .offset(y: -30)
-//                            .underline()
-//                    }
-//                    
-//                    
-//                }.frame(width: 350, alignment: .leading)
+                HStack {
+                    Button(action: {
+                        //Forgot password func
+                        print("Forgot Password")
+                        forgotPassword = true
+                    }) {
+                        HStack {
+                            Text("Forgot password?")
+                                .bold()
+                                .foregroundColor(Color(hex: "7B7A7A"))
+                                .font(.footnote)
+                                .offset(y: -30)
+                                .underline()
+                            Spacer()
+                        }
+                        .padding(.vertical, 10)
+                        .background(Color.white)
+                    }
+                    
+                    
+                }.frame(width: 350, alignment: .leading)
                 
                 
                 HStack {
@@ -156,10 +170,13 @@ struct SignInView: View {
             }
             .frame(height: 500, alignment: .top)
         }.ignoresSafeArea().opacity(logoOpacity)
-            .onAppear {
-                withAnimation(.easeIn(duration: 0.6)) {
-                    logoOpacity = 1
-                }
+        .onAppear {
+            withAnimation(.easeIn(duration: 0.6)) {
+                logoOpacity = 1
             }
+        }
+        .popover(isPresented: $forgotPassword) {
+            ForgotPassword(closeTab: closeForgotPassword)
+        }
     }
 }
