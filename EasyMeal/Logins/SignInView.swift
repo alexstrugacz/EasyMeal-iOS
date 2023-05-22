@@ -75,20 +75,20 @@ struct SignInView: View {
                 }.offset(x: 50, y: -46)
                 
                 
-                HStack {
-                    Button(action: {
-                        //Forgot password func
-                    }) {
-                        Text("Forgot password?")
-                            .bold()
-                            .foregroundColor(Color(hex: "7B7A7A"))
-                            .font(.footnote)
-                            .offset(y: -30)
-                            .underline()
-                    }
-                    
-                    
-                }.frame(width: 350, alignment: .leading)
+//                HStack {
+//                    Button(action: {
+//                        //Forgot password func
+//                    }) {
+//                        Text("Forgot password?")
+//                            .bold()
+//                            .foregroundColor(Color(hex: "7B7A7A"))
+//                            .font(.footnote)
+//                            .offset(y: -30)
+//                            .underline()
+//                    }
+//                    
+//                    
+//                }.frame(width: 350, alignment: .leading)
                 
                 
                 HStack {
