@@ -27,9 +27,9 @@ struct SignIn: View {
         if firebaseManager.isLoggedIn {
             MainView(initialTab: .mic, content: {})
         } else if signInViewModel.loginTab == .signUp {
-            SignUp()
+            SignUp(loginTab: $signInViewModel.loginTab)
         } else if signInViewModel.loginTab == .signIn {
-            SignInView(userIsLoggedIn: $signInViewModel.userIsLoggedIn, showSignUpView: $signInViewModel.showSignUpView)
+            SignInView(userIsLoggedIn: $signInViewModel.userIsLoggedIn, showSignUpView: $signInViewModel.showSignUpView, loginTab: $signInViewModel.loginTab)
         } else if signInViewModel.loginTab == .preview {
             ContentView(triggerNextPage: signInViewModel.triggerNextPage)
         }

@@ -12,6 +12,10 @@ class RecipesViewModel : ObservableObject {
     @Published var recipes: [Recipe] = []
     @Published var selectedRecipe: Recipe?
     
+    @Published var minHealthScore: Float = 0
+    @Published var minCalories: Float = 100
+    @Published var maxCalories: Float = 2000
+    
     func selectRecipe(recipeId: Recipe) {
         selectedRecipe = recipeId
     }
@@ -26,7 +30,7 @@ class RecipesViewModel : ObservableObject {
         
         let allPantryItems = pantryItems.joined(separator: ",")
         
-        let apiUrl = "https://easymeal-backend.herokuapp.com/recipes?ingredients=\(allPantryItems.lowercased())&page=0"
+        let apiUrl = "https://easymeal-backend.herokuapp.com/recipes?ingredients=\(allPantryItems.lowercased())&page=0&minHealthScore=\(minHealthScore)&minCalories=\(minCalories)&maxCalories=\(maxCalories)"
         
         
         guard let apiUrlFormatted = apiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed), let url = URL(string: apiUrlFormatted) else {
