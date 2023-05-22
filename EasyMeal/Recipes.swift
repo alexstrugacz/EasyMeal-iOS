@@ -34,7 +34,7 @@ struct Recipes: View {
                     Image(systemName: "slider.horizontal.3") // This is a built-in SwiftUI filter icon
                         .resizable()
                         .frame(width: 33, height: 30)
-                        .foregroundColor(.blue)
+                        .foregroundColor(.gray)
                         .padding(.leading,10)
                 }
                 .padding()
@@ -46,12 +46,14 @@ struct Recipes: View {
                     .bold()
                     .foregroundColor(.black)
                     .offset(x: -40)
+                
 
                 Spacer()
             }
             .offset(y: -5)
             .foregroundColor(Color.white.opacity(1))
-            .padding(.bottom, 1)
+            .padding(.top, 25)
+            .padding(.bottom, 10)
 
             if showFilter {
                 HStack {
@@ -181,6 +183,10 @@ struct Recipes: View {
                     
                     ForEach(recipesViewModel.recipes) { recipe in
                         RecipeView(recipe: recipe, selectRecipe: recipesViewModel.selectRecipe)
+                        Divider()
+                         .frame(height: 1)
+                         .padding(.horizontal, 30)
+                         .background(Color(hex: "#ccc"))
                     }
                 
                 }

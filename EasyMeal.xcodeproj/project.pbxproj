@@ -58,6 +58,8 @@
 		AF205C2B2A17BC1C005303F1 /* GroupedItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C252A17BC1C005303F1 /* GroupedItems.swift */; };
 		AF205C2E2A17BC27005303F1 /* Ext+View.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C2C2A17BC27005303F1 /* Ext+View.swift */; };
 		AF205C2F2A17BC27005303F1 /* Ext+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF205C2D2A17BC27005303F1 /* Ext+String.swift */; };
+		AF72A16B2A1AED6700E33F13 /* MicrophoneMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72A16A2A1AED6700E33F13 /* MicrophoneMonitor.swift */; };
+		AF72A16D2A1AEDA400E33F13 /* SpeakerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF72A16C2A1AEDA400E33F13 /* SpeakerView.swift */; };
 		AFB129262A1A686600060FCE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB129252A1A686600060FCE /* ContentView.swift */; };
 		AFB129282A1A68D600060FCE /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB129272A1A68D600060FCE /* SignInView.swift */; };
 		AFB1292B2A1A698B00060FCE /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB1292A2A1A698B00060FCE /* Tab.swift */; };
@@ -116,6 +118,8 @@
 		AF205C252A17BC1C005303F1 /* GroupedItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupedItems.swift; sourceTree = "<group>"; };
 		AF205C2C2A17BC27005303F1 /* Ext+View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext+View.swift"; sourceTree = "<group>"; };
 		AF205C2D2A17BC27005303F1 /* Ext+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ext+String.swift"; sourceTree = "<group>"; };
+		AF72A16A2A1AED6700E33F13 /* MicrophoneMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrophoneMonitor.swift; sourceTree = "<group>"; };
+		AF72A16C2A1AEDA400E33F13 /* SpeakerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerView.swift; sourceTree = "<group>"; };
 		AFB129252A1A686600060FCE /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AFB129272A1A68D600060FCE /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		AFB1292A2A1A698B00060FCE /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
@@ -265,6 +269,7 @@
 				AF205C152A17BBFB005303F1 /* SpeechRecognizer.swift */,
 				AFB1292E2A1A6A6800060FCE /* ContentViewModel.swift */,
 				AFB129352A1A702200060FCE /* SignInViewModel.swift */,
+				AF72A16A2A1AED6700E33F13 /* MicrophoneMonitor.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -279,6 +284,7 @@
 				AF205C072A17BBF3005303F1 /* PlayButton.swift */,
 				AF205C042A17BBF2005303F1 /* RecipeView.swift */,
 				AF205C082A17BBF3005303F1 /* SpeakIngredients.swift */,
+				AF72A16C2A1AEDA400E33F13 /* SpeakerView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -402,6 +408,7 @@
 				AFB129362A1A702200060FCE /* SignInViewModel.swift in Sources */,
 				AF205C1A2A17BBFC005303F1 /* MyCartViewModel.swift in Sources */,
 				9B09BE9B298B267E00939FFD /* EasyMealApp.swift in Sources */,
+				AF72A16B2A1AED6700E33F13 /* MicrophoneMonitor.swift in Sources */,
 				4D2E4F4F29AFE4D700F68629 /* Privacy.swift in Sources */,
 				AFB1292D2A1A699400060FCE /* LoginTabs.swift in Sources */,
 				AF205C1E2A17BBFC005303F1 /* GroupButtonViewModel.swift in Sources */,
@@ -432,6 +439,7 @@
 				AF205C102A17BBF3005303F1 /* FlexibleView.swift in Sources */,
 				4D2E4F5129AFE4E500F68629 /* Help & Support.swift in Sources */,
 				AF205C282A17BC1C005303F1 /* Recipe.swift in Sources */,
+				AF72A16D2A1AEDA400E33F13 /* SpeakerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

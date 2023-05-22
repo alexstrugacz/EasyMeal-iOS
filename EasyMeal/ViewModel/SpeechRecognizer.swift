@@ -5,6 +5,7 @@ import SwiftUI
 
 /// A helper for transcribing speech to text using SFSpeechRecognizer and AVAudioEngine.
 actor SpeechRecognizer: ObservableObject {
+    
     enum RecognizerError: Error {
         case nilRecognizer
         case notAuthorizedToRecognize

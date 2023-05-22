@@ -212,15 +212,32 @@ struct SpeakIngredients: View {
                         Spacer()
                     }
                 }
-                HStack(alignment: .center) {
-                    Spacer()
-                    PlayButton(playing: $speakIngredientsViewModel.recording, startRecording: startRecording, stopRecording: stopRecording)
-                    Spacer()
-                    
+                VStack {
+                    if speakIngredientsViewModel.recording {
+                        HStack {
+                            Spacer()
+                            VStack {
+                                SpeakerView()
+                            }
+                            .frame(height: 300)
+                            Spacer()
+                        }
+                        .background(Color.white)
+                        .onTapGesture {
+                            stopRecording()
+                        }
+                        
+                    } else {
+                        HStack(alignment: .center) {
+                            Spacer()
+                            PlayButton(playing: $speakIngredientsViewModel.recording, startRecording: startRecording, stopRecording: stopRecording)
+                            Spacer()
+                            
+                        }
+                        .padding(.bottom, 30)
+                        .padding(.top, 20)
+                    }
                 }
-                .padding(.bottom, 30)
-                .padding(.top, 20)
-                
                 if( speakIngredientsViewModel.recorded && !speakIngredientsViewModel.recording && (speakIngredientsViewModel.text.trimmingCharacters(in: .whitespacesAndNewlines).count>0)) {
                     Spacer()
                     Button {
@@ -277,6 +294,9 @@ struct SpeakIngredients: View {
                 }
                 .background(BackgroundBlurView())
             })
+            .onAppear {
+                startRecording()
+            }
         }
             
     }
