@@ -13,6 +13,7 @@ struct MainPage: View {
     
     var body: some View {
         NavigationView{
+            // TEST TEST
             VStack {
                 Image("logo")
                     .resizable()
@@ -30,7 +31,7 @@ struct MainPage: View {
                     print("toInfoOne")
                         DispatchQueue.main.asyncAfter(deadline: .now()) {
                             self.showView = true
-                                }
+                        }
                     
                 }) {
                     Text("Get Started")
@@ -42,9 +43,7 @@ struct MainPage: View {
                         .shadow(color: custShadow, radius: 1, x: 1, y: 1)
                 }
                 .offset(y:50)
-                NavigationLink(destination: InfoOne(), isActive: $showView) {
-                                    EmptyView()
-                                }
+               
                 
                 
                 

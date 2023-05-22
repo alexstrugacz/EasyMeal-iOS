@@ -1,122 +1,140 @@
 import SwiftUI
 
 struct Pantry: View {
-    @State private var items: [Ingredient]
+    @State private var searchText = ""
+    @State private var loading = false
+    @Binding var speakIngredients: Bool
+    @StateObject var speechRecognizer = SpeechRecognizer()
+    @ObservedObject var groupedItems: PantryViewModel = PantryViewModel()
     
-    init() {
-        let storedItems = UserDefaults.standard.array(forKey: "PantryItems") as? [[String: Any]] ?? []
-        self._items = State(initialValue: storedItems.map { Ingredient(from: $0) })
-    }
-    
-    var groupedItems: [String: [Ingredient]] {
-        Dictionary(grouping: items, by: { $0.category })
-    }
+    var displaySpeakIngredients: () -> Void
     
     let gridItems = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     
-    @State private var searchText = ""
+    
+    func closeSpeakIngredients() {
+        speakIngredients = false
+        groupedItems.loadData()
+    }
     
     var body: some View {
         VStack{
-            VStack() {
-                TextField("add ingredients", text: $searchText)
-                    .padding(.horizontal, 20)
-                    .frame(width: 200, height: 40)
-                    .background(Color.white)
-                    .cornerRadius(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.black, lineWidth: 1)
-                    )
-                    .padding(.horizontal, 20)
-                    .textFieldStyle(PlainTextFieldStyle())
-                    .multilineTextAlignment(.center)
-                
-            }
             
-            ScrollView {
-                ForEach(groupedItems.keys.sorted(), id: \.self) { category in
-                    VStack(alignment: .leading) {
-                        Text(category)
-                            .font(.subheadline)
-                            .padding(.leading, 20)
-                            .bold()
-                        
-                        LazyVGrid(columns: [GridItem(.adaptive(minimum: 90))], spacing: 5) {
-                            ForEach(groupedItems[category]!, id: \.id) { item in
-                                Button(action: {
-                                    if let index = items.firstIndex(where: { $0.id == item.id }) {
-                                        items[index].isChecked.toggle()
-                                        saveItems()
-                                    }
-                                }) {
-                                    Text(item.name)
-                                        .foregroundColor(.black)
-                                        .padding(.horizontal, 15)
-                                        .frame(width:100, height: 35)
-                                        .background(item.isChecked ? Color.green : Color.gray.opacity(0.6))
-                                        .cornerRadius(60)
-                                        .minimumScaleFactor(0.5) // Set a minimum scale factor to allow the text to scale down
-                                        .fixedSize(horizontal: true, vertical: false)
-                                        .font(.system(size: 15)) // Set the initial font size
-                                }
-                                .buttonStyle(PlainButtonStyle())
-                            }
+            ScrollView(showsIndicators: false) {
+                VStack(alignment:.leading) {
+                    
+
+                    Text("My Pantry")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding([.top], 20)
+                        .multilineTextAlignment(.leading)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    
+                    
+                    Button(action: {
+                        displaySpeakIngredients()
+                    }) {
+                        HStack {
+                            Image(systemName: "mic.fill")
+                                .font(.system(size: 18))
+                            Text("Speak Ingredients")
+                                .fontWeight(.bold
+                                )
                         }
-                        .padding(.horizontal, 5)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal, 50)
+                        .padding(.vertical, 10)
+                        .background(LinearGradient(gradient: Gradient(colors: [custGreen, custGreen]), startPoint: .leading, endPoint: .trailing))
+                        .cornerRadius(10)
                     }
-                    .padding(20)
-                    .background(
-                        RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(.white)
-                            .shadow(color: .black.opacity(0.2), radius: 5, x: 0, y: 2)
-                    )
+                
+                    
+                    if (!groupedItems.loading) {
+                        Button(action: {
+                            groupedItems.resetData()
+                        }) {
+                            HStack {
+                                Image(systemName: "xmark")
+                                    .font(.system(size: 18))
+                                Text("Reset Pantry")
+                                    .fontWeight(.regular)
+                            }
+                            .foregroundColor(.red)
+                        }
+                        .padding(.top, 20)
+                    }
+                
+//                    Button(action: {
+//                        groupedItems.loadData()
+//                    }) {
+//                        HStack {
+//                            Image(systemName: "arrow.clockwise")
+//                                .font(.system(size: 18))
+//                            Text("Reload Data")
+//                                .fontWeight(.regular)
+//                        }
+//                        .foregroundColor(.blue)
+//                    }
+                    
+                    
+//                    if (groupedItems.loading) {
+//                        VStack {
+//                            Spacer()
+//                            HStack(alignment: .center) {
+//                                Spacer()
+//                                ProgressView()
+//                                Spacer()
+//                            }
+//                            .padding(.top, 20)
+//                            Spacer()
+//                        }
+//                    }
+//                    
+                    ForEach(groupedItems.groupedItems) { item in
+                        VStack(alignment: .leading) {
+                            Text(item.name)
+                                .font(.subheadline)
+                                .bold()
+                            
+                            
+                            
+                            FlexibleView(data: item.pantryIngredients, spacing: 5, alignment: .leading) { item in
+                                GroupedItemButton(newSelectedItems: $groupedItems.selectedItems, newItem: item, newToggleItem: groupedItems.toggleItem)
+                            }
+                            
+                            .padding(.horizontal, 5)
+                        }
+                        .padding(20)
+                        .background(
+                            RoundedRectangle(cornerRadius: 17)
+                                .stroke(Color(hex: "#CCCCCC"), lineWidth: 1)
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 1)
+                        )
+                    }
                 }
+                .padding(.bottom, 200)
             }
             .offset(y: 10)
             .padding(.horizontal, 20)
-            .shadow(radius: 3)
             Spacer()
         }
+        .background(Color(red: 240, green: 240, blue: 240))
+        .refreshable {
+            
+            groupedItems.loadData()
+        }
+        .fullScreenCover(isPresented: $speakIngredients) {
+            SpeakIngredients(newCloseSpeakIngredients: closeSpeakIngredients)
+        }
+        .onAppear {
+            UIScrollView.appearance().isPagingEnabled = false
+        }
+
     }
     
-    struct Ingredient: Identifiable, Hashable {
-        let id = UUID()
-        var name: String
-        var isChecked: Bool
-        var category: String
-        
-        init(name: String, isChecked: Bool, category: String) {
-            self.name = name
-            self.isChecked = isChecked
-            self.category = category
-        }
-        
-        init(from dictionary: [String: Any]) {
-            self.name = dictionary["name"] as? String ?? ""
-            self.isChecked = dictionary["isChecked"] as? Bool ?? false
-            self.category = dictionary["category"] as? String ?? ""
-        }
-        
-        func toDictionary() -> [String:        Any] {
-            return [
-                "name": name,
-                "isChecked": isChecked,
-                "category": category
-            ]
-        }
-    }
-    
-    private func saveItems() {
-        let encodedItems = items.map { $0.toDictionary() }
-        UserDefaults.standard.set(encodedItems, forKey: "PantryItems")
-    }
-    
-    struct Pantry_Preview: PreviewProvider {
-        static var previews: some View {
-            Pantry()
-        }
-    }
 }
 
 

@@ -43,7 +43,7 @@ struct InfoThree: View {
                     .shadow(color: custShadow, radius: 1, x: 1, y: 1)
             }
             .offset(y: 50)
-            NavigationLink(destination: SignUp(), isActive: $showView) {
+            NavigationLink(destination: SignUp(loginTab: .constant(.signUp)), isActive: $showView) {
                                 EmptyView()
                             }
         }

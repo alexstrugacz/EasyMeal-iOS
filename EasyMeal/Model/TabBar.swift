@@ -1,14 +1,9 @@
 import SwiftUI
 
-enum Tab: String, CaseIterable {
-    case refrigerator
-    case cooktop
-    case mic
-    case cart
-    case person
-}
-
 struct CustomTabBar: View {
+    
+    var displaySpeakIngredients: () -> Void
+    
     @Binding var selectedTab: Tab
     private var fillImage: String {
         selectedTab.rawValue + ".fill"
@@ -27,8 +22,6 @@ struct CustomTabBar: View {
             return custTabBarGreen
         }
     }
-    
-    @State private var isPressed = false
     
     var body: some View {
         ZStack {
@@ -75,7 +68,7 @@ struct CustomTabBar: View {
                             .frame(width: 74, height: 74)
                             .overlay(
                                 Button(action: {
-                                    isPressed.toggle()
+                                    displaySpeakIngredients()
                                 }) {
                                     micImage
                                 }
@@ -89,11 +82,3 @@ struct CustomTabBar: View {
         }
     }
 }
-
-struct CustomTabBar_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomTabBar(selectedTab: .constant(.refrigerator))
-    }
-}
-
-
