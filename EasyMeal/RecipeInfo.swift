@@ -119,7 +119,7 @@ struct RecipeInfo: View {
                                 NutrientRowView(nutrientData: nutrData)
                             }
                             if (isExpanded) {
-                                ForEach(recipeViewModel.nutrientData[2...]) { nutrData in
+                                ForEach(recipeViewModel.nutrientData[3...]) { nutrData in
                                     NutrientRowView(nutrientData: nutrData)
                                 }
                             }
