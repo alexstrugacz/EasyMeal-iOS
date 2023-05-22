@@ -20,6 +20,8 @@ struct ContentView: View {
                                     .font(.title)
                                     .fontWeight(.bold)
                                     .padding()
+                                    .multilineTextAlignment(.center)
+
                                 
                                 Image(PAGES[index].imageName)
                                     .resizable()
@@ -89,14 +91,16 @@ struct ContentView: View {
                 contentViewModel.nextPage()
             }) {
                 Text("Continue")
-                    .font(.title)
+                    //.font()
                     .fontWeight(.bold)
                     .padding()
-                    .background(Color.green) // set to custGreen
+                    .background(custGreen) // set to custGreen
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }
             .padding()
+            .frame(width: 190, height: 57) // Smaller button size
+
         }
     }
 }

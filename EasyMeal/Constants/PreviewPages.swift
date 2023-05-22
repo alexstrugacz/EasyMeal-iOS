@@ -8,13 +8,15 @@
 import SwiftUI
 
 let PAGES: [Page] = [
-    Page(imageName: "PantryPic",
-         title: "Input your ingredients",
-         subtitle: "Use ingredients already in your pantry to generate meals."),
-    Page(imageName: "CakePic",
-         title: "Set nutrition goals",
-         subtitle: "Set your goals to lose fat, gain muscle, lose weight, and more."),
-    Page(imageName: "CookingPic",
-         title: "Find nutritious meals",
-         subtitle: "Find ultra-healthy meals you can make!")
+    Page(imageName: "listPic",
+         title: "Simplify Your Cooking Journey",
+         subtitle: "Effortlessly Store and Utilize Your Pantry Inventory to Inspire Delicious Home-Cooked Meals"),
+    
+    Page(imageName: "cookingPic",
+         title: "Unleash Culinary Creativity from Your Pantry",
+         subtitle: "Unlock a Vast Collection of Recipes Crafted from the Ingredients You Already Have at Home"),
+    
+    Page(imageName: "cartPic",
+         title: "Shop Smart with Personalized Ingredient Lists",
+         subtitle: "Never Miss an Ingredient Again - Store and Retrieve Customized Shopping Lists to Make Cooking a Breeze")
 ]

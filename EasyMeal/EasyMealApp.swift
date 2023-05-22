@@ -30,7 +30,7 @@ struct EasyMealApp: App {
     var body: some Scene {
            WindowGroup {
                if firebaseManager.isLoggedIn {
-                   MainView(initialTab: .cart, content: {})
+                   MainView(initialTab: .refrigerator, content: {})
                        .environmentObject(firebaseManager)
                } else {
                    SignIn()
