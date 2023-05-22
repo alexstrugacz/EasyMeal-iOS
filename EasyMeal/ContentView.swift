@@ -21,7 +21,8 @@ struct ContentView: View {
                                     .fontWeight(.bold)
                                     .padding()
                                     .multilineTextAlignment(.center)
-
+                                    .lineLimit(nil)
+                                    .minimumScaleFactor(0.5)
                                 
                                 Image(PAGES[index].imageName)
                                     .resizable()
@@ -33,25 +34,19 @@ struct ContentView: View {
                                     .foregroundColor(.gray)
                                     .multilineTextAlignment(.center)
                                     .padding()
+                                    .lineLimit(nil)
+                                    .minimumScaleFactor(0.5)
                             }
                             .frame(width: UIScreen.main.bounds.width)
                             .id(index)
                         }
                     }
-//                    .offset(x: CGFloat(contentViewModel.currentPage) * -UIScreen.main.bounds.width, y: 0)
                     .onChange(of: contentViewModel.currentPage) { newValue in
-                        print(contentViewModel.moved)
-
-//                        if (contentViewModel.moved) {
-//                            contentViewModel.moved = false
-//                        } else {
                         scrollViewProxy.scrollTo(newValue, anchor: .center)
                         
                         if newValue == PAGES.count - 1 {
                             print("transition")
                         }
-//                        }
-                        
                     }
                     .onAppear {
                         UIScrollView.appearance().isPagingEnabled = true
@@ -60,12 +55,9 @@ struct ContentView: View {
             }
             .gesture(
                 DragGesture(minimumDistance: 10).onChanged { value in
-                   print(value.translation)
                    if value.translation.width > 10 {
-                       print("GO BACK")
                       contentViewModel.prevPage()
-                   } else if value.translation.width < -10{
-                      print("NEXT")
+                   } else if value.translation.width < -10 {
                       contentViewModel.nextPage()
                   }
                }
@@ -75,8 +67,6 @@ struct ContentView: View {
                     Button {
                         contentViewModel.currentPage = index
                     } label: {
-                        
-
                         Circle()
                             .frame(width: 8, height: 8)
                             .foregroundColor(index == contentViewModel.currentPage ? Color.gray : Color.gray.opacity(0.5))
@@ -91,19 +81,19 @@ struct ContentView: View {
                 contentViewModel.nextPage()
             }) {
                 Text("Continue")
-                    //.font()
                     .fontWeight(.bold)
                     .padding()
                     .background(custGreen) // set to custGreen
                     .foregroundColor(.white)
                     .cornerRadius(10)
             }
+            .padding(.top, 30)
             .padding()
-            .frame(width: 190, height: 57) // Smaller button size
-
+            .frame(width: 190, height: 57)
         }
     }
 }
+
 struct OffsetPreferenceKey: PreferenceKey {
     typealias Value = [OffsetPreferenceData]
     
