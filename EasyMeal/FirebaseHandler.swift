@@ -1,4 +1,4 @@
-
+import CryptoKit
 import FirebaseAuth
 import AuthenticationServices
 
@@ -8,9 +8,51 @@ class FirebaseManager: NSObject, ObservableObject {
     private var appleID: String?
     
     override init() {
-            super.init()
-            setupFirebaseAuthStateDidChange()
+        super.init()
+        setupFirebaseAuthStateDidChange()
+    }
+    
+    private func randomNonceString(length: Int = 32) -> String {
+        precondition(length > 0)
+        let charset: Array<Character> =
+            Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+        var result = ""
+        var remainingLength = length
+        
+        while remainingLength > 0 {
+            let randoms: [UInt8] = (0 ..< 16).map { _ in
+                var random: UInt8 = 0
+                let errorCode = SecRandomCopyBytes(kSecRandomDefault, 1, &random)
+                if errorCode != errSecSuccess {
+                    fatalError("Unable to generate nonce. SecRandomCopyBytes failed with OSStatus \(errorCode)")
+                }
+                return random
+            }
+            
+            randoms.forEach { random in
+                if remainingLength == 0 {
+                    return
+                }
+                
+                if random < charset.count {
+                    result.append(charset[Int(random)])
+                    remainingLength -= 1
+                }
+            }
         }
+        
+        return result
+    }
+
+    private func sha256(_ input: String) -> String {
+        let inputData = Data(input.utf8)
+        let hashedData = SHA256.hash(data: inputData)
+        let hashString = hashedData.compactMap {
+            return String(format: "%02x", $0)
+        }.joined()
+        
+        return hashString
+    }
     
     func setupFirebaseAuthStateDidChange() {
             Auth.auth().addStateDidChangeListener { [weak self] (_, user) in
@@ -19,14 +61,23 @@ class FirebaseManager: NSObject, ObservableObject {
         }
     
     func signOutFromApple() {
-        // Remove the stored user identifier or tokens used for Apple authentication
-        // You can use your own logic or storage mechanism here
-        appleID = nil // Clear the stored Apple ID identifier
+        
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
 
-        // Update the isLoggedIn state accordingly
-        isLoggedIn = false
+        // Generate nonce for validation after authentication successful
+        self.currentNonce = randomNonceString()
+        // Set the SHA256 hashed nonce to ASAuthorizationAppleIDRequest
+        request.nonce = sha256(currentNonce!)
 
-        // Perform any additional sign-out steps specific to your app
+        // Present Apple authorization form
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+        
+        
     }
 
     //IT WORKS!
@@ -71,42 +122,49 @@ class FirebaseManager: NSObject, ObservableObject {
             }
         }
 
-    func signUpWithApple() {
+    func signUpWithApple(_ request: ASAuthorizationAppleIDRequest) {
+        request.requestedScopes = [
+            .email
+        ]
+        
         let nonce = randomNonceString()
         currentNonce = nonce
-
-        let request = ASAuthorizationAppleIDProvider().createRequest()
-        request.requestedScopes = [.fullName, .email]
-        request.nonce = nonce
-
-        let controller = ASAuthorizationController(authorizationRequests: [request])
-        controller.delegate = self
-        controller.presentationContextProvider = self
-        controller.performRequests()
+        request.nonce = sha256(nonce)
+        
+            
     }
 
-    func signInWithApple() {
-        let request = ASAuthorizationAppleIDProvider().createRequest()
-        request.requestedScopes = [.fullName, .email]
-
-        let controller = ASAuthorizationController(authorizationRequests: [request])
-        controller.delegate = self
-        controller.presentationContextProvider = self
-        controller.performRequests()
-    }
-
-    private func randomNonceString(length: Int = 32) -> String {
-        let charset = Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
-        var nonce = ""
-        let maxIndex = UInt32(charset.count)
-
-        for _ in 0..<length {
-            let randomIndex = Int(arc4random_uniform(maxIndex))
-            nonce.append(charset[randomIndex])
+    func signInWithApple(_ result: Result<ASAuthorization, Error>) {
+        if case .failure(let failure) = result {
+            
+        } else if case .success(let success) = result {
+            if let appleIDCredential = success.credential as? ASAuthorizationAppleIDCredential {
+                guard let nonce = currentNonce else {
+                    return
+                }
+                guard let appleIDToken = appleIDCredential.identityToken else {
+                    return
+                }
+                guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                    return
+                }
+                let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce )
+                Task {
+                    do {
+                        let result = try await Auth.auth().signIn(with: credential)
+                        
+                        self.isLoggedIn = true
+                        
+                    } catch {
+                        
+                    }
+                }
+            }
+                
+                
         }
-
-        return nonce
     }
+
 }
 
 extension FirebaseManager: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {

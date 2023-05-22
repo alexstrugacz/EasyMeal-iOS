@@ -1,6 +1,7 @@
 
 import SwiftUI
 import Firebase
+import AuthenticationServices
 
 struct SignUp: View {
     @State private var email: String = ""
@@ -98,6 +99,17 @@ struct SignUp: View {
                                 .offset(y: -15)
                             }
                             .frame(width: 350, height: 50)
+                            
+                            SignInWithAppleButton(.signUp) { request in
+                                firebaseManager.signUpWithApple(request)
+                            } onCompletion: { request in
+                                firebaseManager.signInWithApple(request)
+                            }
+                            .frame(width: 350, height: 50)
+                            .background(Color.black)
+                            .cornerRadius(10)
+                            .offset(y: -15)
+
                             
 //                            Button(action: {
 //                                // Sign up with apple functionality
