@@ -4,12 +4,22 @@ import AuthenticationServices
 
 class FirebaseManager: NSObject, ObservableObject {
     @Published var isLoggedIn = false
+    @Published var loading = false
+    @Published var error: String?
     private var currentNonce: String?
     private var appleID: String?
     
     override init() {
         super.init()
         setupFirebaseAuthStateDidChange()
+    }
+    
+    func resetPassword(email: String, onComplete: @escaping () -> Void, onError: @escaping () -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            // Your code here
+            onError()
+        }
+        onComplete()
     }
     
     private func randomNonceString(length: Int = 32) -> String {
@@ -55,10 +65,10 @@ class FirebaseManager: NSObject, ObservableObject {
     }
     
     func setupFirebaseAuthStateDidChange() {
-            Auth.auth().addStateDidChangeListener { [weak self] (_, user) in
-                self?.isLoggedIn = user != nil
-            }
+        Auth.auth().addStateDidChangeListener { [weak self] (_, user) in
+            self?.isLoggedIn = user != nil
         }
+    }
     
     func signOutFromApple() {
         
@@ -80,7 +90,6 @@ class FirebaseManager: NSObject, ObservableObject {
         
     }
 
-    //IT WORKS!
     func forgotPasswordReset(email: String) {
         Auth.auth().sendPasswordReset(withEmail: email) { [weak self] (error) in
             if let error = error {
@@ -95,7 +104,7 @@ class FirebaseManager: NSObject, ObservableObject {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] (authResult, error) in
             if let error = error {
                 print("Sign-up error: \(error.localizedDescription)")
-            } else {
+            } else { 
                 self?.isLoggedIn = true
                 print("logged in")
             }
@@ -103,11 +112,18 @@ class FirebaseManager: NSObject, ObservableObject {
     }
 
     func signIn(email: String, password: String) {
+        loading = true
+        error = nil
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] (authResult, error) in
             if let error = error {
                 print("Sign-in error: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    self?.loading = false
+                    self?.error = error.localizedDescription
+                }
             } else {
                 self?.isLoggedIn = true
+                
                 // Handle successful sign-in
             }
         }
