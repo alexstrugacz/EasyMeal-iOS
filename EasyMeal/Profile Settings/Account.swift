@@ -9,7 +9,10 @@ import SwiftUI
 import FirebaseAuth
 
 struct Account: View {
+    
     @State private var currentUserEmail: String = ""
+    @EnvironmentObject var firebaseManager: FirebaseManager
+
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -22,10 +25,20 @@ struct Account: View {
                 .bold()
                 .padding(.top, 1)
                 
+            Button(action: {
+                firebaseManager.deleteAccount()
+            }) {
+                Text("Delete My Account")
+            }
+            .buttonStyle(.bordered)
+            .foregroundColor(custGreen)
+            .padding(.top)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .padding(.leading)
-            
+        
+        
+        
             
             .onAppear {
                 // Retrieve the currently signed-in user's email

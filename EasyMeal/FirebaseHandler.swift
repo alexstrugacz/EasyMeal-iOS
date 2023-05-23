@@ -162,6 +162,19 @@ class FirebaseManager: NSObject, ObservableObject {
             self.loading = false
         }
     }
+    
+    func deleteAccount() {
+        if let user = Auth.auth().currentUser {
+            user.delete { [weak self] error in
+                if let error = error {
+                    print("Account deletion error: \(error.localizedDescription)")
+                } else {
+                    self?.isLoggedIn = false
+                    print("Account deleted successfully")
+                }
+            }
+        }
+    }
 
     func signInWithApple(_ result: Result<ASAuthorization, Error>) {
         loading = true
