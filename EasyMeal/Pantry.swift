@@ -24,47 +24,50 @@ struct Pantry: View {
                 VStack(alignment:.leading) {
                     
 
-                    Text("My Pantry")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .padding([.top], 20)
-                        .multilineTextAlignment(.leading)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    
-                    
-                    Button(action: {
-                        displaySpeakIngredients()
-                    }) {
-                        HStack {
-                            Image(systemName: "mic.fill")
-                                .font(.system(size: 18))
-                            Text("Speak Ingredients")
-                                .fontWeight(.bold
-                                )
-                        }
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.horizontal, 50)
-                        .padding(.vertical, 10)
-                        .background(LinearGradient(gradient: Gradient(colors: [custGreen, custGreen]), startPoint: .leading, endPoint: .trailing))
-                        .cornerRadius(10)
-                    }
-                
-                    
-                    if (!groupedItems.loading) {
+                    VStack(alignment: .leading) {
+                        Text("My Pantry")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .padding([.top], 20)
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        
+                        
                         Button(action: {
-                            groupedItems.resetData()
+                            displaySpeakIngredients()
                         }) {
                             HStack {
-                                Image(systemName: "xmark")
+                                Image(systemName: "mic.fill")
                                     .font(.system(size: 18))
-                                Text("Reset Pantry")
-                                    .fontWeight(.regular)
+                                Text("Speak Ingredients")
+                                    .fontWeight(.bold
+                                    )
                             }
-                            .foregroundColor(.red)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal, 50)
+                            .padding(.vertical, 10)
+                            .background(LinearGradient(gradient: Gradient(colors: [custGreen, custGreen]), startPoint: .leading, endPoint: .trailing))
+                            .cornerRadius(10)
                         }
-                        .padding(.top, 20)
+                        
+                        
+                        if (!groupedItems.loading) {
+                            Button(action: {
+                                groupedItems.resetData()
+                            }) {
+                                HStack {
+                                    Image(systemName: "xmark")
+                                        .font(.system(size: 18))
+                                    Text("Reset Pantry")
+                                        .fontWeight(.regular)
+                                }
+                                .foregroundColor(.red)
+                            }
+                            .padding(.top, 20)
+                        }
                     }
+                    .padding(.horizontal, 5)
                 
 //                    Button(action: {
 //                        groupedItems.loadData()
@@ -97,31 +100,28 @@ struct Pantry: View {
                             Text(item.name)
                                 .font(.subheadline)
                                 .bold()
-                            
-                            
-                            
                             FlexibleView(data: item.pantryIngredients, spacing: 5, alignment: .leading) { item in
                                 GroupedItemButton(newSelectedItems: $groupedItems.selectedItems, newItem: item, newToggleItem: groupedItems.toggleItem)
                             }
-                            
-                            .padding(.horizontal, 5)
                         }
-                        .padding(20)
+                        .padding(.vertical, 20)
+                        .padding(.horizontal, 25)
                         .background(
                             RoundedRectangle(cornerRadius: 17)
-                                .stroke(Color(hex: "#CCCCCC"), lineWidth: 1)
                                 .foregroundColor(.white)
                                 .padding(.horizontal, 1)
+                                .shadow(color: Color(hex: "#d4d4d4"), radius: 5,x: 0, y: 2)
+                                .padding(5)
                         )
                     }
                 }
                 .padding(.bottom, 200)
             }
             .offset(y: 10)
-            .padding(.horizontal, 20)
+            .padding(.horizontal, 15)
             Spacer()
         }
-        .background(Color(red: 240, green: 240, blue: 240))
+        .background(Color(hex: "#F7F7F7"))
         .refreshable {
             
             groupedItems.loadData()
