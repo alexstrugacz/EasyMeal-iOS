@@ -15,7 +15,6 @@ class SignInViewModel: ObservableObject {
     @Published var loginTab: LoginTabs = .preview
     
     func triggerNextPage() {
-        print("TRIGGERED")
         loginTab = .signIn
     }
 

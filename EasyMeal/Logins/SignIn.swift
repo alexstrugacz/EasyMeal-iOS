@@ -21,7 +21,7 @@ import Firebase
 
 struct SignIn: View {
     @State var isActive: Bool = false
-    @ObservedObject var signInViewModel: SignInViewModel = SignInViewModel()
+    @StateObject var signInViewModel: SignInViewModel = SignInViewModel()
     @EnvironmentObject var firebaseManager: FirebaseManager
     
     var body: some View {
@@ -29,12 +29,28 @@ struct SignIn: View {
             if (isActive) {
                 if firebaseManager.isLoggedIn {
                     MainView(initialTab: .mic, content: {})
+                        .onAppear {
+                            firebaseManager.error = nil
+                            firebaseManager.loading = false
+                        }
                 } else if signInViewModel.loginTab == .signUp {
                     SignUp(loginTab: $signInViewModel.loginTab)
+                        .onAppear {
+                            firebaseManager.error = nil
+                            firebaseManager.loading = false
+                        }
                 } else if signInViewModel.loginTab == .signIn {
                     SignInView(userIsLoggedIn: $signInViewModel.userIsLoggedIn, showSignUpView: $signInViewModel.showSignUpView, loginTab: $signInViewModel.loginTab)
+                        .onAppear {
+                            firebaseManager.error = nil
+                            firebaseManager.loading = false
+                        }
                 } else if signInViewModel.loginTab == .preview {
                     ContentView(triggerNextPage: signInViewModel.triggerNextPage)
+                        .onAppear {
+                            firebaseManager.error = nil
+                            firebaseManager.loading = false
+                        }
                 }
             } else {
                 HStack() {

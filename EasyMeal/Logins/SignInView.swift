@@ -84,34 +84,9 @@ struct SignInView: View {
                     }
                 }.offset(x: 50, y: -46)
                 
-                
-                HStack {
-                    Button(action: {
-                        //Forgot password func
-                        print("Forgot Password")
-                        forgotPassword = true
-                    }) {
-                        HStack {
-                            Text("Forgot password?")
-                                .bold()
-                                .foregroundColor(Color(hex: "7B7A7A"))
-                                .font(.footnote)
-                                .offset(y: -30)
-                                .underline()
-                            Spacer()
-                        }
-                        .padding(.vertical, 10)
-                        .background(Color.white)
-                    }
-                    
-                    
-                }.frame(width: 350, alignment: .leading)
-                
-                
                 HStack {
                     Button(action: {
                         firebaseManager.signIn(email: email, password: password)
-                        
                     }) {
                         Text("Log In")
                             .frame(width: 234, height: 50)
@@ -137,11 +112,7 @@ struct SignInView: View {
                     .background(Color(hex: "efefef"))
                     .cornerRadius(10)
                     
-                    
-                    
                 }.frame(width: 350, height: 50)
-                
-
                 SignInWithAppleButton(.signIn) { request in
                     firebaseManager.signUpWithApple(request)
                 } onCompletion: { request in
@@ -151,6 +122,16 @@ struct SignInView: View {
                 .background(Color.black)
                 .cornerRadius(10)
                 
+                if let error = firebaseManager.error {
+                    Text(error)
+                        .font(.caption)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .foregroundColor(.red)
+                        .padding(10)
+                }
+                if firebaseManager.loading {
+                    ProgressView()
+                }
 //                Button(action: {
 //                    // Sign in with apple functionality
 //                    firebaseManager.signInWithApple()
@@ -178,5 +159,6 @@ struct SignInView: View {
         .popover(isPresented: $forgotPassword) {
             ForgotPassword(closeTab: closeForgotPassword)
         }
+        
     }
 }
