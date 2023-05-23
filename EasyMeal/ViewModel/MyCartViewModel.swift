@@ -25,15 +25,32 @@ class MyCartViewModel: ObservableObject {
     
     func checkItems() {
         var i = 0
+        var numUnchecked = 0
         while(i < items.count) {
             if(items[i].isChecked == false){
                 self.items[i].isChecked.toggle()
                 print(i)
+                numUnchecked += 1
             }
             i+=1
         }
-        self.saveItems()
+        print(numUnchecked)
+        if numUnchecked==0 {
+            i = 0
+            while(i < items.count) {
+                if(items[i].isChecked == true){
+                    self.items[i].isChecked = false
+                    print(i)
+                }
+                i+=1
+            }
+            print("items", items)
+            self.saveItems()
+        } else {
+            self.saveItems()
+        }
     }
+    
     
     func deleteChecked() {
         self.items.removeAll(where: { $0.isChecked })

@@ -38,8 +38,8 @@ struct MyCart: View {
                         ZStack {
                             Image("3dots")
                                 .resizable()
-                                .font(.system(size: 20))
-                                .foregroundColor(.black)
+                                .foregroundColor(.gray)
+                                .frame(width: 25, height: 25)
                         }
                         .frame(width: 35, height: 35)
                     }
@@ -50,19 +50,18 @@ struct MyCart: View {
                 if isShowingSettings {
                     HStack {
                         Button(action: {
-                            // Mark All Complete button action
+                            // Mark All Complete button action=
                             myCartViewModel.checkItems()
+                            
                         }) {
                             ZStack {
                                 HStack() {
                                     Image(systemName: "checkmark")
-                                    Text("Check Mark All")
+                                    Text("Select All")
                                 }
                                 .foregroundColor(custGreen)
-                                .padding(.top,10)
-                                .padding(.leading,20)
-                            }.padding(10)
-
+                                
+                            }
                         }
                         
                         Spacer()
@@ -77,12 +76,13 @@ struct MyCart: View {
 
                                 }
                                 .foregroundColor(Color(hex: "#ff0800"))
-                                .padding(.top,10)
-                                .padding(.trailing,20)
-                            }.padding(10)
+                            }
 
                         }
                     }
+                    .padding(.horizontal,20)
+                    .padding(.top,5)
+                    .padding(.bottom,10)
 //                    ZStack {
 //                        Color.gray.opacity(0.0)
 //                            //.ignoresSafeArea()
@@ -294,9 +294,10 @@ struct MyCart: View {
                 
                 
             }
-            .shadow(radius: 3)
+            .shadow(color: Color(hex: "#d4d4d4"), radius: 5,x: 0, y: 2)
             
         }
+        .background(Color(hex: "#F7F7F7"))
         
     }
     

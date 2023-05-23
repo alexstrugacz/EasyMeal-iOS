@@ -11,13 +11,13 @@ struct RecipeView: View {
     var recipe: Recipe
     var selectRecipe: (Recipe) -> Void
     var body: some View {
-        HStack(spacing: 8) {
+        VStack(spacing: 8) {
             VStack {
                 AsyncImage(url: URL(string:recipe.url)) { image in
                     image
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 120, height: 120)
+                        .frame(width: .infinity, height: 150)
                         .cornerRadius(10)
                 } placeholder: {
                     ZStack {
@@ -27,38 +27,36 @@ struct RecipeView: View {
                             .foregroundColor(.gray)
                             .font(.headline)
                     }
-                    .frame(width: 120, height: 120)
+                    .frame(width: .infinity, height: 150)
+                    
                 }
             }
         
 
-                
-
             VStack(alignment: .leading) {
-                Spacer()
                 Text(recipe.name)
-                    .font(.system(size: 20))
+                    .font(.system(size: 18))
                     .fontWeight(.medium)
                     .multilineTextAlignment(.leading)
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                VStack {
-                    Text("\(recipe.numIngredients)/\(recipe.totalIngredients) Ingredients")
-                        .foregroundColor(.gray)
-                        .font(.subheadline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                    Text("\(String(format: "%.2f", round(recipe.healthScore*10)/10))/10 Health Score")
-                        .foregroundColor(.gray)
-                        .font(.subheadline)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-                Spacer()
+                Text("\(recipe.numIngredients)/\(recipe.totalIngredients) Ingredients")
+                    .foregroundColor(.gray)
+                    .font(.subheadline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Text("\(String(format: "%.2f", round(recipe.healthScore*10)/10))/10 Health Score")
+                    .foregroundColor(.gray)
+                    .font(.subheadline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .offset(x: 5)
+            .padding(.horizontal, 15)
+            .padding(.bottom, 20)
+            .padding(.top, 10)
 
-            Spacer()
         }
         .background(Color.white)
+        .cornerRadius(10)
+        .shadow(color: Color(hex: "#d4d4d4"), radius: 5,x: 0, y: 5)
         .onTapGesture {
             selectRecipe(recipe)
         }

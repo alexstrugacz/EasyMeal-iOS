@@ -20,6 +20,11 @@ struct RecipeInfo: View {
         addMissingIngredients = newAddMissingIngredients
     }
     
+    let numberFormatter: NumberFormatter = {
+        let num = NumberFormatter()
+        num.maximumFractionDigits = 0
+        return num
+    }()
     
     func handleAddMissingIngredients() {
         let storedItems = UserDefaults.standard.array(forKey: "savedItems") as? [[String: Any]] ?? []
@@ -46,178 +51,172 @@ struct RecipeInfo: View {
     }
         
     var body: some View {
-        VStack {
-            ScrollView(showsIndicators: false) {
-                
-                AsyncImage(url: URL(string: recipe.url)) { image in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 300, height: 300)
-                        .cornerRadius(10)
-                } placeholder: {
-                    
-                        ZStack {
-                            Color(red: 0.8, green: 0.8, blue: 0.8)
-                                .cornerRadius(10)
-                            Text("No Image")
-                                .foregroundColor(.gray)
-                                .font(.headline)
-                        }
-                        .frame(width: 300, height: 300)
-                        .cornerRadius(30)
-                    
-                }
-                .padding(.vertical, 30)
-
-                    
-                
-                Text(recipe.name)
-                    .font(.title)
-                    .padding(.vertical, 2)
-                
-                
-                HStack {
-                    Text("\(Int(recipe.calories)) calories")
-                    Spacer()
-                    Button(action: {
-                        if let url = URL(string: recipe.mealLink) {
-                            UIApplication.shared.open(url)
-                        }
-                    }) {
-                        RoundedRectangle(cornerRadius: 10)
-                            .foregroundColor(.blue)
-                            .frame(width: 120, height: 30)
-                            .overlay(
-                                Text("See Recipe")
-                                    .font(.system(size: 18))
-                                    .foregroundColor(.white)
-                                    .padding(.vertical, 10)
-                            )
-                    }
-                }
-                .frame(width: 280)
-                
-                
-                
-                HorizontalDivider(color: .gray.opacity(0.5))
-                
-                VStack {
-                    Text("Nutrition Insights")
-                        .font(.system(size: 18))
-                        .bold()
-                        .padding(.top, 4)
-                    ProgressBar(value: Float(recipe.healthScore
-                                            )/10)
-                        .frame(height: 20)
-                        .padding(.bottom, 20)
-                    
-                    
+        GeometryReader { geo in
+            VStack {
+                ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
-                        if (recipeViewModel.nutrientData.count > 3) {
-                            ForEach(recipeViewModel.nutrientData[...2]) { nutrData in
-                                NutrientRowView(nutrientData: nutrData)
+                        ZStack {
+                            Color.white
+                            AsyncImage(url: URL(string: recipe.url)) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: geo.size.width, height: 400)
+                                    .cornerRadius(20)
+                            } placeholder: {
+                                
+                                ZStack {
+                                    Color(red: 0.8, green: 0.8, blue: 0.8)
+                                        .cornerRadius(10)
+                                    Text("No Image")
+                                        .foregroundColor(.gray)
+                                        .font(.headline)
+                                }
+                                .frame(width: geo.size.width, height: 400)
+                                .cornerRadius(20)
+                                
                             }
-                            if (isExpanded) {
-                                ForEach(recipeViewModel.nutrientData[3...]) { nutrData in
-                                    NutrientRowView(nutrientData: nutrData)
+                            VStack {
+                                HStack {
+                                    Button {
+                                        exitRecipe()
+                                    } label: {
+                                        Image(systemName: "arrow.left.circle.fill")
+                                            .resizable()
+                                            .foregroundColor(.white)
+                                            .frame(width: 40, height: 40)
+                                            .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.3), radius: 7, x: 2, y: 3)
+                                    }
+                                    Spacer()
+                                }
+                                .padding(.top, 50)
+                                Spacer()
+                            }
+                            .padding(.horizontal, 20)
+                            
+                        }
+                        .frame(width: geo.size.width, height: 400)
+                        .clipped()
+                        VStack(alignment: .leading) {
+                            Text(recipe.name)
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .padding(.top, 20)
+                            
+                            HStack(spacing: 5) {
+                                
+                                
+                                Text("\(numberFormatter.string(from: NSNumber(value: recipe.calories)) ?? "-") cal.")
+                                    .font(.system(size: 16))
+                                    .fontWeight(.regular)
+                                    .foregroundColor(.gray)
+                            
+                                Button(action: {
+                                    if let url = URL(string: recipe.mealLink) {
+                                        UIApplication.shared.open(url)
+                                    }
+                                }) {
+                                    Text("See Recipe")
+                                        .font(.system(size: 16))
+                                        .fontWeight(.regular)
+                                        .foregroundColor(custGreen)
+                                }
+                                
+                                Spacer()
+                                
+                            }
+                            .padding(.top, 0)
+                            .padding(.bottom, 15)
+                            
+                            VStack {
+                                HStack {
+                                    Text("Nutrition Insights")
+                                        .font(.system(size: 20))
+                                        .fontWeight(.bold)
+                                        .multilineTextAlignment(.leading)
+                                        .bold()
+                                        .padding(.top, 4)
+                                    Spacer()
+                                }
+                                HorizontalDivider(color: .gray.opacity(0.5))
+                                    .offset(y: -7)
+                                
+                                ProgressBar(value: Float(recipe.healthScore)/10)
+                                    .frame(height: 20)
+                                    .padding(.bottom, 10)
+
+        
+                                LazyVGrid(columns: [
+                                    GridItem(.flexible(), alignment: .leading), GridItem(.flexible(), alignment: .leading),
+                                ], alignment: .leading) {
+                                    ForEach(recipeViewModel.nutrientData) { nutrData in
+                                        NutrientRowView(nutrientData: nutrData)
+                                    }
                                 }
                             }
-                            
-                        } else {
-                            ForEach(recipeViewModel.nutrientData) { nutrData in
-                                NutrientRowView(nutrientData: nutrData)
+                            .padding(.bottom,15)
+                            VStack {
+                                HStack {
+                                    Text("Ingredients")
+                                        .font(.system(size: 20))
+                                        .fontWeight(.bold)
+                                        .multilineTextAlignment(.leading)
+                                        .bold()
+                                        .padding(.top, 4)
+                                    Spacer()
+                                }
+                                HorizontalDivider(color: .gray.opacity(0.5))
+                                    .offset(y: -7)
+                                HStack(spacing: 5) {
+                                    Text("\(recipe.numIngredients)/\(recipe.totalIngredients) available")
+                                        .foregroundColor(.gray)
+                                        .font(.system(size: 16))
+                                    Spacer()
+                                    Button(action: {
+                                        // Send ingredients to cart
+                                        handleAddMissingIngredients()
+                                    }) {
+                                        Text("Add to Cart")
+                                            .foregroundColor(custGreen)
+                                            .font(.system(size: 16))
+                                    }
+                                }
+        
                             }
-                            
-                        }
-
-                    }
-                    .padding(.horizontal, 16)
-                    
-                    if recipe.ingredients.count > initialNutrientCount {
-                        Button(action: {
-                            isExpanded.toggle()
-                        }) {
-                            Text(isExpanded ? "See Less" : "See More")
-                                .foregroundColor(.blue)
-                                .padding(.vertical, 6)
-                        }
-                        .frame(maxWidth: .infinity)
-                        .background(Color.gray.opacity(0.1))
-                        .cornerRadius(8)
-                        .padding(.horizontal, 16)
-                        .contentShape(Rectangle())
-                        .onTapGesture {
-                            isExpanded.toggle()
-                        }
-                    }
-
-                    
-                }
-                .padding(.bottom,10)
-                
-                Spacer()
-                
-                HorizontalDivider(color: .gray.opacity(1))
-                
-                VStack {
-                    Text("Ingredients")
-                        .font(.system(size: 18))
-                        .bold()
-                        .padding(.bottom, 4)
-                        .padding(.top, 4)
-                    
-                    HStack {
-                        Text("\(recipe.numIngredients)/\(recipe.totalIngredients) available")
-                            .font(.system(size: 18))
-                        Spacer()
-                        Button(action: {
-                            // Send ingredients to cart
-                            handleAddMissingIngredients()
-                        }) {
-                            RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(.blue)
-                                .frame(width: 120, height: 30)
-                                .overlay(
-                                    Text("Add to Cart")
-                                        .font(.system(size: 18))
-                                        .foregroundColor(.white)
-                                        .padding(.vertical, 10)
-                                )
-                        }
-                    }
-                    .frame(width: 280)
-                    .padding(.horizontal, 16)
-                    
-                }
-                
-                VStack(alignment: .leading) {
-                    ForEach(recipe.ingredients) { ingredient in
-                        HStack {
-                            Text(removeEmTags(from: ingredient.name.capitalized))
-                                .padding(.leading, 8)
-                            
-                            if ingredient.available {
-                                Image(systemName: "checkmark")
-                                    .foregroundColor(.green)
-                                
-                                
-                            } else {
-                                Image(systemName: "xmark")
-                                    .foregroundColor(.red)
+        
+                            VStack(alignment: .leading) {
+                                ForEach(recipe.ingredients) { ingredient in
+                                    HStack {
+                                        Text(removeEmTags(from: ingredient.name.capitalized))
+                                            .padding(.leading, 8)
+        
+                                        if ingredient.available {
+                                            Image(systemName: "checkmark")
+                                                .foregroundColor(.green)
+        
+        
+                                        } else {
+                                            Image(systemName: "xmark")
+                                                .foregroundColor(.red)
+                                        }
+        
+                                        Spacer()
+                                    }
+                                    .padding(.vertical, 5)
+                                }
                             }
+                            .padding(.vertical, 15)
+                            .background(Color.gray.opacity(0.1))
+                            .cornerRadius(10)
+                            .padding(.bottom, 100)
+
                             
-                            Spacer()
                         }
-                        .padding(.vertical, 5)
+                        .padding(.horizontal, 20)
                     }
                 }
-                .padding(.vertical, 15)
-                .background(Color.gray.opacity(0.1))
-                .cornerRadius(10)
-                .padding(.horizontal, 20)
             }
-            .padding(.all, 16)
+            .ignoresSafeArea()
         }
     }
 }
@@ -234,11 +233,13 @@ struct NutrientRowView: View {
     var body: some View {
         HStack {
             Text(nutrientData.nutrientName)
+                .font(.system(size: 16))
                 .padding(.leading, 15)
                 .padding(.vertical,4)
                 .bold()
             Spacer()
             Text(nutrientData.nutrientAmount)
+                .font(.system(size: 16))
                 .padding(.trailing, 15)
         }
         .padding(.vertical, 4)
@@ -260,14 +261,12 @@ struct ProgressBar: View {
     var body: some View {
         GeometryReader { geometry in
             HStack(spacing: 0) {
-                Spacer()
-                    .frame(width: geometry.size.width * 0.12)
                 ZStack(alignment: .leading) {
-                    Rectangle().frame(width: geometry.size.width * 0.72, height: geometry.size.height * 1.6)
+                    Rectangle().frame(width: geometry.size.width, height: geometry.size.height * 1.6)
                         .opacity(0.3)
-                        .foregroundColor(Color.red.opacity(0.3))
+                        .foregroundColor(Color.red.opacity(0.9))
                     
-                    Rectangle().frame(width: min(CGFloat(self.value)*geometry.size.width * 0.72, geometry.size.width), height: geometry.size.height * 1.6)
+                    Rectangle().frame(width: min(CGFloat(self.value)*geometry.size.width, geometry.size.width), height: geometry.size.height * 1.6)
                         .foregroundColor(custGreen)
                     
                     HStack {
@@ -289,9 +288,8 @@ struct ProgressBar: View {
                     }
                 }
                 .cornerRadius(8.0)
-                Spacer()
-                    .frame(width: geometry.size.width * 0.05)
             }
+            .frame(width: .infinity, height: 30)
         }
     }
     
@@ -309,7 +307,6 @@ struct Ingredient: Identifiable, Hashable {
 }
 
 struct HorizontalDivider: View {
-    
     let color: Color
     let height: CGFloat
     
@@ -320,8 +317,6 @@ struct HorizontalDivider: View {
     
     var body: some View {
         color
-            .frame(width: 300, height: height)
-            .padding(.top,5)
-            .padding(.bottom,8)
+            .frame(height: height)
     }
 }
