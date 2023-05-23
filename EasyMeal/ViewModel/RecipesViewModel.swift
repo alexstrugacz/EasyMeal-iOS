@@ -16,6 +16,23 @@ class RecipesViewModel : ObservableObject {
     @Published var minCalories: Float = 100
     @Published var maxCalories: Float = 2000
     
+    @Published var minHealthScoreDebounce: Float = 0
+    @Published var minCaloriesDebounce: Float = 100
+    @Published var maxCaloriesDebounce: Float = 2000
+    
+    init() {
+        $minHealthScore
+            .debounce(for: 0.5, scheduler: DispatchQueue.main)
+            .assign(to: &$minHealthScoreDebounce)
+        $minCalories
+            .debounce(for: 0.5, scheduler: DispatchQueue.main)
+            .assign(to: &$minCaloriesDebounce)
+        $maxCalories
+            .debounce(for: 0.5, scheduler: DispatchQueue.main)
+            .assign(to: &$maxCaloriesDebounce)
+        loadRecipes()
+    }
+    
     func selectRecipe(recipeId: Recipe) {
         selectedRecipe = recipeId
     }
@@ -102,9 +119,5 @@ class RecipesViewModel : ObservableObject {
         }
         task.resume()
     }
-    
-    init() {
-        loadRecipes()
-        
-    }
+
 }

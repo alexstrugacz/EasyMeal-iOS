@@ -70,6 +70,7 @@
 		AFB129322A1A6AA100060FCE /* PreviewPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB129312A1A6AA100060FCE /* PreviewPages.swift */; };
 		AFB129342A1A6AC700060FCE /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB129332A1A6AC700060FCE /* Page.swift */; };
 		AFB129362A1A702200060FCE /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB129352A1A702200060FCE /* SignInViewModel.swift */; };
+		AFDA6FD52A1C7CD000B37955 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDA6FD42A1C7CD000B37955 /* FiltersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,6 +134,7 @@
 		AFB129312A1A6AA100060FCE /* PreviewPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewPages.swift; sourceTree = "<group>"; };
 		AFB129332A1A6AC700060FCE /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		AFB129352A1A702200060FCE /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		AFDA6FD42A1C7CD000B37955 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +295,7 @@
 				AF205C082A17BBF3005303F1 /* SpeakIngredients.swift */,
 				AF72A16C2A1AEDA400E33F13 /* SpeakerView.swift */,
 				4D4534DF2A1BB17E009C2688 /* ForgotPassword.swift */,
+				AFDA6FD42A1C7CD000B37955 /* FiltersView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				AFB129282A1A68D600060FCE /* SignInView.swift in Sources */,
 				4DDF433829F9EDE7008077FC /* Colors.swift in Sources */,
 				AF205C0E2A17BBF3005303F1 /* PlayButton.swift in Sources */,
+				AFDA6FD52A1C7CD000B37955 /* FiltersView.swift in Sources */,
 				AF205C1C2A17BBFC005303F1 /* SpeechRecognizer.swift in Sources */,
 				AF205C1B2A17BBFC005303F1 /* RecipesViewModel.swift in Sources */,
 				4D2E4F4D29AFE4CF00F68629 /* Appearance.swift in Sources */,

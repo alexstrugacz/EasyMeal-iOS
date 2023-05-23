@@ -49,98 +49,102 @@ struct SpeakIngredients: View {
     
     var body: some View {
         if ( speakIngredientsViewModel.resultsDisplayed) {
-            VStack(alignment: .leading) {
-                Button(action: {
-                    closeSpeakIngredients()
-                }) {
-                    HStack(spacing: 3) {
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 14))
-                        Text("Exit")
-                            .font(.system(size: 16))
-                            .fontWeight(.regular)
+            VStack {
+                VStack(alignment: .leading) {
+                    Button(action: {
+                        closeSpeakIngredients()
+                    }) {
+                        HStack(spacing: 3) {
+                            Image(systemName: "chevron.left")
+                                .font(.system(size: 14))
+                            Text("Exit")
+                                .font(.system(size: 16))
+                                .fontWeight(.regular)
+                        }
+                        .foregroundColor(.blue)
                     }
-                    .foregroundColor(.blue)
-                }
-                Text("Speak Ingredients")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .multilineTextAlignment(.center)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.top, 5)
-                if (speakIngredientsViewModel.results.count > 0) {
-                    Text("The following will be added:")
-                        .font(.title3)
+                    Text("Speak Ingredients")
+                        .font(.title)
+                        .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                         .frame(maxWidth: .infinity, alignment: .center)
-                        .foregroundColor(Color(red: 0, green: 0, blue: 0, opacity: 0.7))
-                        .padding(.horizontal, 5)
-                }
-                ScrollView(showsIndicators: false) {
-                    VStack {
-                        if (speakIngredientsViewModel.results.count == 0) {
-                            Text("No ingredients found. You may have mentioned ingredients that weren't in our database.")
-                        } else {
-                            Text("Note: Only ingredients in our database are logged").font(.system(size: 12))
-                            
-                        }
-                        ForEach(speakIngredientsViewModel.results, id: \.self) { result in
-                            Text(result)
-                                .padding(5)
-                                .padding(.vertical, 10)
-                                .frame(maxWidth: .infinity)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .stroke(Color(hex: "#ccc"), lineWidth: 1)
-                                        .foregroundColor(.white)
-                                        .padding(.horizontal, 1)
-                                )
-                        }
-                    }
-                }
-                HStack {
-                    
-                    Button {
-                        speakIngredientsViewModel.exitSubmission()
-                    } label: {
-                        HStack {
-                            Image(systemName: "arrow.uturn.forward")
-                                .font(.system(size: 18))
-                            Text("Go Back")
-                                .fontWeight(.bold
-                                )
-                        }
-                        .frame(maxWidth: .infinity)
-                        .foregroundColor(.white)
-                        .padding(.vertical, 10)
-                        .background(LinearGradient(gradient: Gradient(colors: [.gray, .gray]), startPoint: .leading, endPoint: .trailing))
-                        .cornerRadius(10)
-                    }
-                    
+                        .padding(.top, 5)
                     if (speakIngredientsViewModel.results.count > 0) {
+                        Text("The following will be added:")
+                            .font(.title3)
+                            .multilineTextAlignment(.center)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                            .foregroundColor(Color(red: 0, green: 0, blue: 0, opacity: 0.7))
+                            .padding(.horizontal, 5)
+                    }
+                    ScrollView(showsIndicators: false) {
+                        VStack {
+                            if (speakIngredientsViewModel.results.count == 0) {
+                                Text("No ingredients found. You may have mentioned ingredients that weren't in our database.")
+                            } else {
+                                Text("Note: Only ingredients in our database are logged").font(.system(size: 12))
+                                
+                            }
+                            ForEach(speakIngredientsViewModel.results, id: \.self) { result in
+                                Text(result)
+                                    .fontWeight(.bold)
+                                    .padding(5)
+                                    .padding(.vertical, 10)
+                                    .frame(maxWidth: .infinity)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 10)
+                                        
+                                            .foregroundColor(.white)
+                                            .padding(.horizontal, 5)
+                                            .shadow(color: Color(hex: "#d4d4d4"), radius: 5,x: 0, y: 5)
+                                    )
+                            }
+                        }
+                    }
+                    HStack {
+                        
                         Button {
-                            speakIngredientsViewModel.addResults()
+                            speakIngredientsViewModel.exitSubmission()
                         } label: {
                             HStack {
-                                Image(systemName: "checkmark")
+                                Image(systemName: "arrow.uturn.forward")
                                     .font(.system(size: 18))
-                                Text("Submit")
+                                Text("Go Back")
                                     .fontWeight(.bold
                                     )
                             }
                             .frame(maxWidth: .infinity)
                             .foregroundColor(.white)
                             .padding(.vertical, 10)
-                            .background(LinearGradient(gradient: Gradient(colors: [custGreen, custGreen]), startPoint: .leading, endPoint: .trailing))
+                            .background(LinearGradient(gradient: Gradient(colors: [.gray, .gray]), startPoint: .leading, endPoint: .trailing))
                             .cornerRadius(10)
                         }
+                        
+                        if (speakIngredientsViewModel.results.count > 0) {
+                            Button {
+                                speakIngredientsViewModel.addResults()
+                            } label: {
+                                HStack {
+                                    Image(systemName: "checkmark")
+                                        .font(.system(size: 18))
+                                    Text("Submit")
+                                        .fontWeight(.bold
+                                        )
+                                }
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(.white)
+                                .padding(.vertical, 10)
+                                .background(LinearGradient(gradient: Gradient(colors: [custGreen, custGreen]), startPoint: .leading, endPoint: .trailing))
+                                .cornerRadius(10)
+                            }
+                        }
+                        
                     }
-                    
+                    Spacer()
                 }
-                Spacer()
+                .padding(20)
             }
-            .background(Color(red: 240, green: 240, blue: 240))
-            .padding(20)
+            .background(Color(hex: "#F7F7F7"))
             
         } else {
             VStack(alignment: .leading) {
@@ -268,8 +272,8 @@ struct SpeakIngredients: View {
                 
                 Spacer()
             }
-            .background(Color(red: 240, green: 240, blue: 240))
             .padding(20)
+            .background(Color(hex: "#F7F7F7"))
             .fullScreenCover(isPresented: $speakIngredientsViewModel.loading, content: {
                 ZStack{
                     Color.black.opacity(0.01).edgesIgnoringSafeArea(.all)
