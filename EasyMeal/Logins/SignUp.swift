@@ -6,9 +6,18 @@ import AuthenticationServices
 struct SignUp: View {
     @State private var email: String = ""
     @State private var password: String = ""
+    @State private var confirmPassword: String = ""
     @Binding var loginTab: LoginTabs
     
     @EnvironmentObject var firebaseManager: FirebaseManager
+    
+    func createAccount() {
+        if password == confirmPassword {
+            firebaseManager.signUp(email: email, password: password)
+        } else {
+            firebaseManager.error = "Passwords don't match."
+        }
+    }
     
     var body: some View {
         if firebaseManager.isLoggedIn {
@@ -76,7 +85,7 @@ struct SignUp: View {
                                 Image(systemName: "lock")
                                     .foregroundColor(Color(hex: "747474"))
                                 
-                                SecureField("Confirm Password", text: $password)
+                                SecureField("Confirm Password", text: $confirmPassword)
                                 
                                 Image(systemName: "eye")
                                     .foregroundColor(Color(hex: "747474"))
@@ -85,7 +94,7 @@ struct SignUp: View {
                             
                             HStack {
                                 Button(action: {
-                                    firebaseManager.signUp(email: email, password: password)
+                                    createAccount()
                                 }) {
                                     Text("Sign Up")
                                         .frame(width: 234, height: 50)
@@ -134,6 +143,18 @@ struct SignUp: View {
                                     .foregroundColor(Color(hex: "7B7A7A"))
                                     .font(.caption)
                                     .offset(y: -15)
+                                
+                                if let error = firebaseManager.error {
+                                    Text(error)
+                                        .font(.caption)
+                                        .fixedSize(horizontal: false, vertical: true)
+                                        .foregroundColor(.red)
+                                        .padding(10)
+                                    
+                                }
+                                if firebaseManager.loading {
+                                    ProgressView()
+                                }
                                 
                                 Button {
                                     loginTab = .signIn

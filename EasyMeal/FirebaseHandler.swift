@@ -101,12 +101,19 @@ class FirebaseManager: NSObject, ObservableObject {
     }
 
     func signUp(email: String, password: String) {
+        loading = true
+        error = nil
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] (authResult, error) in
             if let error = error {
                 print("Sign-up error: \(error.localizedDescription)")
+                self?.loading = false
+                self?.error = error.localizedDescription
             } else { 
                 self?.isLoggedIn = true
                 print("logged in")
+            }
+            DispatchQueue.main.async {
+                self?.loading = false
             }
         }
     }
@@ -123,8 +130,11 @@ class FirebaseManager: NSObject, ObservableObject {
                 }
             } else {
                 self?.isLoggedIn = true
-                
                 // Handle successful sign-in
+            }
+            
+            DispatchQueue.main.async {
+                self?.loading = false
             }
         }
     }
@@ -139,6 +149,8 @@ class FirebaseManager: NSObject, ObservableObject {
         }
 
     func signUpWithApple(_ request: ASAuthorizationAppleIDRequest) {
+        loading = true
+        error = nil
         request.requestedScopes = [
             .email
         ]
@@ -146,13 +158,20 @@ class FirebaseManager: NSObject, ObservableObject {
         let nonce = randomNonceString()
         currentNonce = nonce
         request.nonce = sha256(nonce)
-        
-            
+        DispatchQueue.main.async {
+            self.loading = false
+        }
     }
 
     func signInWithApple(_ result: Result<ASAuthorization, Error>) {
+        loading = true
+        error = nil
         if case .failure(let failure) = result {
+            error = "Authorization failed, please try again."
             
+            DispatchQueue.main.async {
+                self.loading = false
+            }
         } else if case .success(let success) = result {
             if let appleIDCredential = success.credential as? ASAuthorizationAppleIDCredential {
                 guard let nonce = currentNonce else {
@@ -168,13 +187,16 @@ class FirebaseManager: NSObject, ObservableObject {
                 Task {
                     do {
                         let result = try await Auth.auth().signIn(with: credential)
-                        
                         self.isLoggedIn = true
                         
                     } catch {
                         
                     }
                 }
+            }
+            
+            DispatchQueue.main.async {
+                self.loading = false
             }
                 
                 
@@ -184,6 +206,7 @@ class FirebaseManager: NSObject, ObservableObject {
 }
 
 extension FirebaseManager: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+    
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         // Return the window or view controller from which to present the Sign In with Apple UI
         // For example:
@@ -193,17 +216,17 @@ extension FirebaseManager: ASAuthorizationControllerDelegate, ASAuthorizationCon
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             guard let nonce = currentNonce else {
-                print("Invalid state: A login callback was received, but no login request was sent.")
+                error = "Invalid state: A login callback was received, but no login request was sent."
                 return
             }
             
             guard let appleIDToken = appleIDCredential.identityToken else {
-                print("Unable to fetch identity token.")
+                error = "Unable to fetch identity token."
                 return
             }
             
             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
-                print("Unable to serialize token string from data.")
+                error = "Unable to serialize token string from data."
                 return
             }
             

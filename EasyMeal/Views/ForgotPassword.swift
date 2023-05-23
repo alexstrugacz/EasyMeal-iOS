@@ -45,10 +45,10 @@ struct ForgotPassword: View {
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
-                Text("Forgot Password")
-                    .bold()
-                    .foregroundColor(.black)
-                    .font(.system(size: 30))
+//                Text("Forgot Password")
+//                    .bold()
+//                    .foregroundColor(.black)
+//                    .font(.system(size: 30))
                 HStack {
                     Image(systemName: "envelope")
                         .foregroundColor(Color(hex: "747474"))
