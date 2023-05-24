@@ -57,14 +57,21 @@ struct RecipeInfo: View {
                     VStack {
                         ZStack {
                             Color.white
-                            AsyncImage(url: URL(string: recipe.url)) { image in
+                            AsyncImage(url: URL(string:"https://www.whitescreen.online/image/black-background.png")) { image in
                                 image
                                     .resizable()
                                     .aspectRatio(contentMode: .fill)
+                                    .overlay(
+                                        LinearGradient(
+                                            gradient: Gradient(colors: [.blue, .purple]),
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        )
+                                    )
                                     .frame(width: UIScreen.main.bounds.size.width, height: 400)
                                     .cornerRadius(20)
                             } placeholder: {
-                                
+
                                 ZStack {
                                     Color(red: 0.8, green: 0.8, blue: 0.8)
                                         .cornerRadius(10)
@@ -74,7 +81,7 @@ struct RecipeInfo: View {
                                 }
                                 .frame(width: geo.size.width, height: 400)
                                 .cornerRadius(20)
-                                
+
                             }
                             VStack {
                                 HStack {
@@ -93,7 +100,7 @@ struct RecipeInfo: View {
                                 Spacer()
                             }
                             .padding(.horizontal, 25)
-                            
+
                         }
                         .frame(width: UIScreen.main.bounds.size.width, height: 400)
                         .clipped()

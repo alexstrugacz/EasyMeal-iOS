@@ -13,10 +13,17 @@ struct RecipeView: View {
     var body: some View {
         VStack(spacing: 8) {
             VStack {
-                AsyncImage(url: URL(string:recipe.url)) { image in
+                AsyncImage(url: URL(string:"https://www.whitescreen.online/image/black-background.png")) { image in
                     image
                         .resizable()
                         .scaledToFill()
+                        .overlay(
+                            LinearGradient(
+                                gradient: Gradient(colors: [.blue, .purple]),
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
                         .frame(width: .infinity, height: 150)
                         .cornerRadius(10)
                 } placeholder: {
@@ -31,7 +38,7 @@ struct RecipeView: View {
                     
                 }
             }
-        
+//        
 
             VStack(alignment: .leading) {
                 Text(recipe.name)
@@ -51,7 +58,7 @@ struct RecipeView: View {
             }
             .padding(.horizontal, 15)
             .padding(.bottom, 20)
-            .padding(.top, 10)
+            .padding(.top, 20)
 
         }
         .background(Color.white)
