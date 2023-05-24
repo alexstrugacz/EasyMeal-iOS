@@ -12,25 +12,32 @@ struct RecipeView: View {
     var selectRecipe: (Recipe) -> Void
     var body: some View {
         VStack(spacing: 8) {
-//            VStack {
-//                AsyncImage(url: URL(string:recipe.url)) { image in
-//                    image
-//                        .resizable()
-//                        .scaledToFill()
-//                        .frame(width: .infinity, height: 150)
-//                        .cornerRadius(10)
-//                } placeholder: {
-//                    ZStack {
-//                        Color(red: 0.8, green: 0.8, blue: 0.8)
-//                            .cornerRadius(10)
-//                        Text("No Image")
-//                            .foregroundColor(.gray)
-//                            .font(.headline)
-//                    }
-//                    .frame(width: .infinity, height: 150)
-//                    
-//                }
-//            }
+            VStack {
+                AsyncImage(url: URL(string:"https://www.whitescreen.online/image/black-background.png")) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .overlay(
+                            LinearGradient(
+                                gradient: Gradient(colors: [.blue, .purple]),
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                        .frame(width: .infinity, height: 150)
+                        .cornerRadius(10)
+                } placeholder: {
+                    ZStack {
+                        Color(red: 0.8, green: 0.8, blue: 0.8)
+                            .cornerRadius(10)
+                        Text("No Image")
+                            .foregroundColor(.gray)
+                            .font(.headline)
+                    }
+                    .frame(width: .infinity, height: 150)
+                    
+                }
+            }
 //        
 
             VStack(alignment: .leading) {
