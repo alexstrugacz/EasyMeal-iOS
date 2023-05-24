@@ -55,48 +55,62 @@ struct RecipeInfo: View {
             VStack {
                 ScrollView(showsIndicators: false) {
                     VStack {
-                        ZStack {
-                            Color.white
-                            AsyncImage(url: URL(string: recipe.url)) { image in
-                                image
+                        HStack {
+                            Button {
+                                exitRecipe()
+                            } label: {
+                                Image(systemName: "arrow.left.circle.fill")
                                     .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: UIScreen.main.bounds.size.width, height: 400)
-                                    .cornerRadius(20)
-                            } placeholder: {
-                                
-                                ZStack {
-                                    Color(red: 0.8, green: 0.8, blue: 0.8)
-                                        .cornerRadius(10)
-                                    Text("No Image")
-                                        .foregroundColor(.gray)
-                                        .font(.headline)
-                                }
-                                .frame(width: geo.size.width, height: 400)
-                                .cornerRadius(20)
-                                
+                                    .foregroundColor(.white)
+                                    .frame(width: 40, height: 40)
+                                    .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.3), radius: 7, x: 2, y: 3)
                             }
-                            VStack {
-                                HStack {
-                                    Button {
-                                        exitRecipe()
-                                    } label: {
-                                        Image(systemName: "arrow.left.circle.fill")
-                                            .resizable()
-                                            .foregroundColor(.white)
-                                            .frame(width: 40, height: 40)
-                                            .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.3), radius: 7, x: 2, y: 3)
-                                    }
-                                    Spacer()
-                                }
-                                .padding(.top, 60)
-                                Spacer()
-                            }
-                            .padding(.horizontal, 25)
-                            
+                            Spacer()
                         }
-                        .frame(width: UIScreen.main.bounds.size.width, height: 400)
-                        .clipped()
+                        .padding(.leading, 30)
+                        .padding(.top, 60)
+//                        ZStack {
+//                            Color.white
+//                            AsyncImage(url: URL(string: recipe.url)) { image in
+//                                image
+//                                    .resizable()
+//                                    .aspectRatio(contentMode: .fill)
+//                                    .frame(width: UIScreen.main.bounds.size.width, height: 400)
+//                                    .cornerRadius(20)
+//                            } placeholder: {
+//
+//                                ZStack {
+//                                    Color(red: 0.8, green: 0.8, blue: 0.8)
+//                                        .cornerRadius(10)
+//                                    Text("No Image")
+//                                        .foregroundColor(.gray)
+//                                        .font(.headline)
+//                                }
+//                                .frame(width: geo.size.width, height: 400)
+//                                .cornerRadius(20)
+//
+//                            }
+//                            VStack {
+//                                HStack {
+//                                    Button {
+//                                        exitRecipe()
+//                                    } label: {
+//                                        Image(systemName: "arrow.left.circle.fill")
+//                                            .resizable()
+//                                            .foregroundColor(.white)
+//                                            .frame(width: 40, height: 40)
+//                                            .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.3), radius: 7, x: 2, y: 3)
+//                                    }
+//                                    Spacer()
+//                                }
+//                                .padding(.top, 60)
+//                                Spacer()
+//                            }
+//                            .padding(.horizontal, 25)
+//
+//                        }
+//                        .frame(width: UIScreen.main.bounds.size.width, height: 400)
+//                        .clipped()
                         VStack {
                             Text(recipe.name)
                                 .font(.title)
