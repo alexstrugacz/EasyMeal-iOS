@@ -75,7 +75,7 @@ struct RecipeInfo: View {
                                                 .padding(.vertical, 6)
                                         }
                                         .sheet(isPresented: $isShowingRecipesSaved) {
-                                            RecipesSaved()
+                                            RecipesSaved(, openCart: <#() -> Void#>)
                                         }
                                         .foregroundColor(custGreen)
                                         .padding(.trailing)

@@ -17,7 +17,7 @@ struct Profile: View {
                     NavigationLink(destination: Account()) {
                         Label("Account", systemImage: "person")
                     }
-                    NavigationLink(destination: RecipesSaved()) {
+                    NavigationLink(destination: RecipesSaved(, openCart: <#() -> Void#>)) {
                         Label("Recipes Saved", systemImage: "book.closed")
                     }
 //                    NavigationLink(destination: Notifications()) {

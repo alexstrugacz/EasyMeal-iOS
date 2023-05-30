@@ -8,17 +8,40 @@
 import SwiftUI
 
 struct RecipesSaved: View {
+    @State var showView = false
+    @State var showHealth = false
+    @State var showMinCal = false
+    @State var showMaxCal = false
+    @State private var tabSelected: Tab = .refrigerator
     @ObservedObject var recipesViewModel: RecipesViewModel = RecipesViewModel()
     
     var openCart: () -> Void
     
     func addMissingIngredients(missingRecipes: [String]) {
         // add these to the cart items
+        recipesViewModel.selectedRecipe = nil
         openCart()
     }
     
+    @State var showFilter = false
+    
     var body: some View {
-        VStack {
+        VStack{
+
+            
+            FiltersView(showFilter: $showFilter, showHealth: $showHealth, showMinCal: $showMinCal, showMaxCal: $showMaxCal, minHealthScore:$recipesViewModel.minHealthScore, minCalories: $recipesViewModel.minCalories, maxCalories: $recipesViewModel.maxCalories)
+                .onChange(of: recipesViewModel.minHealthScoreDebounce) { newValue in
+                    recipesViewModel.loadRecipes()
+                }
+                .onChange(of: recipesViewModel.minCaloriesDebounce) { newValue in
+                    recipesViewModel.loadRecipes()
+                }
+                .onChange(of: recipesViewModel.maxCaloriesDebounce) { newValue in
+                    recipesViewModel.loadRecipes()
+                }
+                
+            
+            
             if (recipesViewModel.loading) {
                 ProgressView()
             }
@@ -35,6 +58,7 @@ struct RecipesSaved: View {
                 Spacer(minLength: 100)
                 
             }
+            
         }
         .background(Color(hex: "#F7F7F7"))
         .fullScreenCover(item: $recipesViewModel.selectedRecipe) { recipe in
@@ -43,11 +67,19 @@ struct RecipesSaved: View {
             }, newAddMissingIngredients: addMissingIngredients)
         }
     }
+
 }
 
 
 struct RecipeSavedPreviews_Previews: PreviewProvider {
     static var previews: some View {
-        RecipesSaved(, openCart: <#() -> Void#>)
+        
+        // Substitute this with your actual ViewModel initialization
+        let viewModel = RecipesViewModel()
+        
+        // Define a mock openCart function
+        let mockOpenCart = {}
+        
+        RecipesSaved(recipesViewModel: viewModel, openCart: mockOpenCart)
     }
 }
