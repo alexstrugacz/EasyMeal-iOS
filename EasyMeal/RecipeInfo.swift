@@ -5,6 +5,7 @@ struct RecipeInfo: View {
     let initialNutrientCount = 3
     
     @State private var isExpanded = false
+    @State private var isShowingRecipesSaved = false
     
     var exitRecipe: () -> Void
     var addMissingIngredients: ([String]) -> Void
@@ -66,6 +67,18 @@ struct RecipeInfo: View {
                                     .shadow(color: Color(red: 0, green: 0, blue: 0, opacity: 0.3), radius: 7, x: 2, y: 3)
                             }
                             Spacer()
+                            Button(action: {
+                                            isShowingRecipesSaved = true
+                                        }) {
+                                            Text("View Saved Recipes")
+                                                .foregroundColor(.blue)
+                                                .padding(.vertical, 6)
+                                        }
+                                        .sheet(isPresented: $isShowingRecipesSaved) {
+                                            RecipesSaved()
+                                        }
+                                        .foregroundColor(custGreen)
+                                        .padding(.trailing)
                         }
                         .padding(.leading, 30)
                         .padding(.top, 60)
@@ -227,6 +240,7 @@ struct RecipeInfo: View {
                                                     .padding(.vertical, 10)
                                             )
                                     }
+                                    
                                 }
                                 .frame(width: 280)
                                 .padding(.horizontal, 16)

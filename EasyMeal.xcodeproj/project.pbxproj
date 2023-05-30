@@ -30,6 +30,7 @@
 		9B09BE9D298B267E00939FFD /* MainPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B09BE9C298B267E00939FFD /* MainPage.swift */; };
 		9B09BE9F298B267F00939FFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B09BE9E298B267F00939FFD /* Assets.xcassets */; };
 		9B09BEA2298B267F00939FFD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B09BEA1298B267F00939FFD /* Preview Assets.xcassets */; };
+		9BE18A8F2A264C3C001C53E3 /* RecipesSaved.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BE18A8E2A264C3C001C53E3 /* RecipesSaved.swift */; };
 		9BEA998B2A145F0300066F87 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BEA998A2A145F0300066F87 /* GoogleService-Info.plist */; };
 		9BEA998E2A145F9E00066F87 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 9BEA998D2A145F9E00066F87 /* FirebaseAppCheck */; };
 		9BEA99902A145F9E00066F87 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 9BEA998F2A145F9E00066F87 /* FirebaseAppDistribution-Beta */; };
@@ -99,6 +100,7 @@
 		9B09BE9C298B267E00939FFD /* MainPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPage.swift; sourceTree = "<group>"; };
 		9B09BE9E298B267F00939FFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B09BEA1298B267F00939FFD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9BE18A8E2A264C3C001C53E3 /* RecipesSaved.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesSaved.swift; sourceTree = "<group>"; };
 		9BEA998A2A145F0300066F87 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9BEA99992A155D0F00066F87 /* FirebaseHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseHandler.swift; sourceTree = "<group>"; };
 		AF205BFD2A172A12005303F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				4D2E4F4E29AFE4D700F68629 /* Privacy.swift */,
 				4D2E4F5029AFE4E500F68629 /* Help & Support.swift */,
 				4D2E4F5229AFE4EC00F68629 /* About.swift */,
+				9BE18A8E2A264C3C001C53E3 /* RecipesSaved.swift */,
 			);
 			path = "Profile Settings";
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				AFB1292B2A1A698B00060FCE /* Tab.swift in Sources */,
 				4DE2F53129972312002AA1BA /* SignUp.swift in Sources */,
 				AF205C192A17BBFC005303F1 /* SpeakIngredientsViewModel.swift in Sources */,
+				9BE18A8F2A264C3C001C53E3 /* RecipesSaved.swift in Sources */,
 				AF205C1D2A17BBFC005303F1 /* PantryViewModel.swift in Sources */,
 				AF205C262A17BC1C005303F1 /* LocalizedAlertError.swift in Sources */,
 				4DE2F5392997F679002AA1BA /* TabBar.swift in Sources */,
