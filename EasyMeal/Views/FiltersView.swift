@@ -1,13 +1,14 @@
-//
-//  FiltersView.swift
-//  EasyMeal
-//
-//  Created by Pink Flamingo on 5/22/23.
-//
+// FiltersView.swift
+// EasyMeal
+// Created by Pink Flamingo on 5/22/23.
 
 import SwiftUI
 
-struct FiltersView: View {
+// Filter view for recipes
+struct FiltersView: View
+{
+    
+    // State variables for filters and scores
     @Binding var showFilter: Bool
     @Binding var showHealth: Bool
     @Binding var showMinCal: Bool
@@ -16,19 +17,25 @@ struct FiltersView: View {
     @Binding var minCalories: Float
     @Binding var maxCalories: Float
 
-    let numberFormatter: NumberFormatter = {
+    // Formatter for number display
+    let numberFormatter: NumberFormatter =
+    {
         let num = NumberFormatter()
         num.maximumFractionDigits = 0
         return num
     }()
     
-    var body: some View {
-        ZStack {
-            HStack {
-                Button(action: {
-                    showFilter.toggle()
-                }) {
-                    Image(systemName: "slider.horizontal.3") // This is a built-in SwiftUI filter icon
+    var body: some View
+    {
+        // Top bar with filter icon and recipe title
+        ZStack
+        {
+            // Filter icon button
+            HStack
+            {
+                Button(action: { showFilter.toggle() })
+                {
+                    Image(systemName: "slider.horizontal.3")
                         .resizable()
                         .frame(width: 25, height: 25)
                         .foregroundColor(.gray)
@@ -38,7 +45,9 @@ struct FiltersView: View {
 
                 Spacer()
             }
-            HStack {
+            // Recipe title
+            HStack
+            {
                 Spacer()
                 Text("Recipes")
                     .font(.title)
@@ -48,18 +57,24 @@ struct FiltersView: View {
             }
         }
         .padding(.top, 25)
-        if showFilter {
-            HStack {
-                Button(action: {
-                    if showHealth == true{
-                        showHealth = false
-                    } else {
-                        showHealth = true
+
+        // Filters
+        if showFilter
+        {
+            // Horizontal stack for filter buttons
+            HStack
+            {
+                // Health score filter button
+                Button(action:
+                {
+                    showHealth.toggle()
+                    if showHealth
+                    {
                         showMaxCal = false
                         showMinCal = false
                     }
-                    }
-                ) {
+                })
+                {
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(custGreen)
                         .frame(height: 30)
@@ -72,16 +87,17 @@ struct FiltersView: View {
                 
                 Spacer()
                 
-                Button(action: {
-                    if showMinCal == true{
-                        showMinCal = false
-                    } else {
+                // Min calorie filter button
+                Button(action:
+                {
+                    showMinCal.toggle()
+                    if showMinCal
+                    {
                         showHealth = false
                         showMaxCal = false
-                        showMinCal = true
                     }
-                    }
-                ) {
+                })
+                {
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(custMedGreen)
                         .frame(height: 30)
@@ -94,17 +110,17 @@ struct FiltersView: View {
                 
                 Spacer()
                 
-                
-                Button(action: {
-                    if showMaxCal == true{
-                        showMaxCal = false
-                    } else {
+                // Max calorie filter button
+                Button(action:
+                {
+                    showMaxCal.toggle()
+                    if showMaxCal
+                    {
                         showHealth = false
-                        showMaxCal = true
                         showMinCal = false
                     }
-                    }
-                ) {
+                })
+                {
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(custDarkGreen)
                         .frame(height: 30)
@@ -116,10 +132,15 @@ struct FiltersView: View {
                 }
             }
             .padding(.horizontal, 20)
-            VStack {
-                
-                if showHealth {
-                    VStack{
+
+            // Filter sliders
+            VStack
+            {
+                // Health score slider
+                if showHealth
+                {
+                    VStack
+                    {
                         Text("Minimum Health Score:  \(numberFormatter.string(from: NSNumber(value: minHealthScore))!)")
                             .font(.system(size:20))
                         
@@ -130,21 +151,26 @@ struct FiltersView: View {
                     .offset(y:-5)
                 }
                 
-                if showMinCal {
-                    VStack{
+                // Min calorie slider
+                if showMinCal
+                {
+                    VStack
+                    {
                         Text("Minimum Calories:  \(numberFormatter.string(from: NSNumber(value: minCalories))!)")
                             .font(.system(size:20))
                         
                         Slider(value: $minCalories, in: 100...2000, step: 10.0, minimumValueLabel: Text("100"), maximumValueLabel: Text("2000"), label: {})
                             .padding(.horizontal,20)
                             .tint(custMedGreen)
-                        
                     }
                     .offset(y:-5)
                 }
                 
-                if showMaxCal {
-                    VStack{
+                // Max calorie slider
+                if showMaxCal
+                {
+                    VStack
+                    {
                         Text("Maximum Calories:  \(numberFormatter.string(from: NSNumber(value: maxCalories))!)")
                             .font(.system(size:20))
                         
@@ -157,6 +183,5 @@ struct FiltersView: View {
             }
             .padding(.top, 20)
         }
-            
     }
 }

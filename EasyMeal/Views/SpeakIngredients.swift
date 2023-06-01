@@ -7,50 +7,63 @@
 
 import SwiftUI
 
-struct SpeakIngredients: View {
-    
+struct SpeakIngredients: View
+{
+    // Declare variables
     var closeSpeakIngredients: () -> Void
-    @ObservedObject var speakIngredientsViewModel: SpeakIngredientsViewModel 
+    @ObservedObject var speakIngredientsViewModel: SpeakIngredientsViewModel
     @StateObject var speechRecognizer: SpeechRecognizer = SpeechRecognizer()
-   
-    func startRecording() {
+
+    // Start recording function
+    func startRecording()
+    {
         speakIngredientsViewModel.startRecording()
-        if (!speakIngredientsViewModel.recorded) {
+        if (!speakIngredientsViewModel.recorded)
+        {
             speechRecognizer.resetTranscript()
         }
         speechRecognizer.startTranscribing()
-        
     }
-    
-    func stopRecording() {
+
+    // Stop recording function
+    func stopRecording()
+    {
         let seconds = 2.0
         speakIngredientsViewModel.stopRecording()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds)
+        {
             speechRecognizer.stopTranscribing()
-            
             speakIngredientsViewModel.text += speechRecognizer.transcript + " "
         }
     }
-    
-    
-    func reset() {
+
+    // Reset function
+    func reset()
+    {
         speakIngredientsViewModel.text = ""
         speakIngredientsViewModel.resetRecording()
         speechRecognizer.resetTranscript()
-        
     }
-    
-    init(newCloseSpeakIngredients: @escaping () -> Void) {
+
+    // Initialization
+    init(newCloseSpeakIngredients: @escaping () -> Void)
+    {
         closeSpeakIngredients = newCloseSpeakIngredients
         speakIngredientsViewModel = SpeakIngredientsViewModel(exit: newCloseSpeakIngredients)
     }
-    
-    
-    var body: some View {
-        if ( speakIngredientsViewModel.resultsDisplayed) {
-            VStack {
-                VStack(alignment: .leading) {
+
+    // View body
+    var body: some View
+    {
+        if (speakIngredientsViewModel.resultsDisplayed)
+        {
+            // Results displayed layout
+            
+            VStack
+            {
+                VStack(alignment: .leading)
+                {
                     Button(action: {
                         closeSpeakIngredients()
                     }) {
@@ -147,6 +160,8 @@ struct SpeakIngredients: View {
             .background(Color(hex: "#F7F7F7"))
             
         } else {
+            // Speak ingredients layout
+            
             VStack(alignment: .leading) {
                 
                 Button(action: {
