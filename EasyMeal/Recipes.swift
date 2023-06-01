@@ -20,7 +20,7 @@ struct Recipes: View {
     
     var body: some View {
         VStack{
-
+            
             
             FiltersView(showFilter: $showFilter, showHealth: $showHealth, showMinCal: $showMinCal, showMaxCal: $showMaxCal, minHealthScore:$recipesViewModel.minHealthScore, minCalories: $recipesViewModel.minCalories, maxCalories: $recipesViewModel.maxCalories)
                 .onChange(of: recipesViewModel.minHealthScoreDebounce) { newValue in
@@ -32,24 +32,32 @@ struct Recipes: View {
                 .onChange(of: recipesViewModel.maxCaloriesDebounce) { newValue in
                     recipesViewModel.loadRecipes()
                 }
-                
             
-            
-            if (recipesViewModel.loading) {
-                ProgressView()
-            }
-            
-            ScrollView(showsIndicators: false) {
-                LazyVStack(spacing: 15) {
-                    ForEach(recipesViewModel.recipes) { recipe in
-                        RecipeView(recipe: recipe, selectRecipe: recipesViewModel.selectRecipe)
+            if (recipesViewModel.recipes.count > 0) {
+                ScrollView(showsIndicators: false) {
+                    LazyVStack(spacing: 15) {
+                        ForEach(recipesViewModel.recipes) { recipe in
+                            Button {
+                                print("Recipe Clicked", recipe)
+                                recipesViewModel.selectRecipe(recipeId: recipe)
+                            } label: {
+                                RecipeView(recipe: recipe)
+                            }
+                        }
                     }
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal, 20)
+
+                    Spacer(minLength: 100)
+
                 }
-                .frame(maxWidth: .infinity)
-                .padding(.horizontal, 20)
-                
-                Spacer(minLength: 100)
-                
+            } else {
+                VStack {
+                    Text("No recipes found.")
+                        .foregroundColor(.gray)
+                        .padding(.top, 20)
+                    Spacer()
+                }
             }
             
         }
