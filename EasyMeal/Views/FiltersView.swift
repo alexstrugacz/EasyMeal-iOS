@@ -96,7 +96,7 @@ struct FiltersView: View {
                 
                 
                 Button(action: {
-                    if showHealth == true{
+                    if showMaxCal == true{
                         showMaxCal = false
                     } else {
                         showHealth = false
